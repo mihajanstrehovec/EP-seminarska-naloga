@@ -1,3 +1,7 @@
+## Sources
+https://www.youtube.com/watch?v=FymgHnWUMg4&ab_channel=JohnMorris  --> creating a webshop in PHP 
+
+
 # OSNOVNE STORITVE
 
 ## SPLETNI VMESNIK | ADMIN
@@ -61,7 +65,7 @@ Z implementacijo razširjenih storitev lahko zvišate oceno. Pri vsaki storitvi 
 
 
 ## VARNOSTNE STORITVE
-- [ ] <b>V1</b> (5%) Registracija strank z uporabo filtriranja CAPTCHA.
+- [ ] <b>V1</b> (5%) Registracija strank z uporabo filtriranja CAPTCHA.  https://www.a2zwebhelp.com/registration-form-with-captcha
 - [ ] <b>V2 (5%)</b> Registracija strank z uporabo potrditvenega e-maila.
 
 
