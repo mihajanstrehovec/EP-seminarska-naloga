@@ -84,6 +84,14 @@ Mobilno aplikacijo razširite, tako da bo podpirala naslednje funkcije vloge Str
 - [ ] <b>A6 (3%)</b> Pregled preteklih nakupov. Implementacija naj obsega tako pregled seznama vseh nakupov kot tudi ogled podrobnosti posameznega nakupa kot so seznam artiklov, končni znesek ipd.
 
 
+# KONČNI IZDELEK JE ZGRAJEN IZ
+- Android App
+- Sletna trgovina
+- Podatkovna baza
+- Certifikati
+- Apache serve?
+
+
 # Pravila udeležencev
 - Delo poteka v skupini z največ tremi udeleženci.
 - <b>Od vsakega člana ekipe se zahteva enakomerni doprinos k delu.</b>
