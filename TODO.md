@@ -49,8 +49,8 @@ zdelajte Android aplikacijo, ki bo omogočala preprosto pregledovanje artiklov v
 
 - [ ] Implementirajte vmesnik spletne storitve, preko katerega bo mobilna aplikacija komunicirala z vašo prodajalno;
 - [ ] Implementirajte funkcionalnost brskanja po artiklih. Implementirajte vsaj dva zaslona:
- - [ ] Prvi zaslon naj prikaže seznam vseh artiklov v trgovini;
- - [ ] Če uporabnik izbere artikel s zgornjega seznama, naj aplikacija prikaže drug zaslon, kjer se izpišejo podrobnosti artikla.
+  - [ ] Prvi zaslon naj prikaže seznam vseh artiklov v trgovini;
+  - [ ] Če uporabnik izbere artikel s zgornjega seznama, naj aplikacija prikaže drug zaslon, kjer se izpišejo podrobnosti artikla.
 
 
 
