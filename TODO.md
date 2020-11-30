@@ -18,6 +18,14 @@ V vlogi administratorja imate lahko zgolj enega uporabnika, ki ga lahko kreirate
 - [ ] Ustvarjanje, aktiviranje in deaktiviranje uporabniških računov tipa Stranka in posodabljanje njegovih atributov.
 
 
+<b>Razlaga statusa naročila:</b>
+
+- Neobdelano naročilo je naročilo, ki ga je Stranka oddala.
+- Potrjeno naročilo je naročilo, ki ga je Stranka oddala, Prodajalec pa potrdil.
+- Preklicano naročilo je naročilo, ki ga je Stranka oddala, Prodajalec pa preklical.
+- Stornirano naročilo je naročilo, ki ga je Stranka oddala, Prodajalec potrdil in naknadno storniral tj. stornirati je mogoče le potrjena naročila.
+
+
 ## SPLETNI VMESNIK | STRANKA
 
 
