@@ -13,6 +13,6 @@ and open the template in the editor.
         <?php
         // put your code here
         ?>
-        test
+        PULL test
     </body>
 </html>
