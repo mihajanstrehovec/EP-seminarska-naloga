@@ -16,12 +16,12 @@ class eshopController {
         $data = filter_input_array(INPUT_GET, $rules);
 
         if (self::checkValues($data)) {
-            echo ViewHelper::render("view/book-detail.php", [
+            echo ViewHelper::render("view/layout.php", "view/book-detail.php", [
                 #"book" => BookDB::get($data)
             ]);
             
         } else {
-            echo ViewHelper::render("view/trgovina.php", [
+            echo ViewHelper::render("view/layout.php", "view/trgovina.php", [
                 #"books" => BookDB::getAll()
             ]);
         }
@@ -33,7 +33,7 @@ class eshopController {
         "opisArtikla" => "",
         "zalogaArtikla" => "",
     ]) {
-        echo ViewHelper::render("view/dodajArtikel.php", $values);
+        echo ViewHelper::render("view/layout.php", "view/dodajArtikel.php", $values);
     }
 
     public static function add() {
@@ -65,7 +65,7 @@ class eshopController {
             $book = BookDB::get($data);
         }*/
 
-        echo ViewHelper::render("view/urediArtikel.php", /*["book" => $book]*/);
+        echo ViewHelper::render("view/layout.php", "view/urediArtikel.php", /*["book" => $book]*/);
     }
 
     public static function edit() {

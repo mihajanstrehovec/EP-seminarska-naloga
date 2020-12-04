@@ -3,6 +3,10 @@
     width: 70%;
 }
 
+body{
+    color: red;
+}
+
 .update-cart {
     width: 30px;
 }
