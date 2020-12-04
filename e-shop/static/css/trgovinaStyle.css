@@ -14,6 +14,8 @@ and open the template in the editor.
     background: rgb(218,224,224);
     float: right;
     margin-top: 0.6vh;
+    padding-top: 30px;
+
     
 }
 
@@ -27,16 +29,52 @@ and open the template in the editor.
 }
 
 h3{
-    color:whitesmoke;
+    color: whitesmoke;
 }
 
 
 .item{
-    width: 140px;
-    height: 200px;
+    width: 170px;
+    height: 245px;
     background-color: #93b5b4;
     display: inline-block !important;
     float: none !important;
-    margin: 20px;
+    margin: 30px;
     
+}
+
+.kategorije{
+    float: left;
+    width: 20vw;
+    height: 30vh;
+    background: rgb(218,224,224);
+    position: absolute;
+    margin-top: 11.6vh;
+}
+
+.kategorijeTitle{
+    width: 20vw;
+    background-color: rgba(89,145,144,1);
+    height: 4vh;
+    float: left;
+    margin-top: 7vh;
+    color: white;
+    position: absolute;
+}
+
+.artikelVsebnik{
+    width: 55vw;
+    height: 66vh;
+    background: rgb(218,224,224);
+    margin-top: 0.6vh;
+    padding-top: 30px;
+}
+
+
+.titleArtikel{
+    width: 55vw;
+    background-color: rgba(89,145,144,1);
+    height: 4vh;
+    margin-top: 7vh;
+    color: white;
 }

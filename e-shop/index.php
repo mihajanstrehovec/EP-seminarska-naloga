@@ -23,6 +23,9 @@ $urls = [
     "trgovina" => function () {
         eshopController::index();
     },
+    "artikel" => function () {
+        eshopController::artikel();
+    },
     "artikel/dodaj" => function () {
         if ($_SERVER["REQUEST_METHOD"] == "POST") {
             eshopController::add();

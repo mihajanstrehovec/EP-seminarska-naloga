@@ -3,12 +3,19 @@ require_once 'db_files/db_artikel.php';
 ?>
 
 
-        <?php
-        // put your code here
-        ?>
 
 <div class ="row no-gutters justify-content-center">
     <div class ="col-lg-10" align ="center">
+        
+        <div class ="kategorijeTitle" align ="center">
+            <h4>KATEGORIJE</h4>
+        </div>
+        
+        <div class ="kategorije" align ="center">
+            
+        </div>
+        
+        
         <div class ="title" align ="center">
             <h4>ARTIKLI</h4>
         </div>

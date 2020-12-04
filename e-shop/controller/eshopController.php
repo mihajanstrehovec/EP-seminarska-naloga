@@ -26,6 +26,16 @@ class eshopController {
             ]);
         }
     }
+    
+    public static function artikel() {
+       
+            echo ViewHelper::render("view/layout.php", "view/artikel.php", [
+                "Artikli" => eshopDB::getAll()
+            ]);
+        
+    }
+    
+    
 
     public static function addForm($values = [
         "imeArtikla" => "",
