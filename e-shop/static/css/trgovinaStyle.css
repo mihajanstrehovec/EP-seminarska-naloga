@@ -1,0 +1,42 @@
+/*
+To change this license header, choose License Headers in Project Properties.
+To change this template file, choose Tools | Templates
+and open the template in the editor.
+*/
+/* 
+    Created on : Dec 4, 2020, 9:43:42 PM
+    Author     : ep
+*/
+
+.itemList{
+    width: 55vw;
+    height: 66vh;
+    background: rgb(218,224,224);
+    float: right;
+    margin-top: 0.6vh;
+    
+}
+
+.title{
+    width: 55vw;
+    background-color: rgba(89,145,144,1);
+    height: 4vh;
+    float: right;
+    margin-top: 7vh;
+    color: white;
+}
+
+h3{
+    color:whitesmoke;
+}
+
+
+.item{
+    width: 140px;
+    height: 200px;
+    background-color: #93b5b4;
+    display: inline-block !important;
+    float: none !important;
+    margin: 20px;
+    
+}

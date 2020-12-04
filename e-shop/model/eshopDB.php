@@ -34,9 +34,9 @@ class eshopDB extends AbstractDB {
     }
 
     public static function getAll() {
-        return parent::query("SELECT id, author, title, price, year, description"
-                        . " FROM book"
-                        . " ORDER BY id ASC");
+        return parent::query("SELECT idArtikla, imeArtikla, cenaArtikla, opisArtikla, zalogaArtikla"
+                        . " FROM Artikel"
+                        . " ORDER BY idArtikla ASC");
     }
 
 }

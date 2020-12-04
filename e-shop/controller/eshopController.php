@@ -17,12 +17,12 @@ class eshopController {
 
         if (self::checkValues($data)) {
             echo ViewHelper::render("view/layout.php", "view/book-detail.php", [
-                #"book" => BookDB::get($data)
+                "Artikli" => eshopDB::getAll()
             ]);
             
         } else {
             echo ViewHelper::render("view/layout.php", "view/trgovina.php", [
-                #"books" => BookDB::getAll()
+                "Artikli" => eshopDB::getAll()
             ]);
         }
     }
@@ -41,7 +41,7 @@ class eshopController {
 
         if (self::checkValues($data)) {
             $id = eshopDB::insert($data);
-            echo ViewHelper::redirect(BASE_URL. ""/*. "books?id=" . $id*/);
+            echo ViewHelper::redirect(BASE_URL. "/artikel/dodaj"/*. "books?id=" . $id*/);
         } else {
             echo ("ne radi");
         }
