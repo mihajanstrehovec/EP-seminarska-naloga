@@ -8,7 +8,7 @@ require_once 'db_files/db_artikel.php';
 
 <nav class="navbar navbar-expand-lg navbar-dark static-top">
   <div class="container">
-    <a class="navbar-brand" href="#">
+    <a class="navbar-brand" href ="<?= BASE_URL . "/trgovina" ?>">
           E-SHOP
         </a>
     <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarResponsive" aria-controls="navbarResponsive" aria-expanded="false" aria-label="Toggle navigation">

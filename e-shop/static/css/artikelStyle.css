@@ -1,0 +1,93 @@
+/*
+To change this license header, choose License Headers in Project Properties.
+To change this template file, choose Tools | Templates
+and open the template in the editor.
+*/
+/* 
+    Created on : Dec 5, 2020, 12:53:00 PM
+    Author     : ep
+*/
+
+
+#opisIzdelka{
+    color: white;
+    height: 100%;
+    width: 45%;
+    background-color: rgba(89,145,144,0.7);
+    float: left;
+   
+    
+   
+}
+
+#besediloOpisa{
+    text-align:justify;
+    width: 90%;
+    height: 80%;
+    margin-top: 5%;
+    padding: 1vw;
+    padding-top: 0px;
+    padding-bottom: 0px;
+    
+}
+
+.artikelVsebnik{
+    padding-top: 0px;
+    padding: 40px;
+    
+}
+
+
+
+#oArtiklu{
+   margin-top: 1vh;
+   width: 100%;
+   text-align: left;
+   padding-left: 2vh;
+   font-size:large;
+   font-weight: bold;
+}
+
+
+
+
+#desno{
+    color: white;
+    height: 100%;
+    width: 45%;
+    
+    float: right;
+    padding: 40px;
+   
+    
+   
+}
+
+
+#artikelSlika{
+    width: 60%;
+    height: 60%;
+
+}
+
+.nakup{
+    margin-top: 60px;
+    color:  rgba(89,145,144,0.7);
+    font-size: 2em;
+    font-weight: 600;
+
+}
+s{
+    font-size: 0.7em;
+    font-weight: 400;
+    color:  rgba(89,145,144,0.5);
+}
+
+.dodajVKos{
+    margin-left: 20px;
+    margin-top: 15px;
+    background-color: rgba(89,145,144,0.7);
+    outline: 0px;
+    border: 0px;
+    color: white;
+}

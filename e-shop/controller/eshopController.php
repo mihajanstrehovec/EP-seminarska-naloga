@@ -6,31 +6,42 @@ require_once("ViewHelper.php");
 class eshopController {
 
     public static function index() {
-        $rules = [
-            "id" => [
-                'filter' => FILTER_VALIDATE_INT,
-                'options' => ['min_range' => 1]
-            ]
-        ];
-
-        $data = filter_input_array(INPUT_GET, $rules);
-
-        if (self::checkValues($data)) {
-            echo ViewHelper::render("view/layout.php", "view/book-detail.php", [
-                "Artikli" => eshopDB::getAll()
-            ]);
             
-        } else {
+        
+        
+        
+         
+
+                $Artikli = eshopDB::getAll();
+          
+
+           
+       
             echo ViewHelper::render("view/layout.php", "view/trgovina.php", [
-                "Artikli" => eshopDB::getAll()
+                "Artikli" => $Artikli
             ]);
-        }
+        
     }
     
     public static function artikel() {
-       
+            if (empty($Artikel)) {
+            $rules = [
+                "idArtikla" => [
+                    'filter' => FILTER_VALIDATE_INT,
+                    'options' => ['min_range' => 1]
+                ]
+            ];
+
+            $data = filter_input_array(INPUT_GET, $rules);
+
+            if (!self::checkValues($data)) {
+                throw new InvalidArgumentException();
+            }
+
+            $Artikel = eshopDB::get($data);
+        }
             echo ViewHelper::render("view/layout.php", "view/artikel.php", [
-                "Artikli" => eshopDB::getAll()
+                "Artikel" => $Artikel
             ]);
         
     }
@@ -41,6 +52,7 @@ class eshopController {
         "imeArtikla" => "",
         "cenaArtikla" => "",
         "opisArtikla" => "",
+        "kategorijaArtikla" => "",
         "zalogaArtikla" => "",
     ]) {
         echo ViewHelper::render("view/layout.php", "view/dodajArtikel.php", $values);
@@ -53,7 +65,7 @@ class eshopController {
             $id = eshopDB::insert($data);
             echo ViewHelper::redirect(BASE_URL. "/artikel/dodaj"/*. "books?id=" . $id*/);
         } else {
-            echo ("ne radi");
+            
         }
     }
 
@@ -143,9 +155,11 @@ class eshopController {
     private static function getRules() {
         return [
             'imeArtikla' => FILTER_SANITIZE_SPECIAL_CHARS,
-            'opisArtikla' => FILTER_SANITIZE_SPECIAL_CHARS,
             'cenaArtikla' => FILTER_VALIDATE_FLOAT,
+            'opisArtikla' => FILTER_SANITIZE_SPECIAL_CHARS,
+            'kategorijaArtikla' => FILTER_SANITIZE_SPECIAL_CHARS,
             'zalogaArtikla' => FILTER_VALIDATE_FLOAT,
+            
             /*'year' => [
                 'filter' => FILTER_VALIDATE_INT,
                 'options' => [
@@ -154,6 +168,7 @@ class eshopController {
                 ]
             ]*/
         ];
+   
     }
 
 }

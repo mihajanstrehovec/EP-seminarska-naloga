@@ -22,10 +22,10 @@ require_once 'db_files/db_artikel.php';
         <div class ="overflow-auto itemList" >
             
         <?php foreach ($Artikli as $Artikel): ?>
-                <div class ="item" >
-        	<?= $Artikel["imeArtikla"] ?> <?= $Artikel["cenaArtikla"] ?> 
-                </div>
-                    
+                <a href ="<?= BASE_URL . "/artikel?idArtikla=" . $Artikel["idArtikla"]?>"><div class ="item" >
+        	<?=  $Artikel["imeArtikla"] ?> <?= $Artikel["cenaArtikla"] ?> 
+                </div></a>
+                
         <?php endforeach; ?>
         </div>
     </div>

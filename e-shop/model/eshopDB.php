@@ -7,8 +7,8 @@ require_once 'model/AbstractDB.php';
 class eshopDB extends AbstractDB {
 
     public static function insert(array $params) {
-        return parent::modify("INSERT INTO Artikel (imeArtikla, cenaArtikla, opisArtikla, zalogaArtikla) "
-                        . " VALUES (:imeArtikla, :cenaArtikla, :opisArtikla, :zalogaArtikla)", $params);
+        return parent::modify("INSERT INTO Artikel (imeArtikla, cenaArtikla, opisArtikla, kategorijaArtikla, zalogaArtikla) "
+                        . " VALUES (:imeArtikla, :cenaArtikla, :opisArtikla, :kategorijaArtikla, :zalogaArtikla)", $params);
     }
 
     public static function update(array $params) {
@@ -22,9 +22,9 @@ class eshopDB extends AbstractDB {
     }
 
     public static function get(array $id) {
-        $books = parent::query("SELECT id, author, title, description, price, year"
-                        . " FROM book"
-                        . " WHERE id = :id", $id);
+        $books = parent::query("SELECT idArtikla, imeArtikla, cenaArtikla, opisArtikla, zalogaArtikla"
+                        . " FROM Artikel"
+                        . " WHERE idArtikla = :idArtikla", $id);
         
         if (count($books) == 1) {
             return $books[0];
@@ -34,9 +34,16 @@ class eshopDB extends AbstractDB {
     }
 
     public static function getAll() {
-        return parent::query("SELECT idArtikla, imeArtikla, cenaArtikla, opisArtikla, zalogaArtikla"
+        return parent::query("SELECT idArtikla, imeArtikla, cenaArtikla, opisArtikla, kategorijaArtikla, zalogaArtikla"
                         . " FROM Artikel"
-                        . " ORDER BY idArtikla ASC");
+                        . " ORDER BY idArtikla DESC");
+    }
+
+    public static function getKategorija(string $kategorijaArtikla) {
+        return parent::query("SELECT idArtikla, imeArtikla, cenaArtikla, opisArtikla, kategorijaArtikla, zalogaArtikla"
+                        . " FROM Artikel"
+                        . " WHERE kategorijaArtikla = :kategorijaArtikla", $kategorijaArtikla
+                        . " ORDER BY idArtikla DESC");
     }
 
 }
