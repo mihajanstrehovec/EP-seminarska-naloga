@@ -12,13 +12,13 @@ class eshopDB extends AbstractDB {
     }
 
     public static function update(array $params) {
-        return parent::modify("UPDATE book SET author = :author, title = :title, "
-                        . "description = :description, price = :price, year = :year"
-                        . " WHERE id = :id", $params); 
+        return parent::modify("UPDATE Artikel SET imeArtikla = :imeArtikla, cenaArtikla = :cenaArtikla, "
+                        . "opisArtikla = :opisArtikla, zalogaArtikla = :zalogaArtikla, kategorijaArtikla = :kategorijaArtikla"
+                        . " WHERE idArtikla = :idArtikla", $params); 
     }
 
     public static function delete(array $id) {
-        return parent::modify("DELETE FROM book WHERE id = :id", $id);
+        return parent::modify("DELETE FROM Artikel WHERE idArtikla = :idArtikla", $id);
     }
 
     public static function get(array $id) {
@@ -39,7 +39,7 @@ class eshopDB extends AbstractDB {
                         . " ORDER BY idArtikla DESC");
     }
 
-    public static function getKategorija(string $kategorijaArtikla) {
+    public static function getKategorija(array $kategorijaArtikla) {
         return parent::query("SELECT idArtikla, imeArtikla, cenaArtikla, opisArtikla, kategorijaArtikla, zalogaArtikla"
                         . " FROM Artikel"
                         . " WHERE kategorijaArtikla = :kategorijaArtikla", $kategorijaArtikla

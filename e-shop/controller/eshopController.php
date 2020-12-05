@@ -7,12 +7,15 @@ class eshopController {
 
     public static function index() {
             
+      
+            
+            
+
         
-        
-        
+            $Artikli = eshopDB::getAll();
          
 
-                $Artikli = eshopDB::getAll();
+                
           
 
            
@@ -60,19 +63,21 @@ class eshopController {
 
     public static function add() {
         $data = filter_input_array(INPUT_POST, self::getRules());
-
+        
         if (self::checkValues($data)) {
             $id = eshopDB::insert($data);
-            echo ViewHelper::redirect(BASE_URL. "/artikel/dodaj"/*. "books?id=" . $id*/);
-        } else {
             
+            echo ViewHelper::redirect(BASE_URL. "trgovina"/*. "books?id=" . $id*/);
+            
+        } else {
+            self::addForm($data);
         }
     }
 
-    public static function editForm($book = []) {
-        /*if (empty($book)) {
+    public static function editForm($Artikel = []) {
+        if (empty($Artikel)) {
             $rules = [
-                "id" => [
+                "idArtikla" => [
                     'filter' => FILTER_VALIDATE_INT,
                     'options' => ['min_range' => 1]
                 ]
@@ -81,26 +86,27 @@ class eshopController {
             $data = filter_input_array(INPUT_GET, $rules);
 
             if (!self::checkValues($data)) {
-                #throw new InvalidArgumentException();
+                throw new InvalidArgumentException();
             }
 
-            $book = BookDB::get($data);
-        }*/
+            $Artikel = eshopDB::get($data);
+        }
 
-        echo ViewHelper::render("view/layout.php", "view/urediArtikel.php", /*["book" => $book]*/);
+        echo ViewHelper::render("view/layout.php", "view/urediArtikel.php", ["Artikel" => $Artikel]);
     }
 
     public static function edit() {
         $rules = self::getRules();
-        $rules["id"] = [
+        $rules["idArtikla"] = [
             'filter' => FILTER_VALIDATE_INT,
             'options' => ['min_range' => 1]
         ];
         $data = filter_input_array(INPUT_POST, $rules);
-
+        var_dump($data);
+        exit();
         if (self::checkValues($data)) {
-            BookDB::update($data);
-            ViewHelper::redirect(BASE_URL . "books?id=" . $data["id"]);
+            eshopDB::update($data);
+            ViewHelper::redirect(BASE_URL . "artikel?idArtikla=" . $data["id"]);
         } else {
             self::editForm($data);
         }
@@ -109,21 +115,21 @@ class eshopController {
     public static function delete() {
         $rules = [
             'delete_confirmation' => FILTER_REQUIRE_SCALAR,
-            'id' => [
+            'idArtikla' => [
                 'filter' => FILTER_VALIDATE_INT,
                 'options' => ['min_range' => 1]
             ]
         ];
         $data = filter_input_array(INPUT_POST, $rules);
-
+        
         if (self::checkValues($data)) {
-            BookDB::delete($data);
-            $url = BASE_URL . "books";
+            eshopDB::delete($data);
+            $url = BASE_URL;
         } else {
             if (isset($data["id"])) {
-                $url = BASE_URL . "books/edit?id=" . $data["id"];
+                $url = BASE_URL . "artikel/uredi?id=" . $data["id"];
             } else {
-                $url = BASE_URL . "books";
+                $url = BASE_URL;
             }
         }
 

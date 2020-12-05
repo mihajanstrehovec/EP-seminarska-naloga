@@ -1,22 +1,67 @@
+
+
 <?php
 require_once 'db_files/db_artikel.php';
+
+
 ?>
-<!DOCTYPE html>
-<!--
-To change this license header, choose License Headers in Project Properties.
-To change this template file, choose Tools | Templates
-and open the template in the editor.
--->
-<html>
-    <head>
-        <meta charset="UTF-8">
-        <title></title>
-    </head>
-    <body>
-        <?php
-        // put your code here
-        ?>
-        <h1>UREDI ARTIKEL</h1>
+   
+<link rel ="stylesheet" href ="<?= CSS_URL . "artikelStyle.css" ?>">
+  
+         
+
+<div class ="row no-gutters justify-content-center">
+    <div class ="col-lg-10" align ="center">
         
-    </body>
-</html>
+       
+        <div class ="titleArtikel" align ="center" style ="padding-top: 0.4vh;">
+            <form id = "urediArtikel" action ="<?= BASE_URL . "artikel/dodaj" ?>" method = "POST">
+            <input type = "hidden" name = "zalogaArtikla" value ="<?= $Artikel["zalogaArtikla"]?>">
+            <input type = "hidden" name = "kategorijaArtikla" value ="10">
+            <input type ="text" placeholder ="<?= $Artikel["imeArtikla"]?>" value = "<?= $Artikel["imeArtikla"]?>" name = "imeArtikla" style ="background-color: rgba(0,0,0,0); border: 0px; color: white;">
+            </form>
+        </div>
+        
+    
+        <div class ="artikelVsebnik" >
+            
+            
+            <div id ="opisIzdelka">
+               <div id ="oArtiklu">O ARTIKLU</div>
+               <div class ="overflow-auto" id="besediloOpisa">
+               <textarea form = "urediArtikel" placeholder="<?= $Artikel["opisArtikla"]?>"   class="form-control" id="exampleFormControlTextarea1" rows="7" name ="opisArtikla" style ="width: 100%; float: left; margin-top: 20px; background-color: rgba(0,0,0,0); border: 0px; color: white;"></textarea>
+               
+               </div>
+            </div>
+            
+            <div id ="desno">
+                <div class ="row no-gutters justify-content-center">
+                    <img id ="artikelSlika" src = "<?= IMAGES_URL . "dildak.jpeg"?>">
+                </div>
+                
+                <div class ="row no-gutters justify-content-center nakup">
+                <input form ="urediArtikel" class="form-control" type="number" name="cenaArtikla" value="<?= $Artikel["cenaArtikla"]?>" id="example-number-input" style ="width: 20%; flaot: left; margin-top: 20px; background-color: rgba(0,0,0,0); border: 0px; color: rgba(89,145,144,0.7);;">
+                </div>
+               
+                
+                <div class ="row no-gutters justify-content-center dodVkos">
+                    
+                    <button form = "urediArtikel" type="submit" class="btn btn-light dodajVKos">POTRDI SPREMEMBE</button>
+                    <form action="<?= BASE_URL . "artikel/izbrisi" ?>" method="post" style="margin-top:1.5vh;">
+                        <input type="hidden" name="idArtikla" value="<?= $Artikel["idArtikla"] ?>"  />
+                        <label style ="color: red;">Delete? <input type="checkbox" name="delete_confirmation" /></label>
+                        <button type="submit" class="btn btn-danger">Delete record</button>
+                    </form>
+
+                    
+            </div> 
+
+            
+          
+            
+        </div>
+        
+        
+    </div>
+</div
+

@@ -14,10 +14,10 @@ require_once 'db_files/db_artikel.php';
     <div class ="col-lg-10" align ="center">
         
        
-        
-        <div class ="titleArtikel" align ="center">
-            <h4><?= $Artikel["imeArtikla"]?></h4>
+        <div class ="titleArtikel" align ="center" style ="padding-top: 0.4vh;">
+            <h4 style ="font-weight: 600;"><?= $Artikel["imeArtikla"]?></h4>
         </div>
+        
     
         <div class ="artikelVsebnik" >
             
@@ -40,7 +40,14 @@ require_once 'db_files/db_artikel.php';
                 <div class ="row no-gutters justify-content-center dodVkos">
                     <button type="button" class="btn btn-light dodajVKos">Dodaj v kosarico</button>
                 </div>
+                
+                <div class ="row no-gutters justify-content-center dodVkos">
+                    <a href ="<?= BASE_URL . "/artikel/uredi?idArtikla=" . $Artikel["idArtikla"]?>"> 
+                    <button type="button" class="btn btn-light dodajVKos">Uredi artikel</button>
+                    </a>
             </div> 
+
+            
           
             
         </div>
