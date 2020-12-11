@@ -60,6 +60,9 @@ $urls = [
     "" => function () {
         ViewHelper::redirect(BASE_URL . "trgovina");
     },
+    "izpisi" => function () {
+        eshopController::izpisi();
+    },
 ];
 
 try {

@@ -1,5 +1,7 @@
 <?php
 
+session_start();
+
 require_once("model/eshopDB.php");
 require_once("ViewHelper.php");
 
@@ -25,6 +27,8 @@ class eshopController {
             ]);
         
     }
+
+    
     
     public static function artikel() {
             if (empty($Artikel)) {
@@ -73,6 +77,13 @@ class eshopController {
         } else {
             self::addForm($data);
         }
+    }
+    public static function izpisi() {
+        
+        session_destroy();
+        echo ViewHelper::redirect(BASE_URL. "trgovina"/*. "books?id=" . $id*/);
+            
+        
     }
 
 
@@ -157,8 +168,9 @@ class eshopController {
        
 
         if($data["gesloStranke"] == $Stranka[0]["gesloStranke"]){
-            var_dump("OK");
-            exit();
+            $_SESSION["stranka"] = $data["mailStranke"];
+            echo ViewHelper::redirect(BASE_URL. "trgovina"/*. "books?id=" . $id*/);
+
         exit();
         }else{
             var_dump("NONO");
@@ -230,6 +242,7 @@ class eshopController {
             
         }
     }
+    
 
     public static function delete() {
         $rules = [
@@ -336,6 +349,9 @@ class eshopController {
         ];
    
     }
+
+   
+
 
     
 

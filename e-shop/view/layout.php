@@ -20,7 +20,7 @@ require_once 'db_files/db_artikel.php';
         <li class="nav-item active">
           
         
-
+        <?php if($_SESSION["stranka"] == NULL) :?>
         <li class="nav-item">
           <a class="navbar-brand" href ="<?= BASE_URL . "/uporabnik/registracija" ?>"> REGISTRACIJA </a>
         </li>
@@ -28,7 +28,13 @@ require_once 'db_files/db_artikel.php';
         <li class="nav-item">
           <a class="navbar-brand" href ="<?= BASE_URL . "/uporabnik/vpis" ?>"> VPIS </a>
         </li>
+        <?php endif?>
 
+        <?php if($_SESSION["stranka"] != NULL) :?>
+        <li class="nav-item">
+          <a class="navbar-brand" href ="<?= BASE_URL . "/izpisi" ?>"> IZPIS </a>
+        </li>
+        <?php endif?>
       </ul>
     </div>
   </div>
