@@ -4,7 +4,7 @@ https://www.youtube.com/watch?v=FymgHnWUMg4&ab_channel=JohnMorris  --> creating 
 
 # OSNOVNE STORITVE
 
-## SPLETNI VMESNIK | ADMIN
+## SPLETNI VMESNIK | ADMIN #DELA AMI
 - [ ] Prijavo in odjavo. Dostop je dovoljen le odjemalcem, ki se overijo s pomočjo certifikatov X.509;
 - [ ] Posodobitev lastnega gesla in ostalih atributov;
 - [ ] Ustvarjanje, aktiviranje in deaktiviranje uporabniškega računa Prodajalec ter posodobitev njegovih atributov. (Deaktivirati nek podatkovni objekt pomeni, da deluje kot da bi bil izbrisan: denimo deaktiviran uporabnik se ne more prijaviti v sistem, vendar se njegovi podatki v sistemu še vedno nahajajo, deaktiviranega artikla ne prikažemo v prodajali in podobno. Takšno deaktivacijo imenujemo tudi "mehki izbris".)
