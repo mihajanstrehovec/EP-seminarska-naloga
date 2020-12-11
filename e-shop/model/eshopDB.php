@@ -17,6 +17,8 @@ class eshopDB extends AbstractDB {
                         . " WHERE idArtikla = :idArtikla", $params); 
     }
 
+    
+
     public static function delete(array $id) {
         return parent::modify("DELETE FROM Artikel WHERE idArtikla = :idArtikla", $id);
     }
@@ -33,6 +35,16 @@ class eshopDB extends AbstractDB {
         }
     }
 
+    public static function getStranka(array $mailStranke) {
+        
+        $Stranka = parent::query("SELECT gesloStranke"
+                        . " FROM Stranka"
+                        . " WHERE mailStranke = :mailStranke", $mailStranke);
+        
+        return($Stranka);
+    }
+
+
     public static function getAll() {
         return parent::query("SELECT idArtikla, imeArtikla, cenaArtikla, opisArtikla, kategorijaArtikla, zalogaArtikla"
                         . " FROM Artikel"
@@ -44,6 +56,11 @@ class eshopDB extends AbstractDB {
                         . " FROM Artikel"
                         . " WHERE kategorijaArtikla = :kategorijaArtikla", $kategorijaArtikla
                         . " ORDER BY idArtikla DESC");
+    }
+
+    public static function ustvariStranko(array $params) {
+        return parent::modify("INSERT INTO Stranka (imeStranke, priimekStranke, mailStranke, gesloStranke) "
+                        . " VALUES (:imeStranke, :priimekStranke, :mailStranke, :gesloStranke)", $params);
     }
 
 }

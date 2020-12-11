@@ -20,7 +20,7 @@ require_once 'db_files/db_artikel.php';
             <input form = "urediArtikel" type = "hidden" name = "zalogaArtikla" value ="<?= $Artikel["zalogaArtikla"]?>" placeholder ="<?= $Artikel["zalogaArtikla"]?>">
             <input form = "urediArtikel" type = "hidden" name = "kategorijaArtikla" placeholder ="<?= $Artikel["kategorijaArtikla"]?>" value ="<?= $Artikel["kategorijaArtikla"]?>">
             <input form = "urediArtikel" type = "hidden" name = "idArtikla" value ="<?=$_GET['idArtikla']?>">
-            <input form = "urediArtikel" type ="text" placeholder ="<?= $Artikel["imeArtikla"]?>" value = "<?= $Artikel["imeArtikla"]?>" name = "imeArtikla" style ="background-color: rgba(0,0,0,0); border: 0px; color: white;">
+            <h4 style ="font-weight: 600;"><input form = "urediArtikel" type ="text" placeholder ="<?= $Artikel["imeArtikla"]?>" value = "<?= $Artikel["imeArtikla"]?>" name = "imeArtikla" style ="background-color: rgba(0,0,0,0); border: 0px; color: white;"></h4>
             </form>
         </div>
         

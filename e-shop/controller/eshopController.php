@@ -92,7 +92,7 @@ class eshopController {
 
 
         # Preverimo, če je email naslov ustrezen
-        if(!filter_var($data['email'], FILTER_VALIDATE_EMAIL)){
+        if(!filter_var($data['mailStranke'], FILTER_VALIDATE_EMAIL)){
            
             $err = "Prosimo vnesite validen e-mail";
             echo ViewHelper::renderRegError("view/layout.php", "view/register.php", $values, $err);
@@ -100,7 +100,7 @@ class eshopController {
         }
         
         # Preverimo, če se gesli ujemata
-        else if($data["geslo"] != $data["gesloPonovi"]){
+        else if($data["gesloStranke"] != $data["gesloPonovi"]){
             
             $err = "Gesli se ne ujemata";
             echo ViewHelper::renderRegError("view/layout.php", "view/register.php", $values, $err);
@@ -110,13 +110,74 @@ class eshopController {
         
         
         else if (self::checkValues($data)) {
-            $id = eshopDB::insert($data);
+            
+            $id = eshopDB::ustvariStranko($data);
             
             echo ViewHelper::redirect(BASE_URL. "trgovina");
             
         } else {
             self::addForm($data);
         }
+    }
+
+
+    public static function vpisForm($values = [
+        "mailStranke" => "",
+        "gesloStranke" => "",
+    ]) {
+        $err = "";
+        echo ViewHelper::renderRegError("view/layout.php", "view/vpis.php", $values, $err);
+    }
+
+    public static function vpisSubmit() {
+        $data = filter_input_array(INPUT_POST, self::getRulesRegistracija());
+
+
+        # Preverimo, če je email naslov ustrezen
+        if(!filter_var($data['mailStranke'], FILTER_VALIDATE_EMAIL)){
+           
+            $err = "Prosimo vnesite veljaven e-pošta naslov";
+            echo ViewHelper::renderRegError("view/layout.php", "view/vpis.php", $values, $err);
+            
+        }
+        
+        # Preverimo, če se gesli ujemata
+        $rules = [
+            "mailStranke" => [
+                'filter' => FILTER_VALIDATE_EMAIL,
+                
+            ]
+        ];
+
+        $mail = filter_input_array(INPUT_POST, $rules);
+     
+        #$mail = [$data["mailStranke"]];
+        $Stranka = eshopDB::getStranka($mail);
+        
+       
+
+        if($data["gesloStranke"] == $Stranka[0]["gesloStranke"]){
+            var_dump("OK");
+            exit();
+        exit();
+        }else{
+            var_dump("NONO");
+            exit();
+        }
+
+        
+        
+
+        
+        /*
+        else if (self::checkValues($data)) {
+            $id = eshopDB::insert($data);
+            
+            echo ViewHelper::redirect(BASE_URL. "trgovina");
+            
+        } else {
+            self::addForm($data);
+        }*/
     }
 
 
@@ -259,10 +320,10 @@ class eshopController {
 
     private static function getRulesRegistracija() {
         return [
-            'ime' => FILTER_SANITIZE_SPECIAL_CHARS,
-            'priimek' => FILTER_SANITIZE_SPECIAL_CHARS,
-            'email' => FILTER_SANITIZE_EMAIL,
-            'geslo' => FILTER_SANITIZE_SPECIAL_CHARS,
+            'imeStranke' => FILTER_SANITIZE_SPECIAL_CHARS,
+            'priimekStranke' => FILTER_SANITIZE_SPECIAL_CHARS,
+            'mailStranke' => FILTER_SANITIZE_EMAIL,
+            'gesloStranke' => FILTER_SANITIZE_SPECIAL_CHARS,
             'gesloPonovi' => FILTER_SANITIZE_SPECIAL_CHARS,
             
             /*'year' => [
@@ -275,5 +336,7 @@ class eshopController {
         ];
    
     }
+
+    
 
 }
