@@ -63,6 +63,9 @@ $urls = [
     "izpisi" => function () {
         eshopController::izpisi();
     },
+    "profil" => function () {
+        eshopController::profil();
+    },
 ];
 
 try {

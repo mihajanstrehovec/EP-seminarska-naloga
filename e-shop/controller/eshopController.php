@@ -242,6 +242,10 @@ class eshopController {
             
         }
     }
+
+    public static function profil() {
+        echo ViewHelper::render("view/layout.php", "view/profil.php");
+    }
     
 
     public static function delete() {

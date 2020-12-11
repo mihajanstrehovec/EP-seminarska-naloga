@@ -5,6 +5,7 @@ require_once 'db_files/db_artikel.php';
 <link rel ="stylesheet" href ="<?= CSS_URL . "mainStyle.css" ?>">
 <link rel ="stylesheet" href ="<?= CSS_URL . "trgovinaStyle.css" ?>">
 <link rel ="stylesheet" href ="<?= CSS_URL . "loginStyle.css" ?>">
+<link rel ="stylesheet" href ="<?= CSS_URL . "profilStyle.css" ?>">
 
 <nav class="navbar navbar-expand-lg navbar-dark static-top">
   <div class="container">
@@ -32,7 +33,10 @@ require_once 'db_files/db_artikel.php';
 
         <?php if($_SESSION["stranka"] != NULL) :?>
         <li class="nav-item">
-          <a class="navbar-brand" href ="<?= BASE_URL . "/izpisi" ?>"> IZPIS </a>
+          <a class="navbar-brand" href ="<?= BASE_URL . "profil" ?>"> PROFIL </a>
+        </li>
+        <li class="nav-item">
+          <a class="navbar-brand" href ="<?= BASE_URL . "izpisi" ?>"> IZPIS </a>
         </li>
         <?php endif?>
       </ul>
