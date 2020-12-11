@@ -11,7 +11,7 @@
     
         <div class ="registerVsebnik" style="padding: 60px;">
 
-        <form action = "<?= BASE_URL . "uporabnik/prijava"?>" method = "POST">
+        <form action = "<?= BASE_URL . "uporabnik/vpis"?>" method = "POST">
             
             <?php if($err ==  "Prosimo vnesite veljaven e-pošta naslov") :?>
                     <div class = "form-row">
@@ -30,7 +30,7 @@
                 
                 
                 <div class ="col">
-                    <input type = "text" name = "email" placeholder = "E-pošta" class = "form-control">
+                    <input type = "text" name = "mailStranke" placeholder = "E-pošta" class = "form-control">
                 </div>
   
             </div>
@@ -38,7 +38,7 @@
             <div class = "form-row" style = "margin-top: 3vh;">
                 
                 <div class ="col">
-                    <input type = "password" name = "geslo" placeholder = "Geslo" class = "form-control">
+                    <input type = "password" name = "gesloStranke" placeholder = "Geslo" class = "form-control">
                 </div>
   
             </div>

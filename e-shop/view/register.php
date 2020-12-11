@@ -15,11 +15,11 @@
             
             <div class = "form-row">
                 <div class ="col">
-                    <input type = "text" name = "ime" placeholder = "Ime" class = "form-control">
+                    <input type = "text" name = "imeStranke" placeholder = "Ime" class = "form-control">
                 </div>
 
                 <div class ="col">
-                    <input type = "text" name = "priimek" placeholder = "Priimek" class = "form-control">
+                    <input type = "text" name = "priimekStranke" placeholder = "Priimek" class = "form-control">
                 </div>
             </div>
             <?php if($err ==  "Prosimo vnesite validen e-mail") :?>
@@ -32,7 +32,7 @@
                 
                 
                 <div class ="col">
-                    <input type = "text" name = "email" placeholder = "E-pošta" class = "form-control">
+                    <input type = "text" name = "mailStranke" placeholder = "E-pošta" class = "form-control">
                 </div>
   
             </div>
@@ -40,7 +40,7 @@
             <div class = "form-row" style = "margin-top: 3vh;">
                 
                 <div class ="col">
-                    <input type = "password" name = "geslo" placeholder = "Geslo" class = "form-control">
+                    <input type = "password" name = "gesloStranke" placeholder = "Geslo" class = "form-control">
                 </div>
   
             </div>
