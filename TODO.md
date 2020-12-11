@@ -6,14 +6,14 @@ https://stackoverflow.com/questions/10097887/using-sessions-session-variables-in
 
 # OSNOVNE STORITVE
 
-## SPLETNI VMESNIK | ADMIN #DELA AMI
+## SPLETNI VMESNIK | ADMIN #Delamo potem, ko se nareita stranka in prodajalec
 - [ ] Prijavo in odjavo. Dostop je dovoljen le odjemalcem, ki se overijo s pomočjo certifikatov X.509;
 - [ ] Posodobitev lastnega gesla in ostalih atributov;
 - [ ] Ustvarjanje, aktiviranje in deaktiviranje uporabniškega računa Prodajalec ter posodobitev njegovih atributov. (Deaktivirati nek podatkovni objekt pomeni, da deluje kot da bi bil izbrisan: denimo deaktiviran uporabnik se ne more prijaviti v sistem, vendar se njegovi podatki v sistemu še vedno nahajajo, deaktiviranega artikla ne prikažemo v prodajali in podobno. Takšno deaktivacijo imenujemo tudi "mehki izbris".)
 
 V vlogi administratorja imate lahko zgolj enega uporabnika, ki ga lahko kreirate ročno, denimo z uporabo določene skripte, vmesnika phpmyadmin in podobno.
 
-## SPLETNI VMESNIK | PRODAJALEC
+## SPLETNI VMESNIK | PRODAJALEC #Ami
 - [ ] Prijavo in odjavo. Dostop je dovoljen le odjemalcem, ki se overijo s pomočjo certifikatov X.509;
 - [ ] Posodobitev lastnega gesla in ostalih atributov;
 - [ ] Obdelavo naročil. Slednje obsega:
@@ -32,7 +32,7 @@ V vlogi administratorja imate lahko zgolj enega uporabnika, ki ga lahko kreirate
 - Stornirano naročilo je naročilo, ki ga je Stranka oddala, Prodajalec potrdil in naknadno storniral tj. stornirati je mogoče le potrjena naročila.
 
 
-## SPLETNI VMESNIK | STRANKA
+## SPLETNI VMESNIK | STRANKA #Miha đaner
 - [ ] Prijavo in odjavo;
 - [ ] Posodobitev lastnega gesla in ostalih atributov;
 - [ ] Nakupovanje. To naj bo sestavljeno iz:
