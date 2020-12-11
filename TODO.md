@@ -11,6 +11,8 @@ https://stackoverflow.com/questions/10097887/using-sessions-session-variables-in
 - [ ] Posodobitev lastnega gesla in ostalih atributov;
 - [ ] Ustvarjanje, aktiviranje in deaktiviranje uporabniškega računa Prodajalec ter posodobitev njegovih atributov. (Deaktivirati nek podatkovni objekt pomeni, da deluje kot da bi bil izbrisan: denimo deaktiviran uporabnik se ne more prijaviti v sistem, vendar se njegovi podatki v sistemu še vedno nahajajo, deaktiviranega artikla ne prikažemo v prodajali in podobno. Takšno deaktivacijo imenujemo tudi "mehki izbris".)
 
+-> dodaj boolean atribut za preverjanje stanja aktivnosti, false ni aktiven in izdelka ne prikazujemo na strani, prodajalec se pa ne more prijavit.
+
 V vlogi administratorja imate lahko zgolj enega uporabnika, ki ga lahko kreirate ročno, denimo z uporabo določene skripte, vmesnika phpmyadmin in podobno.
 
 ## SPLETNI VMESNIK | PRODAJALEC
