@@ -13,6 +13,16 @@ class ViewHelper {
         return ob_get_clean();
     }
 
+    public static function renderRegError($layout, $file, $variables = array(), $err) {
+        extract($variables);
+
+        ob_start();
+        include($layout);
+        include($file);
+        
+        return ob_get_clean();
+    }
+
     // Redirects to the given URL
     public static function redirect($url) {
         header("Location: " . $url);

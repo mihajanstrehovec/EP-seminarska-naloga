@@ -1,0 +1,18 @@
+.registerVsebnik{
+    height: fit-content;
+    background-color: rgb(218,224,224);
+    margin-top: 0.5vh;
+    
+}
+
+.titleRegister{
+    /*width: 55vw;*/
+    background-color: rgba(89,145,144,1);
+    height: 4vh;
+    margin-top: 7vh;
+    color: white;
+}
+
+form > div{
+    margin: 1vh;
+}

@@ -33,6 +33,13 @@ $urls = [
             eshopController::addForm();
         }
     },
+    "uporabnik/registracija" => function () {
+        if ($_SERVER["REQUEST_METHOD"] == "POST") {
+            eshopController::registracijaSubmit();
+        } else {
+            eshopController::registracijaForm();
+        }
+    },
     "artikel/uredi" => function () {
         if ($_SERVER["REQUEST_METHOD"] == "POST") {
             eshopController::edit();
