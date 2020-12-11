@@ -2,7 +2,8 @@
 
 <?php
 require_once 'db_files/db_artikel.php';
-
+#var_dump($Artikel);
+#exit();
 
 ?>
    
@@ -15,10 +16,11 @@ require_once 'db_files/db_artikel.php';
         
        
         <div class ="titleArtikel" align ="center" style ="padding-top: 0.4vh;">
-            <form id = "urediArtikel" action ="<?= BASE_URL . "artikel/dodaj" ?>" method = "POST">
-            <input type = "hidden" name = "zalogaArtikla" value ="<?= $Artikel["zalogaArtikla"]?>">
-            <input type = "hidden" name = "kategorijaArtikla" value ="10">
-            <input type ="text" placeholder ="<?= $Artikel["imeArtikla"]?>" value = "<?= $Artikel["imeArtikla"]?>" name = "imeArtikla" style ="background-color: rgba(0,0,0,0); border: 0px; color: white;">
+            <form id = "urediArtikel" action ="<?= BASE_URL . "artikel/uredi" ?>" method = "POST">
+            <input form = "urediArtikel" type = "hidden" name = "zalogaArtikla" value ="<?= $Artikel["zalogaArtikla"]?>" placeholder ="<?= $Artikel["zalogaArtikla"]?>">
+            <input form = "urediArtikel" type = "hidden" name = "kategorijaArtikla" placeholder ="<?= $Artikel["kategorijaArtikla"]?>" value ="<?= $Artikel["kategorijaArtikla"]?>">
+            <input form = "urediArtikel" type = "hidden" name = "idArtikla" value ="<?=$_GET['idArtikla']?>">
+            <input form = "urediArtikel" type ="text" placeholder ="<?= $Artikel["imeArtikla"]?>" value = "<?= $Artikel["imeArtikla"]?>" name = "imeArtikla" style ="background-color: rgba(0,0,0,0); border: 0px; color: white;">
             </form>
         </div>
         
@@ -29,7 +31,9 @@ require_once 'db_files/db_artikel.php';
             <div id ="opisIzdelka">
                <div id ="oArtiklu">O ARTIKLU</div>
                <div class ="overflow-auto" id="besediloOpisa">
-               <textarea form = "urediArtikel" placeholder="<?= $Artikel["opisArtikla"]?>"   class="form-control" id="exampleFormControlTextarea1" rows="7" name ="opisArtikla" style ="width: 100%; float: left; margin-top: 20px; background-color: rgba(0,0,0,0); border: 0px; color: white;"></textarea>
+               <textarea form = "urediArtikel" placeholder="<?= $Artikel["opisArtikla"]?>" class="form-control" id="exampleFormControlTextarea1" rows="7" 
+               name ="opisArtikla" style ="width: 100%; float: left; margin-top: 20px; background-color: rgba(0,0,0,0); border: 0px; color: white;"><?= $Artikel["opisArtikla"]?>
+               </textarea>
                
                </div>
             </div>

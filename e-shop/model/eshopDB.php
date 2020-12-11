@@ -22,7 +22,7 @@ class eshopDB extends AbstractDB {
     }
 
     public static function get(array $id) {
-        $books = parent::query("SELECT idArtikla, imeArtikla, cenaArtikla, opisArtikla, zalogaArtikla"
+        $books = parent::query("SELECT idArtikla, imeArtikla, cenaArtikla, opisArtikla, zalogaArtikla, kategorijaArtikla"
                         . " FROM Artikel"
                         . " WHERE idArtikla = :idArtikla", $id);
         

@@ -9,7 +9,7 @@
             <h4 style ="font-weight: 600;">DODAJ ARTIKEL</h4>
         </div>
     
-        <div class ="artikelVsebnik" style="padding: 60px; ">
+        <div class ="artikelVsebnik" style="padding: 60px;">
             
         <form action ="<?= BASE_URL . "artikel/dodaj" ?>" method = "POST">
         <div class="form-row" >
@@ -45,7 +45,7 @@
         
         </div>
       
-                    <button type="button" class="btn btn-light dodajVKos">Ustvari izdelek</button>
+                    <button type="submit" class="btn btn-light dodajVKos">Ustvari izdelek</button>
                
         </form>
             

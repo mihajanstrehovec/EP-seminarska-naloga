@@ -96,19 +96,30 @@ class eshopController {
     }
 
     public static function edit() {
-        $rules = self::getRules();
+        $rules = self::getRulesEdit();
+        
+        
+   
         $rules["idArtikla"] = [
             'filter' => FILTER_VALIDATE_INT,
             'options' => ['min_range' => 1]
         ];
+
+        
+        
+       
         $data = filter_input_array(INPUT_POST, $rules);
-        var_dump($data);
-        exit();
+        #var_dump($data);
+        #exit();
+       
         if (self::checkValues($data)) {
             eshopDB::update($data);
-            ViewHelper::redirect(BASE_URL . "artikel?idArtikla=" . $data["id"]);
+            ViewHelper::redirect(BASE_URL . "" );
         } else {
+           
+            
             self::editForm($data);
+            
         }
     }
 
@@ -165,6 +176,26 @@ class eshopController {
             'opisArtikla' => FILTER_SANITIZE_SPECIAL_CHARS,
             'kategorijaArtikla' => FILTER_SANITIZE_SPECIAL_CHARS,
             'zalogaArtikla' => FILTER_VALIDATE_FLOAT,
+            
+            /*'year' => [
+                'filter' => FILTER_VALIDATE_INT,
+                'options' => [
+                    'min_range' => 1800,
+                    'max_range' => date("Y")
+                ]
+            ]*/
+        ];
+   
+    }
+
+    private static function getRulesEdit() {
+        return [
+            'imeArtikla' => FILTER_SANITIZE_SPECIAL_CHARS,
+            'cenaArtikla' => FILTER_VALIDATE_FLOAT,
+            'opisArtikla' => FILTER_SANITIZE_SPECIAL_CHARS,
+            'kategorijaArtikla' => FILTER_SANITIZE_SPECIAL_CHARS,
+            'zalogaArtikla' => FILTER_VALIDATE_FLOAT,
+    
             
             /*'year' => [
                 'filter' => FILTER_VALIDATE_INT,
