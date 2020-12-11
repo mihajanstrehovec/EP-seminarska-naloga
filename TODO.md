@@ -1,5 +1,7 @@
 ## Sources
 https://www.youtube.com/watch?v=FymgHnWUMg4&ab_channel=JohnMorris  --> creating a webshop in PHP 
+https://johnmorrisonline.com/build-php-login-form-using-sessions/  --> session
+https://stackoverflow.com/questions/10097887/using-sessions-session-variables-in-a-php-login-script  --> session
 
 
 # OSNOVNE STORITVE
@@ -18,7 +20,7 @@ V vlogi administratorja imate lahko zgolj enega uporabnika, ki ga lahko kreirate
   - [ ] Pregled še neobdelanih naročil in njihovih postavk. Posamezno naročilo se prodajalcu prikaže šele, ko Stranka z nakupom zaključi;
   - [ ] Potrjevanje ali preklic oddanih naročil;
   - [ ] Ogled zgodovine potrjenih naročil in možnost storniranja potrjenih naročil.
-- [ ] Ustvarjanje, aktiviranje in deaktiviranje artiklov in posodabljanje njihovih atributov. Pri obravnavi artiklov lahko upravljanje z zalogami izpustite. Z drugimi besedami -- v aplikaciji lahko vedno predpostavite, da je na zalogi dovolj artiklov;
+- [-] Ustvarjanje, aktiviranje in deaktiviranje artiklov in posodabljanje njihovih atributov. Pri obravnavi artiklov lahko upravljanje z zalogami izpustite. Z drugimi besedami -- v aplikaciji lahko vedno predpostavite, da je na zalogi dovolj artiklov;
 - [ ] Ustvarjanje, aktiviranje in deaktiviranje uporabniških računov tipa Stranka in posodabljanje njegovih atributov.
 
 
@@ -34,7 +36,7 @@ V vlogi administratorja imate lahko zgolj enega uporabnika, ki ga lahko kreirate
 - [ ] Prijavo in odjavo;
 - [ ] Posodobitev lastnega gesla in ostalih atributov;
 - [ ] Nakupovanje. To naj bo sestavljeno iz:
-  - [ ] Pregledovanja artiklov trgovine;
+  - [-] Pregledovanja artiklov trgovine;
   - [ ] Dodajanja in odstranjevanja artiklov v košarico ter spreminjanja količine v košarici;
    - [ ] Zaključka nakupa. Tu se naj stranki prikaže povzetek kupljenih izdelkov s predračunom. Ko stranka naročilo potrdi, se to doda v čakalno vrsto neobdelanih naročil, kjer ga lahko v obravnavo prevzame Prodajalec.
 - [ ] Dostop do seznama preteklih nakupov. Uporabnik lahko vidi vsa svoja pretekla naročila: oddana, potrjena, preklicana in stornirana.
@@ -42,7 +44,7 @@ V vlogi administratorja imate lahko zgolj enega uporabnika, ki ga lahko kreirate
 
 
 ## SPLETNI VMESNIK | GOST
-- [ ] Pregledovanje artiklov preko spletnega vmesnika;
+- [-] Pregledovanje artiklov preko spletnega vmesnika;
 - [ ] Registracijo preko spletnega vmesnika;
 - [ ] Uporaba vmesnika anonimnega odjemalca je preko javnega in zavarovanega kanala, pri registraciji pa nujno preklopite na zavarovan kanal. V splošnem poskrbite za ustrezno preklapljanje med omenjenima kanaloma.
 

@@ -40,6 +40,13 @@ $urls = [
             eshopController::registracijaForm();
         }
     },
+    "uporabnik/vpis" => function () {
+        if ($_SERVER["REQUEST_METHOD"] == "POST") {
+            eshopController::vpisSubmit();
+        } else {
+            eshopController::vpisForm();
+        }
+    },
     "artikel/uredi" => function () {
         if ($_SERVER["REQUEST_METHOD"] == "POST") {
             eshopController::edit();

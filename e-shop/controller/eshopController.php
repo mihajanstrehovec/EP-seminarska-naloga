@@ -110,6 +110,44 @@ class eshopController {
         
         
         else if (self::checkValues($data)) {
+            var_dump($data);
+            exit();
+            $id = eshopDB::insert($data);
+            
+            echo ViewHelper::redirect(BASE_URL. "trgovina");
+            
+        } else {
+            self::addForm($data);
+        }
+    }
+
+
+    public static function vpisForm($values = [
+        "email" => "",
+        "geslo" => "",
+    ]) {
+        $err = "";
+        echo ViewHelper::renderRegError("view/layout.php", "view/vpis.php", $values, $err);
+    }
+
+    public static function vpisSubmit() {
+        $data = filter_input_array(INPUT_POST, self::getRulesRegistracija());
+
+
+        # Preverimo, če je email naslov ustrezen
+        if(!filter_var($data['email'], FILTER_VALIDATE_EMAIL)){
+           
+            $err = "Prosimo vnesite veljaven e-pošta naslov";
+            echo ViewHelper::renderRegError("view/layout.php", "view/vpis.php", $values, $err);
+            
+        }
+        
+        # Preverimo, če se gesli ujemata
+     
+
+        
+        
+        else if (self::checkValues($data)) {
             $id = eshopDB::insert($data);
             
             echo ViewHelper::redirect(BASE_URL. "trgovina");

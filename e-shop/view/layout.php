@@ -10,7 +10,8 @@ require_once 'db_files/db_artikel.php';
   <div class="container">
     <a class="navbar-brand" href ="<?= BASE_URL . "/trgovina" ?>">
           E-SHOP
-        </a>
+    </a>
+   
     <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarResponsive" aria-controls="navbarResponsive" aria-expanded="false" aria-label="Toggle navigation">
           <span class="navbar-toggler-icon"></span>
         </button>
@@ -18,9 +19,16 @@ require_once 'db_files/db_artikel.php';
       <ul class="navbar-nav ml-auto">
         <li class="nav-item active">
           
+        
+
         <li class="nav-item">
-          <a class="nav-link" href="#">PROFIL</a>
+          <a class="navbar-brand" href ="<?= BASE_URL . "/uporabnik/registracija" ?>"> REGISTRACIJA </a>
         </li>
+
+        <li class="nav-item">
+          <a class="navbar-brand" href ="<?= BASE_URL . "/uporabnik/vpis" ?>"> VPIS </a>
+        </li>
+
       </ul>
     </div>
   </div>
