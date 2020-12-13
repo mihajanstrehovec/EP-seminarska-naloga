@@ -30,6 +30,15 @@ class eshopDB extends AbstractDB {
         return($Narocila);
     }
 
+    public static function getNarociloArtikli(array $idNarocila) {
+        
+        $Narocila = parent::query("SELECT idArtiklaForeign, kolicina"
+                        . " FROM Narocilo_artikli"
+                        . " WHERE idNarocilaForeign = :idNarocila", $idNarocila);
+        
+        return($Narocila);
+    }
+
     public static function update(array $params) {
         return parent::modify("UPDATE Artikel SET imeArtikla = :imeArtikla, cenaArtikla = :cenaArtikla, "
                         . "opisArtikla = :opisArtikla, zalogaArtikla = :zalogaArtikla, kategorijaArtikla = :kategorijaArtikla"
@@ -44,6 +53,18 @@ class eshopDB extends AbstractDB {
 
     public static function get(array $id) {
         $books = parent::query("SELECT idArtikla, imeArtikla, cenaArtikla, opisArtikla, zalogaArtikla, kategorijaArtikla"
+                        . " FROM Artikel"
+                        . " WHERE idArtikla = :idArtikla", $id);
+        
+        if (count($books) == 1) {
+            return $books[0];
+        } else {
+            throw new InvalidArgumentException("No such book");
+        }
+    }
+
+    public static function getArtikelCompressed(array $id) {
+        $books = parent::query("SELECT imeArtikla, cenaArtikla"
                         . " FROM Artikel"
                         . " WHERE idArtikla = :idArtikla", $id);
         

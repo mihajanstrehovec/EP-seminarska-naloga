@@ -1,6 +1,6 @@
 
 <?php
-    #var_dump($_SESSION);
+    #var_dump($imenaNarocil);
     #exit();
 ?>
 
@@ -22,7 +22,9 @@
 
                 <div class = "row ">
                     <div class = "col-lg-12 overflow-auto narocila ">
-                        
+                        <?php for ($i = 0; $i < count($narocila); $i ++):?>
+                            <?php var_dump($narocila[4])?>
+                        <?php endfor ?>
                     </div>
                 </div>
 

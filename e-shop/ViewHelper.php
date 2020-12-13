@@ -23,7 +23,7 @@ class ViewHelper {
         return ob_get_clean();
     }
 
-    public static function renderNarocila($layout, $file, $oddanaNarocila = array(), $potrjenaNarocila = array(),$preklicanaNarocila = array()/*,$storninanaNarocila = array()*/) {
+    public static function renderNarocila($layout, $file, $narocila, $imenaNarocil = array(),$preklicanaNarocila = array()/*,$storninanaNarocila = array()*/) {
         extract($variables);
 
         ob_start();

@@ -151,9 +151,11 @@ class eshopController {
     public static function oddajNarocilo() {
         $data = filter_input_array(INPUT_POST, self::getRulesOddajNarocilo());
         $idStranke = eshopDB::getStrankaID($_SESSION);
+        #var_dump(intval($idStranke[0]["idStranke"]));
+        #exit();
         
         $narociloInput["total"] = floatval($_SESSION['total']);
-        $narociloInput["idStranke"] = $idStranke;
+        $narociloInput["idStranke"] = intval($idStranke[0]["idStranke"]);
         $narociloInput["potrjeno"] = 0;
        
 
@@ -188,18 +190,50 @@ class eshopController {
         $id["idStranke"] = 1;
        
         $narocila = eshopDB::getNarocila($idStranke[0]);
-        var_dump($narocila[0]);
-        exit();
+        #var_dump($narocila[0]);
+        #exit();
+        $Artikli = [];
+        for($i = 0; $i < count($narocila); $i++){
+            $idTrNarocila["idNarocila"] = $narocila[$i]["idNaročila"];
+            #var_dump($idTrNarocila);
+            #exit();
+            
+            array_push($Artikli, eshopDB::getNarociloArtikli($idTrNarocila));
+        }
+        #var_dump($narocila[7]);
+        #var_dump("ARTIKLI");
+        #var_dump($Artikli[7]);
+        #exit();
 
-        $oddanaNarocila = eshopDB::oddanaNarocila($idStranke);
-        $potrjenaNarocila = eshopDB::potrjenaNarocila($idStranke);
-        $preklicanaNarocila = eshopDB::preklicanaNarocila($idStranke);
+        $ArtikliInfo = [[]];
+
+        for($i = 0; $i < count($Artikli); $i++){
+            if($Artikli[$i] != NULL){ 
+                for($l = 0; $l < count($Artikli[$i]); $l++){   
+                    #$id["idArtikla"] = $Artikli[$i]["idArtiklaForeign"];
+                    
+                    $idArtikla["idArtikla"] = $Artikli[$i][$l]["idArtiklaForeign"];
+                    #exit();
+                    array_push($ArtikliInfo[$i], eshopDB::getArtikelCompressed($idArtikla));
+                }
+                #var_dump($ArtikliInfo[0]);
+                #exit();
+            }
+        }
+        var_dump($narocila[0]);
+        #var_dump($narocila[0]);
+        #echo("HALLLLLLLLLLLLLLLLLLLLl");
+        #var_dump($ArtikliInfo[0]);
+       #exit();
+
+        #$oddanaNarocila = eshopDB::oddanaNarocila($idStranke);
+        #$potrjenaNarocila = eshopDB::potrjenaNarocila($idStranke);
+        #$preklicanaNarocila = eshopDB::preklicanaNarocila($idStranke);
         #$storniranaNarocila = eshopDB::storniranaNarocila($idStranke);
         
-
+        echo ViewHelper::renderNarocila("view/layout.php", "view/mojaNarocila.php", $narocila, ["imenaNarocil" => $ArtikliInfo]);
         
-        echo ViewHelper::renderNarocila("view/layout.php", "view/mojaNarocila.php", 
-    ["oddanaNarocila" => $Narocilo], ["potrjenaNarocila" => $Narocilo], ["preklicanaNarocila" => $Narocilo]/*, ["storniranaNarocila" => $Narocilo]*/);
+        
         
     
     }
