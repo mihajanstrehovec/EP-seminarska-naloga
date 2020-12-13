@@ -2,12 +2,17 @@
 
 <?php
 require_once 'db_files/db_artikel.php';
+$url = filter_input(INPUT_SERVER, "PHP_SELF", FILTER_SANITIZE_SPECIAL_CHARS);
+#var_dump($_SESSION);
+
+
 
 
 ?>
    
 <link rel ="stylesheet" href ="<?= CSS_URL . "artikelStyle.css" ?>">
-  
+
+ 
          
 
 <div class ="row no-gutters justify-content-center">
@@ -38,7 +43,16 @@ require_once 'db_files/db_artikel.php';
                 <s style = "margin-right: 5px;">250€</s><?= $Artikel["cenaArtikla"]?>
                 </div>
                 <div class ="row no-gutters justify-content-center dodVkos">
-                    <button type="button" class="btn btn-light dodajVKos">Dodaj v kosarico</button>
+                    <form action ="" method = "POST">
+                        <input type="hidden" name="do" value="add_into_cart" />    
+                        <input type = "hidden" name = "idArtikla" value = "<?= $Artikel["idArtikla"]?>">
+                        <input type = "hidden" name = "imeArtikla" value = "<?= $Artikel["imeArtikla"]?>">
+                        <input type = "hidden" name = "cenaArtikla" value = "<?= $Artikel["cenaArtikla"]?>">    
+
+                        <button type="submit" class="btn btn-light dodajVKos">Dodaj v kosarico</button>
+                
+                    
+                    </form>
                 </div>
                 
                 <div class ="row no-gutters justify-content-center dodVkos">

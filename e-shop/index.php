@@ -24,7 +24,11 @@ $urls = [
         eshopController::index();
     },
     "artikel" => function () {
-        eshopController::artikel();
+        if ($_SERVER["REQUEST_METHOD"] == "POST") {
+            eshopController::dodajVkosarico();
+        } else {
+            eshopController::artikel();
+        }
     },
     "artikel/dodaj" => function () {
         if ($_SERVER["REQUEST_METHOD"] == "POST") {
@@ -72,6 +76,14 @@ $urls = [
 
         
     },
+
+    "izprazni" => function () {
+        if ($_SERVER["REQUEST_METHOD"] == "POST") {
+            eshopController::dodajVkosarico();
+        } else {
+            eshopController::index();
+        }
+    }
 ];
 
 try {
