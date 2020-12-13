@@ -21,6 +21,15 @@ class eshopDB extends AbstractDB {
                         . " VALUES (:idArtiklaForeign, :idNarocilaForeign, :kolicina)", $params);
     }
 
+    public static function getNarocila(array $idStranke) {
+        
+        $Narocila = parent::query("SELECT idNaročila, total, potrjeno"
+                        . " FROM Naročilo"
+                        . " WHERE idStranke = :idStranke", $idStranke);
+        
+        return($Narocila);
+    }
+
     public static function update(array $params) {
         return parent::modify("UPDATE Artikel SET imeArtikla = :imeArtikla, cenaArtikla = :cenaArtikla, "
                         . "opisArtikla = :opisArtikla, zalogaArtikla = :zalogaArtikla, kategorijaArtikla = :kategorijaArtikla"

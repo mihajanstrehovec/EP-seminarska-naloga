@@ -88,6 +88,13 @@ $urls = [
         } else {
             eshopController::zakljucekNakupa();
         }
+    },
+    "profil/narocila" => function () {
+        if ($_SERVER["REQUEST_METHOD"] == "POST") {
+            eshopController::oddajNarocilo();
+        } else {
+            eshopController::mojaNarocila();
+        }
     }
 ];
 

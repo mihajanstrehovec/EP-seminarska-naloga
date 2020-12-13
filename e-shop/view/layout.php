@@ -14,7 +14,7 @@ require_once 'db_files/db_artikel.php';
 <link rel ="stylesheet" href ="<?= CSS_URL . "profilStyle.css" ?>">
 <link rel ="stylesheet" href ="<?= CSS_URL . "kosaricaStyle.css" ?>">
 <link rel ="stylesheet" href ="<?= CSS_URL . "zakljucek_nakupaStyle.css" ?>">
-<link rel ="stylesheet" href ="<?= CSS_URL . "zakljucek_nakupaStyle.css" ?>">
+<link rel ="stylesheet" href ="<?= CSS_URL . "moja_narocilaStyle.css" ?>">
 
 <nav class="navbar navbar-expand-lg navbar-dark static-top">
   <div class="container">
@@ -41,6 +41,9 @@ require_once 'db_files/db_artikel.php';
         <?php endif?>
 
         <?php if($_SESSION["mailStranke"] != NULL) :?>
+        <li class="nav-item">
+          <a class="navbar-brand" href ="<?= BASE_URL . "profil/narocila" ?>"> MOJA NAROČILA </a>
+        </li>
         <li class="nav-item">
           <a class="navbar-brand" href ="<?= BASE_URL . "profil" ?>"> PROFIL </a>
         </li>
