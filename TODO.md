@@ -35,7 +35,7 @@ V vlogi administratorja imate lahko zgolj enega uporabnika, ki ga lahko kreirate
 
 
 ## SPLETNI VMESNIK | STRANKA #Miha đaner
-- [ ] Prijavo in odjavo;
+- [-] Prijavo in odjavo;
 - [ ] Posodobitev lastnega gesla in ostalih atributov;
 - [ ] Nakupovanje. To naj bo sestavljeno iz:
   - [-] Pregledovanja artiklov trgovine;

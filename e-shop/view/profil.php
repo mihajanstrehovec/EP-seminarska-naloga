@@ -13,16 +13,27 @@
             
         <form action ="<?= BASE_URL . "artikel/dodaj" ?>" method = "POST">
         <div class="form-row" >
+
         <div class = "form-row" style = "margin-top: 3vh;">
                 
-                <div class ="col">
+                <div class ="col-lg-8">
+                    <label for="gesloStranke" style ="float: left; margin-left: 10px;">Posodobi geslo</label>
+                    <input type = "password" name = "gesloStranke" placeholder = "Geslo" class = "form-control">
+                </div>
+  
+            
+        <div class = "form-row" style = "margin-top: 3vh;">
+                
+                <div class ="col-lg-8">
+                   
                     <input type = "password" name = "gesloStranke" placeholder = "Geslo" class = "form-control">
                 </div>
   
             </div>
         </div>
 
-
+        </div>
+        </div>
 
         
         

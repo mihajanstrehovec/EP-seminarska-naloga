@@ -9,7 +9,7 @@
             <h4 style ="font-weight: 600;">VPIS</h4>
         </div>
     
-        <div class ="registerVsebnik" style="padding: 60px;">
+        <div class ="registerVsebnik" style="padding: 0px;">
 
         <form action = "<?= BASE_URL . "uporabnik/vpis"?>" method = "POST">
             
