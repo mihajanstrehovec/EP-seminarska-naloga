@@ -9,13 +9,13 @@
             <h4 style ="font-weight: 600;">VPIS</h4>
         </div>
     
-        <div class ="registerVsebnik" style="padding: 0px;">
+        <div class ="registerVsebnik" style="padding-top: 3vh;">
 
         <form action = "<?= BASE_URL . "uporabnik/vpis"?>" method = "POST">
             
-            <?php if($err ==  "Prosimo vnesite veljaven e-pošta naslov") :?>
-                    <div class = "form-row">
-                        <h7 style ="color: red;"> <?= $err ?> </h7>
+            <?php if($err ==  "Email naslov in geslo se ne ujemata") :?>
+                    <div class = "form-row justify-content-center">
+                        <h7 style ="color: red;" > <?= $err ?> </h7>
                     </div>
             <?php endif;?>
 
@@ -25,19 +25,19 @@
                         <h7 style ="color: red;"> <?= $err ?> </h7>
                     </div>
             <?php endif;?>
-            <div class = "form-row">
+            <div class = "form-row justify-content-center">
                 
                 
                 
-                <div class ="col">
+                <div class ="col-lg-7">
                     <input type = "text" name = "mailStranke" placeholder = "E-pošta" class = "form-control">
                 </div>
   
             </div>
             
-            <div class = "form-row" style = "margin-top: 3vh;">
+            <div class = "form-row justify-content-center" style = "margin-top: 3vh;">
                 
-                <div class ="col">
+                <div class ="col-lg-7">
                     <input type = "password" name = "gesloStranke" placeholder = "Geslo" class = "form-control">
                 </div>
   

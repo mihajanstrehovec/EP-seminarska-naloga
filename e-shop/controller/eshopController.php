@@ -147,7 +147,7 @@ class eshopController {
         # Preverimo, če je email naslov ustrezen
         if(!filter_var($data['mailStranke'], FILTER_VALIDATE_EMAIL)){
            
-            $err = "Prosimo vnesite veljaven e-pošta naslov";
+            $err = "Email naslov in geslo se ne ujemata";
             echo ViewHelper::renderRegError("view/layout.php", "view/vpis.php", $values, $err);
             
         }
@@ -168,13 +168,13 @@ class eshopController {
        
 
         if($data["gesloStranke"] == $Stranka[0]["gesloStranke"]){
-            $_SESSION["stranka"] = $data["mailStranke"];
+            $_SESSION["mailStranke"] = $data["mailStranke"];
             echo ViewHelper::redirect(BASE_URL. "trgovina"/*. "books?id=" . $id*/);
 
         exit();
         }else{
-            var_dump("NONO");
-            exit();
+            $err = "Email naslov in geslo se ne ujemata";
+            echo ViewHelper::renderRegError("view/layout.php", "view/vpis.php", $values, $err);
         }
 
         
@@ -245,6 +245,71 @@ class eshopController {
 
     public static function profil() {
         echo ViewHelper::render("view/layout.php", "view/profil.php");
+    }
+
+    public static function editProfil() {
+        $rules = self::getRulesEditProfil();
+        
+        
+   
+        
+        
+        
+       
+        $data = filter_input_array(INPUT_POST, $rules);
+        #var_dump($data["mailStranke"], $_SESSION);
+        #exit();
+
+        
+       
+        
+        if($data["mailStranke"] == NULL){
+            #$mail = [$data["mailStranke"]];
+            $Stranka = eshopDB::getStranka($_SESSION);
+            
+            $input["mailStranke"] = $_SESSION["mailStranke"];
+            $input["gesloStranke"] = $data["gesloStranke"];
+            
+
+            if($data["trenutnoGeslo"] == $Stranka[0]["gesloStranke"]){
+                #$_SESSION["stranka"] = $data["mailStranke"];
+                eshopDB::urejanjeGesla($input);
+                
+                #var_dump("JAJA");
+                ViewHelper::redirect(BASE_URL . "" );
+
+                exit();
+
+            exit();
+            }else{
+                $err = "Vnešeno geslo je napačno";
+                echo ViewHelper::renderRegError("view/layout.php", "view/profil.php", $values, $err);
+            }
+
+        }
+
+        if($data["mailStranke"] != NULL){
+            
+           
+            
+            $input["mailStranke"] = $_SESSION["mailStranke"];
+            $input["noviMailStranke"] = $data["mailStranke"];
+            
+
+           
+                eshopDB::urejanjeMaila($input);
+                
+                #var_dump("JAJA");
+                ViewHelper::redirect(BASE_URL . "" );
+
+
+
+        }
+
+
+
+       
+     
     }
     
 
@@ -342,6 +407,24 @@ class eshopController {
             'mailStranke' => FILTER_SANITIZE_EMAIL,
             'gesloStranke' => FILTER_SANITIZE_SPECIAL_CHARS,
             'gesloPonovi' => FILTER_SANITIZE_SPECIAL_CHARS,
+            
+            /*'year' => [
+                'filter' => FILTER_VALIDATE_INT,
+                'options' => [
+                    'min_range' => 1800,
+                    'max_range' => date("Y")
+                ]
+            ]*/
+        ];
+   
+    }
+
+    private static function getRulesEditProfil() {
+        return [
+            'gesloStranke' => FILTER_SANITIZE_SPECIAL_CHARS,
+            'trenutnoGeslo' => FILTER_SANITIZE_SPECIAL_CHARS,
+            'mailStranke' => FILTER_SANITIZE_EMAIL,
+            
             
             /*'year' => [
                 'filter' => FILTER_VALIDATE_INT,

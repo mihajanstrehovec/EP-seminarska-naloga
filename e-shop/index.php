@@ -64,7 +64,13 @@ $urls = [
         eshopController::izpisi();
     },
     "profil" => function () {
-        eshopController::profil();
+        if ($_SERVER["REQUEST_METHOD"] == "POST") {
+            eshopController::editProfil();
+        } else {
+            eshopController::profil();
+        }
+
+        
     },
 ];
 

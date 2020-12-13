@@ -21,7 +21,7 @@ require_once 'db_files/db_artikel.php';
         <li class="nav-item active">
           
         
-        <?php if($_SESSION["stranka"] == NULL) :?>
+        <?php if($_SESSION["mailStranke"] == NULL) :?>
         <li class="nav-item">
           <a class="navbar-brand" href ="<?= BASE_URL . "/uporabnik/registracija" ?>"> REGISTRACIJA </a>
         </li>
@@ -31,7 +31,7 @@ require_once 'db_files/db_artikel.php';
         </li>
         <?php endif?>
 
-        <?php if($_SESSION["stranka"] != NULL) :?>
+        <?php if($_SESSION["mailStranke"] != NULL) :?>
         <li class="nav-item">
           <a class="navbar-brand" href ="<?= BASE_URL . "profil" ?>"> PROFIL </a>
         </li>

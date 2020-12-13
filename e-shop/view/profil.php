@@ -1,60 +1,76 @@
 
+<?php
+    #var_dump($_SESSION);
+    #exit();
+?>
+
 <div class ="container">
-<div class ="row no-gutters justify-content-center">
-    <div class ="col-lg-10" align ="center">
+    <div class ="row no-gutters justify-content-center">
+        <div class ="col-lg-10" >
         
        
         
-        <div class ="titleProfil" align ="center" style ="padding-top: 0.4vh;">
-            <h4 style ="font-weight: 600;">PROFIL</h4>
-        </div>
-    
-        <div class ="profilVsebnik" style="padding: 60px;">
-            
-        <form action ="<?= BASE_URL . "artikel/dodaj" ?>" method = "POST">
-        <div class="form-row" >
-
-        <div class = "form-row" style = "margin-top: 3vh;">
-                
-                <div class ="col-lg-8">
-                    <label for="gesloStranke" style ="float: left; margin-left: 10px;">Posodobi geslo</label>
-                    <input type = "password" name = "gesloStranke" placeholder = "Geslo" class = "form-control">
-                </div>
-  
-            
-        <div class = "form-row" style = "margin-top: 3vh;">
-                
-                <div class ="col-lg-8">
-                   
-                    <input type = "password" name = "gesloStranke" placeholder = "Geslo" class = "form-control">
-                </div>
-  
+            <div class ="titleProfil" align ="center" style ="padding-top: 0.4vh;">
+                <h4 style ="font-weight: 600;">PROFIL</h4>
             </div>
-        </div>
-
-        </div>
-        </div>
-
-        
-        
-        
-        
-       
-       
-      
-                    <button type="submit" class="btn btn-light dodajVKos">Ustvari izdelek</button>
-               
-        </form>
+    
+            <div class ="profilVsebnik" style="padding: 7%;">
             
+                <form action = "<?= BASE_URL . "profil" ?>" method = "POST">
+                
+                <div class ="form-group ">
+                        <label for = "gesloStranke">Sprememba gesla</label>
+                        
+                        <?php if($err ==  "Vnešeno geslo je napačno") :?>
+                            <div class = "form-row">
+                                <h7 style ="color: red;" > <?= $err ?> </h7>
+                            </div>
+                        <?php endif;?>
+                        
+                        <div class = "col-lg-5">
 
+                            <input type = "password" class ="form-control" name = "trenutnoGeslo" id ="gesloStranke" placeholder = "Vpišite trenutno geslo">
+                        </div>
+                        
+                       
+                        
+                        <div class = "col-lg-5" style ="margin-top: 1vh;">
+                            <input type = "password" class = "form-control" name = "gesloStranke" placeholder = "Vpišite novo geslo">
+                        </div>
+                        <button type = "submit" class ="btn my-4" 
+                        style ="background-color: rgba(89,145,144,1); color: white; ">
+                        Spremeni</button>
+                        
+
+                </div>
+
+                
+
+                </form>
+
+                <form action = "<?= BASE_URL . "profil" ?>" method = "POST">
+
+                <div class ="form-row justify-content-center" style = "margin-top: 4vh;">
+                    
+                        <label for = "mailStranke">Sprememba e-pošte</label>
+                            <div class = "col-lg-5">
+                        <input type = "text" class = "form-control" name = "mailStranke"  placeholder = "Vpišite nov epoštni naslov" style ="margin-left: 20px;">
+                        </div>
+
+                        <div class = "col-lg-2">
+                        <button type = "submit" class ="btn my-4" 
+                        style ="background-color: rgba(89,145,144,1); color: white; margin-top: 0px !important; margin-left: 40px;">
+                        Spremeni</button>
+                        </div>
+                </div>
+
+                
+
+                </form>
         
+            </div>
 
-            
         </div>
-        
-        
     </div>
-</div
-
         
 </div>
