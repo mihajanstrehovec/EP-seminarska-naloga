@@ -14,6 +14,7 @@ require_once 'db_files/db_artikel.php';
 <link rel ="stylesheet" href ="<?= CSS_URL . "profilStyle.css" ?>">
 <link rel ="stylesheet" href ="<?= CSS_URL . "kosaricaStyle.css" ?>">
 <link rel ="stylesheet" href ="<?= CSS_URL . "zakljucek_nakupaStyle.css" ?>">
+<link rel ="stylesheet" href ="<?= CSS_URL . "zakljucek_nakupaStyle.css" ?>">
 
 <nav class="navbar navbar-expand-lg navbar-dark static-top">
   <div class="container">
@@ -68,7 +69,7 @@ $_SESSION['price'] = array(100);
             if (isset($_SESSION["cart"])): {
                     
                     
-                    for($i = 0; $i <= 6; $i++){
+                    for($i = 0; $i <= 100; $i++){
                     
                     // Preverimo, če je artikel z id-jem $i nastavljena
                     if(isset($_SESSION["cart"][$i])){

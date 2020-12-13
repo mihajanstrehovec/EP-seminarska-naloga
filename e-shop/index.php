@@ -84,7 +84,7 @@ $urls = [
     },
     "zakljucekNakupa" => function () {
         if ($_SERVER["REQUEST_METHOD"] == "POST") {
-            eshopController::dodajVkosarico();
+            eshopController::oddajNarocilo();
         } else {
             eshopController::zakljucekNakupa();
         }
