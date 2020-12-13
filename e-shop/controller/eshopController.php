@@ -85,6 +85,7 @@ class eshopController {
                     #exit();
                     if (isset($_SESSION["cart"][$Artikel["idArtikla"]])) {
                         $_SESSION["cart"][$Artikel["idArtikla"]]++;
+                        
                     } else {
                         $_SESSION["cart"][$Artikel["idArtikla"]] = 1;
                     }
@@ -121,6 +122,30 @@ class eshopController {
             
         }
         echo ViewHelper::redirect(BASE_URL . "/artikel?idArtikla=" . $post["idArtikla"]);
+    }
+
+
+    public static function zakljucekNakupa() {
+
+        $Narocilo = [];
+        
+            for($i = 0; $i < 100; $i++){
+                if($_SESSION["cart"][$i] != NULL){
+                    #echo($_SESSION["cart"][$i]);
+                    
+                    $id["idArtikla"] = $i;
+                    $Artikel = eshopDB::get($id);
+
+                    array_push($Narocilo, $Artikel);
+                }
+            }
+
+            #var_dump($Narocilo);
+            #exit();
+        
+        echo ViewHelper::render("view/layout.php", "view/zakljucekNakupa.php", ["Narocilo" => $Narocilo]);
+        
+    
     }
 
     
