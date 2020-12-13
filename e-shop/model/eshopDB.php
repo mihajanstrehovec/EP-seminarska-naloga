@@ -62,5 +62,12 @@ class eshopDB extends AbstractDB {
         return parent::modify("INSERT INTO Stranka (imeStranke, priimekStranke, mailStranke, gesloStranke) "
                         . " VALUES (:imeStranke, :priimekStranke, :mailStranke, :gesloStranke)", $params);
     }
+    ##vse v zvezi s prodajalcem 
+    #ustvari prasico prodajalsko
+    public static function ustvariProdajalca(array $params) {
+        return parent::modify("INSERT INTO Prodajalec (uporabniskoime, eMail,geslo)"
+                        . " VALUES (:uporabniskoIme,:eMail,:geslo)", $params);
+    }
+
 
 }
