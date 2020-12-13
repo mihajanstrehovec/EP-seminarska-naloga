@@ -1,6 +1,7 @@
 <?php
-#var_dump($Narocilo);
-#exit();
+#var_dump();
+
+$total = floatval($_SESSION['total']);
 ?>
 <div class ="container">
     <div class ="row no-gutters justify-content-center">
@@ -31,7 +32,10 @@
                 <h5>
                     <b>Skupaj: <?php echo($_SESSION["total"]) ?>€</b>
                     <div class = "row justify-content-center">
-                    <button type = "submit" class = "btn " style = "background-color: rgba(89,145,144,1); color: white; margin-top: 5vh;">Oddaj naročilo</button>
+                    <form action = "<?php BASE_URL . "zakljucekNakupa"?>" method ="POST">
+                        
+                        <button type = "submit" class = "btn" style = "background-color: rgba(89,145,144,1); color: white; margin-top: 5vh;">Oddaj naročilo</button>
+                    </form>
                     </div>
                 </h5>
                 

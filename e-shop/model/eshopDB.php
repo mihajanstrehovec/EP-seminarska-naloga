@@ -11,6 +11,25 @@ class eshopDB extends AbstractDB {
                         . " VALUES (:imeArtikla, :cenaArtikla, :opisArtikla, :kategorijaArtikla, :zalogaArtikla)", $params);
     }
 
+    public static function insertNarocilo(array $params) {
+        return parent::modify("INSERT INTO Naročilo (idStranke, total, potrjeno) "
+                        . " VALUES (:idStranke, :total, :potrjeno)", $params);
+    }
+
+    public static function insertNarociloArtikel(array $params) {
+        return parent::modify("INSERT INTO Narocilo_artikli (idArtiklaForeign, idNarocilaForeign, kolicina) "
+                        . " VALUES (:idArtiklaForeign, :idNarocilaForeign, :kolicina)", $params);
+    }
+
+    public static function getNarocila(array $idStranke) {
+        
+        $Narocila = parent::query("SELECT idNaročila, total, potrjeno"
+                        . " FROM Naročilo"
+                        . " WHERE idStranke = :idStranke", $idStranke);
+        
+        return($Narocila);
+    }
+
     public static function update(array $params) {
         return parent::modify("UPDATE Artikel SET imeArtikla = :imeArtikla, cenaArtikla = :cenaArtikla, "
                         . "opisArtikla = :opisArtikla, zalogaArtikla = :zalogaArtikla, kategorijaArtikla = :kategorijaArtikla"
@@ -38,6 +57,15 @@ class eshopDB extends AbstractDB {
     public static function getStranka(array $mailStranke) {
         
         $Stranka = parent::query("SELECT gesloStranke"
+                        . " FROM Stranka"
+                        . " WHERE mailStranke = :mailStranke", $mailStranke);
+        
+        return($Stranka);
+    }
+
+    public static function getStrankaID(array $mailStranke) {
+        
+        $Stranka = parent::query("SELECT idStranke"
                         . " FROM Stranka"
                         . " WHERE mailStranke = :mailStranke", $mailStranke);
         

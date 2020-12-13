@@ -37,10 +37,10 @@ V vlogi administratorja imate lahko zgolj enega uporabnika, ki ga lahko kreirate
 ## SPLETNI VMESNIK | STRANKA #Miha đaner
 - [-] Prijavo in odjavo;
 - [-] Posodobitev lastnega gesla in ostalih atributov;
-- [ ] Nakupovanje. To naj bo sestavljeno iz:
+- [-] Nakupovanje. To naj bo sestavljeno iz:
   - [-] Pregledovanja artiklov trgovine;
   - [-] Dodajanja in odstranjevanja artiklov v košarico ter spreminjanja količine v košarici;
-   - [ ] Zaključka nakupa. Tu se naj stranki prikaže povzetek kupljenih izdelkov s predračunom. Ko stranka naročilo potrdi, se to doda v čakalno vrsto neobdelanih naročil, kjer ga lahko v obravnavo prevzame Prodajalec.
+   - [-] Zaključka nakupa. Tu se naj stranki prikaže povzetek kupljenih izdelkov s predračunom. Ko stranka naročilo potrdi, se to doda v čakalno vrsto neobdelanih naročil, kjer ga lahko v obravnavo prevzame Prodajalec.
 - [ ] Dostop do seznama preteklih nakupov. Uporabnik lahko vidi vsa svoja pretekla naročila: oddana, potrjena, preklicana in stornirana.
 - [ ] Uporaba vmesnika Stranka je dovoljena le preko zavarovanega kanala. Odjemalca overite z uporabniškim imenom in geslom, ki naj bosta shranjena v SUPB.
 

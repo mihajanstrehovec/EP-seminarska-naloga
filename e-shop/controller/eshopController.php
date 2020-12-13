@@ -148,6 +148,63 @@ class eshopController {
     
     }
 
+    public static function oddajNarocilo() {
+        $data = filter_input_array(INPUT_POST, self::getRulesOddajNarocilo());
+        $idStranke = eshopDB::getStrankaID($_SESSION);
+        
+        $narociloInput["total"] = floatval($_SESSION['total']);
+        $narociloInput["idStranke"] = $idStranke;
+        $narociloInput["potrjeno"] = 0;
+       
+
+        $id = eshopDB::insertNarocilo($narociloInput);
+
+        for($i = 0; $i < 100; $i++){
+            if($_SESSION["cart"][$i] != NULL){
+                #echo($_SESSION["cart"][$i]);
+                
+                $narociloIn["idArtiklaForeign"] = $i;
+                $narociloIn["kolicina"] = $_SESSION["cart"][$i];
+                $narociloIn["idNarocilaForeign"] = $id;
+                
+                eshopDB::insertNarociloArtikel($narociloIn);
+            }
+        }
+
+        #var_dump($narociloIn);
+        #exit();
+        
+        unset($_SESSION["cart"]);
+        unset($_SESSION["total"]);
+        echo ViewHelper::render("view/layout.php", "view/zakljucekNakupa.php", ["Narocilo" => $Narocilo]);
+        
+    
+    }
+
+    public static function mojaNarocila() {
+        $idStranke = eshopDB::getStrankaID($_SESSION);
+        
+        
+        $id["idStranke"] = 1;
+       
+        $narocila = eshopDB::getNarocila($idStranke[0]);
+        var_dump($narocila[0]);
+        exit();
+
+        $oddanaNarocila = eshopDB::oddanaNarocila($idStranke);
+        $potrjenaNarocila = eshopDB::potrjenaNarocila($idStranke);
+        $preklicanaNarocila = eshopDB::preklicanaNarocila($idStranke);
+        #$storniranaNarocila = eshopDB::storniranaNarocila($idStranke);
+        
+
+        
+        echo ViewHelper::renderNarocila("view/layout.php", "view/mojaNarocila.php", 
+    ["oddanaNarocila" => $Narocilo], ["potrjenaNarocila" => $Narocilo], ["preklicanaNarocila" => $Narocilo]/*, ["storniranaNarocila" => $Narocilo]*/);
+        
+    
+    }
+
+
     
     
 
@@ -522,6 +579,23 @@ class eshopController {
             'gesloStranke' => FILTER_SANITIZE_SPECIAL_CHARS,
             'trenutnoGeslo' => FILTER_SANITIZE_SPECIAL_CHARS,
             'mailStranke' => FILTER_SANITIZE_EMAIL,
+            
+            
+            /*'year' => [
+                'filter' => FILTER_VALIDATE_INT,
+                'options' => [
+                    'min_range' => 1800,
+                    'max_range' => date("Y")
+                ]
+            ]*/
+        ];
+   
+    }
+
+    private static function getRulesOddajNarocilo() {
+        return [
+            'total' => FILTER_VALIDATE_FLOAT,
+            
             
             
             /*'year' => [
