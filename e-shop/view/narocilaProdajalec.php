@@ -16,7 +16,7 @@
        
         
             <div class ="titleProfil" align ="center" style ="padding-top: 0.4vh;">
-                <h4 style ="font-weight: 600;">MOJA NAROČILA</h4>
+                <h4 style ="font-weight: 600;">NAROČILA</h4>
             </div>
     
             <div class ="overflow-auto profilVsebnik" style="padding: 7%;">
@@ -28,11 +28,10 @@
                 <div class = "row ">
                     <div class = "col-lg-12 overflow-auto narocila" 
                     style ="background-color: rgba(0,0,0,0); border-style: solid; border-width:1px; border-color: rgba(89,145,144,1);
-                    box-shadow: 0px 0px 8px rgba(89,145,144,0.4);  height: 45vh;">
+                    box-shadow: 0px 0px 8px rgba(89,145,144,0.4); height: 45vh;">
                     <?php  foreach ($narocila as $narocilo): ?>
                        <?php for($i = 0; $i < count($narocilo); $i++):?>
-                            <?php if($narocilo[$i]["potrjeno"] == 0 && $narocilo[$i]["preklicano"] == 0):?>
-                            
+                            <?php if($narocilo[$i]["potrjeno"] == 0 && $narocilo[$i]["preklicano"] == 0 ):?>
                                 <h5><b>ID naročila:</b> <?= $narocilo[$i]["idNaročila"]?></h5>
                                 <h6><b>IZDELKI: </b>
                                 <?php 
@@ -53,6 +52,22 @@
                                     
                                     <?php endfor;?>
                                     <h6><b>Končna cena:</b> <?= $narocilo[$i]["total"] ?> </h6> 
+                                    <div class = "row">
+                                    <form action = "" method = "POST">
+                                        <input type = "hidden" name = "idNarocila" value = "<?= $narocilo[$i]["idNaročila"]?>">
+                                        <input type = "hidden" name = "ukaz" value = "potrdi">
+                                        <button type="submit" class ="btn btn-success" style = "margin-left: 3vw;">Potrdi</button>
+
+                                    </form>
+                                    
+                                    
+                                    <form action = "" method = "POST">
+                                        <input type = "hidden" name = "idNarocila" value = "<?= $narocilo[$i]["idNaročila"]?>">
+                                        <input type = "hidden" name = "ukaz" value = "preklici">
+                                        <button type="submit" class ="btn btn-danger" style = "margin-left: 1vw;">Prekliči</button>
+
+                                    </form>
+                                    </div>
                                     <hr class="mt-2 mb-3" style ="border-top: 1.6px solid rgba(0,0,0,.55)"/>
                             <?php endif;?>
                             </h6>
@@ -73,7 +88,7 @@
                 <div class = "row">
                 <div class = "col-lg-12 overflow-auto narocila" 
                     style ="background-color: rgba(0,0,0,0); border-style: solid; border-width:1px; border-color: #5cb85c ;
-                    box-shadow: 0px 0px 8px rgba(92, 184, 92, 0.4) ;  height: 45vh;">
+                    box-shadow: 0px 0px 8px rgba(92, 184, 92, 0.4); height: 45vh;">
                     <?php  foreach ($narocila as $narocilo): ?>
                        <?php for($i = 0; $i < count($narocilo); $i++):?>
                             <?php if($narocilo[$i]["potrjeno"] == 1):?>
@@ -96,8 +111,14 @@
                                     <?= $Artikel["imeArtikla"] ?> (<?= $Artikli[$l]["kolicina"] ?>) 
                                     
                                     <?php endfor;?>
-                                    <h6><b>Končna cena:</b> <?= $narocilo[$i]["total"] ?> </h6> 
-                            <hr class="mt-2 mb-3" style ="border-top: 1.6px solid rgba(0,0,0,.55)"/>
+                                    <h6><b>Končna cena:</b> <?= $narocilo[$i]["total"] ?> </h6>
+                                    <form action = "" method = "POST">
+                                        <input type = "hidden" name = "idNarocila" value = "<?= $narocilo[$i]["idNaročila"]?>">
+                                        <input type = "hidden" name = "ukaz" value = "storniraj">
+                                        <button type="submit" class ="btn " style = "margin-left: 3vw; background-color: rgba(41, 43, 44, 0.5); color: white;">Storniraj</button>
+
+                                    </form> 
+                                    <hr class="mt-2 mb-3" style ="border-top: 1.6px solid rgba(0,0,0,.55)"/>
                             <?php endif;?>
                             </h6>
                             
@@ -195,8 +216,6 @@
                     <?php endforeach;?>
                     </div>
                 </div>
-
-
 
 
 

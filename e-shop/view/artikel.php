@@ -51,7 +51,7 @@ $url = filter_input(INPUT_SERVER, "PHP_SELF", FILTER_SANITIZE_SPECIAL_CHARS);
                         <input type = "hidden" name = "idArtikla" value = "<?= $Artikel["idArtikla"]?>">
                         <input type = "hidden" name = "imeArtikla" value = "<?= $Artikel["imeArtikla"]?>">
                         <input type = "hidden" name = "cenaArtikla" value = "<?= $Artikel["cenaArtikla"]?>">    
-
+        
                         <button type="submit" class="btn btn-light dodajVKos">Dodaj v kosarico</button>
                 
                     

@@ -29,6 +29,13 @@ require_once 'db_files/db_artikel.php';
       <ul class="navbar-nav ml-auto">
         <li class="nav-item active">
           
+        <li class="nav-item">
+          <a class="navbar-brand" href ="<?= BASE_URL . "/prodajalec/narocila" ?>"> NAROČILA - PRODAJALEC </a>
+        </li>
+        
+        <li class="nav-item">
+          <a class="navbar-brand" href ="<?= BASE_URL . "/prodajalec/stranke" ?>"> STRANKE </a>
+        </li>
         
         <?php if($_SESSION["mailStranke"] == NULL) :?>
         <li class="nav-item">
@@ -106,7 +113,8 @@ $_SESSION['price'] = array(100);
               <div class = "row justify-content-center">
                 <!-- Gumb za praznenje košarice, ki v php sproži case 'purge_cart' in posledično unset($_SESSION['cart']) -->
                 
-                <a href ="<?= BASE_URL . "zakljucekNakupa" ?>"><button  id = "cartBtn" onmouseover ="showCart()" onmouseout = "hideCart()"><button type="submit" name ="do" class ="btn btn-success" value = "purge_cart" style = "margin-right: 10px;">Na blagajno</button></a>
+                <a href ="<?= BASE_URL . "zakljucekNakupa" ?>"><button  id = "cartBtn" onmouseover ="showCart()" onmouseout = "hideCart()">
+                <button type="submit" name ="do" class ="btn btn-success" value = "purge_cart" style = "margin-right: 10px;">Na blagajno</button></a>
               
                 <form action="<?= BASE_URL . "izprazni" ?>" method="post">
                     <button type="submit" name ="do" class ="btn btn-danger" value = "purge_cart">Sprazni</button>

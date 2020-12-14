@@ -18,10 +18,10 @@ V vlogi administratorja imate lahko zgolj enega uporabnika, ki ga lahko kreirate
 ## SPLETNI VMESNIK | PRODAJALEC #Ami
 - [ ] Prijavo in odjavo. Dostop je dovoljen le odjemalcem, ki se overijo s pomočjo certifikatov X.509;
 - [ ] Posodobitev lastnega gesla in ostalih atributov;
-- [ ] Obdelavo naročil. Slednje obsega:
-  - [ ] Pregled še neobdelanih naročil in njihovih postavk. Posamezno naročilo se prodajalcu prikaže šele, ko Stranka z nakupom zaključi;
-  - [ ] Potrjevanje ali preklic oddanih naročil;
-  - [ ] Ogled zgodovine potrjenih naročil in možnost storniranja potrjenih naročil.
+- [-] Obdelavo naročil. Slednje obsega:
+  - [-] Pregled še neobdelanih naročil in njihovih postavk. Posamezno naročilo se prodajalcu prikaže šele, ko Stranka z nakupom zaključi;
+  - [-] Potrjevanje ali preklic oddanih naročil;
+  - [-] Ogled zgodovine potrjenih naročil in možnost storniranja potrjenih naročil.
 - [-] Ustvarjanje, aktiviranje in deaktiviranje artiklov in posodabljanje njihovih atributov. Pri obravnavi artiklov lahko upravljanje z zalogami izpustite. Z drugimi besedami -- v aplikaciji lahko vedno predpostavite, da je na zalogi dovolj artiklov;
 - [ ] Ustvarjanje, aktiviranje in deaktiviranje uporabniških računov tipa Stranka in posodabljanje njegovih atributov.
 

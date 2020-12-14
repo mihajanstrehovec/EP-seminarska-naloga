@@ -23,11 +23,35 @@ class eshopDB extends AbstractDB {
 
     public static function getNarocila(array $idStranke) {
         
-        $Narocila = parent::query("SELECT idNaročila, total, potrjeno, preklicano"
+        $Narocila = parent::query("SELECT idNaročila, total, potrjeno, preklicano, stornirano"
                         . " FROM Naročilo"
                         . " WHERE idStranke = :idStranke", $idStranke);
         
         return($Narocila);
+    }
+
+    public static function getNarocilaAll() {
+        
+        $Narocila = parent::query("SELECT idNaročila, total, potrjeno, preklicano, stornirano"
+                        . " FROM Naročilo"
+                        . " ORDER BY idNaročila DESC");
+        
+        return($Narocila);
+    }
+
+    public static function potrdiNarocilo(array $params) {
+        return parent::modify("UPDATE Naročilo SET potrjeno = 1"
+                        . " WHERE idNaročila = :idNarocila", $params); 
+    }
+
+    public static function prekliciNarocilo(array $params) {
+        return parent::modify("UPDATE Naročilo SET preklicano = 1"
+                        . " WHERE idNaročila = :idNarocila", $params); 
+    }
+
+    public static function stornirajNarocilo(array $params) {
+        return parent::modify("UPDATE Naročilo SET stornirano = 1"
+                        . " WHERE idNaročila = :idNarocila", $params); 
     }
 
     public static function getNarociloArtikli(array $idNarocila) {
@@ -127,6 +151,12 @@ class eshopDB extends AbstractDB {
     public static function ustvariProdajalca(array $params) {
         return parent::modify("INSERT INTO Prodajalec (uporabniskoime, eMail,geslo)"
                         . " VALUES (:uporabniskoIme,:eMail,:geslo)", $params);
+    }
+
+    public static function getStranke() {
+        return parent::query("SELECT idStranke, imeStranke, priimekStranke, aktivirana"
+                        . " FROM Stranka"
+                        . " ORDER BY idStranke DESC");
     }
 
 

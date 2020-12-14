@@ -226,6 +226,93 @@ class eshopController {
     
     }
 
+    public static function prodajalecNarocila() {
+        $idStranke = eshopDB::getStrankaID($_SESSION);
+        
+        
+        $id["idStranke"] = 1;
+       
+        $narocila = eshopDB::getNarocilaAll(); # Dobimo vsa naročila
+        #var_dump($narocila[0]);
+        #exit();
+        $Artikli = [];
+
+        
+
+        $ArtikliInfo = [[]];
+
+        
+        echo ViewHelper::renderNarocila("view/layout.php", "view/narocilaProdajalec.php", ["narocila" => $narocila], ["imenaNarocil" => $ArtikliInfo]);
+        
+        
+        
+    
+    }
+
+    public static function prodajalecNarocilaEdit() {
+        
+        $urejanjeNarocila = filter_input_array(INPUT_POST, self::getRulesUrediNarocilo());
+        #var_dump($urejanjeNarocila);
+        #exit();
+
+        if($urejanjeNarocila["ukaz"] == "potrdi"){
+            eshopDB::potrdiNarocilo($urejanjeNarocila);
+        }
+
+        else if($urejanjeNarocila["ukaz"] == "preklici"){
+            eshopDB::prekliciNarocilo($urejanjeNarocila);
+        }
+
+        else if($urejanjeNarocila["ukaz"] == "storniraj"){
+            eshopDB::stornirajNarocilo($urejanjeNarocila);
+        }
+
+        ViewHelper::redirect(BASE_URL . "prodajalec/narocila" );
+       
+        
+            
+    }
+
+
+    public static function prodajalecStranke() {
+        
+
+        $Stranke = eshopDB::getStranke();
+
+
+        
+        echo ViewHelper::render("view/layout.php", "view/prodajalecStranke.php", ["Stranke" => $Stranke]);
+        
+        
+        
+    
+    }
+
+    public static function prodajalecStrankeEdit() {
+        
+        $urejanjeNarocila = filter_input_array(INPUT_POST, self::getRulesUrediNarocilo());
+        #var_dump($urejanjeNarocila);
+        #exit();
+
+        if($urejanjeNarocila["ukaz"] == "potrdi"){
+            eshopDB::potrdiNarocilo($urejanjeNarocila);
+        }
+
+        else if($urejanjeNarocila["ukaz"] == "preklici"){
+            eshopDB::prekliciNarocilo($urejanjeNarocila);
+        }
+
+        else if($urejanjeNarocila["ukaz"] == "storniraj"){
+            eshopDB::stornirajNarocilo($urejanjeNarocila);
+        }
+
+        ViewHelper::redirect(BASE_URL . "prodajalec/narocila" );
+       
+        
+            
+    }
+
+
 
     
     
@@ -632,6 +719,25 @@ class eshopController {
         ];
    
     }
+
+    private static function getRulesUrediNarocilo() {
+        return [
+            'idNarocila' => FILTER_VALIDATE_INT,
+            'ukaz' => FILTER_SANITIZE_SPECIAL_CHARS
+            
+            
+            
+            /*'year' => [
+                'filter' => FILTER_VALIDATE_INT,
+                'options' => [
+                    'min_range' => 1800,
+                    'max_range' => date("Y")
+                ]
+            ]*/
+        ];
+   
+    }
+
 
    
 

@@ -95,6 +95,20 @@ $urls = [
         } else {
             eshopController::mojaNarocila();
         }
+    },
+    "prodajalec/narocila" => function () {
+        if ($_SERVER["REQUEST_METHOD"] == "POST") {
+            eshopController::prodajalecNarocilaEdit();
+        } else {
+            eshopController::prodajalecNarocila();
+        }
+    },
+    "prodajalec/stranke" => function () {
+        if ($_SERVER["REQUEST_METHOD"] == "POST") {
+            eshopController::prodajalecStrankeEdit();
+        } else {
+            eshopController::prodajalecStranke();
+        }
     }
 ];
 
