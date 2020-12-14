@@ -23,7 +23,7 @@ class eshopDB extends AbstractDB {
 
     public static function getNarocila(array $idStranke) {
         
-        $Narocila = parent::query("SELECT idNaročila, total, potrjeno"
+        $Narocila = parent::query("SELECT idNaročila, total, potrjeno, preklicano"
                         . " FROM Naročilo"
                         . " WHERE idStranke = :idStranke", $idStranke);
         

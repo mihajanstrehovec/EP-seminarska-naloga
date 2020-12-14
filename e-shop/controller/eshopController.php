@@ -207,20 +207,8 @@ class eshopController {
 
         $ArtikliInfo = [[]];
 
-        for($i = 0; $i < count($Artikli); $i++){
-            if($Artikli[$i] != NULL){ 
-                for($l = 0; $l < count($Artikli[$i]); $l++){   
-                    #$id["idArtikla"] = $Artikli[$i]["idArtiklaForeign"];
-                    
-                    $idArtikla["idArtikla"] = $Artikli[$i][$l]["idArtiklaForeign"];
-                    #exit();
-                    array_push($ArtikliInfo[$i], eshopDB::getArtikelCompressed($idArtikla));
-                }
-                #var_dump($ArtikliInfo[0]);
-                #exit();
-            }
-        }
-        var_dump($narocila[0]);
+        
+        #var_dump($narocila[1]);
         #var_dump($narocila[0]);
         #echo("HALLLLLLLLLLLLLLLLLLLLl");
         #var_dump($ArtikliInfo[0]);
@@ -231,7 +219,7 @@ class eshopController {
         #$preklicanaNarocila = eshopDB::preklicanaNarocila($idStranke);
         #$storniranaNarocila = eshopDB::storniranaNarocila($idStranke);
         
-        echo ViewHelper::renderNarocila("view/layout.php", "view/mojaNarocila.php", $narocila, ["imenaNarocil" => $ArtikliInfo]);
+        echo ViewHelper::renderNarocila("view/layout.php", "view/mojaNarocila.php", ["narocila" => $narocila], ["imenaNarocil" => $ArtikliInfo]);
         
         
         
