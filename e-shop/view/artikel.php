@@ -1,4 +1,7 @@
+<?php 
 
+#var_dump($_SESSION);
+?>
 
 <?php
 require_once 'db_files/db_artikel.php';

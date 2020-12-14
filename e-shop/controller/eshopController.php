@@ -343,6 +343,8 @@ class eshopController {
        
 
         if($data["gesloStranke"] == $Stranka[0]["gesloStranke"]){
+            session_destroy();
+            session_regenerate_id();
             session_start();
             $_SESSION["mailStranke"] = $data["mailStranke"];
             $_SESSION["tipUporabnika"] = "stranka";

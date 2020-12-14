@@ -1,5 +1,7 @@
 
 <?php
+
+
     #var_dump($imenaNarocil);
     #exit();
     require_once("model/eshopDB.php");
@@ -30,8 +32,8 @@
                     <?php  foreach ($narocila as $narocilo): ?>
                        <?php for($i = 0; $i < count($narocilo); $i++):?>
                             <?php if($narocilo[$i]["potrjeno"] == 0):?>
-                                <h6>ID naročila: <?= $narocilo[$i]["idNaročila"]?></h6>
-                                IZDELKI: 
+                                <h5><b>ID naročila:</b> <?= $narocilo[$i]["idNaročila"]?></h5>
+                                <h6><b>IZDELKI: </b>
                                 <?php 
                 
                                     $id["idNarocila"] = $narocilo[$i]["idNaročila"];
@@ -50,8 +52,8 @@
                                     
                                     <?php endfor;?>
                             <?php endif;?>
-                            
-                            <h6>Končna cena: <?= $narocilo[$i]["total"] ?> </h6> 
+                            </h6>
+                            <h6><b>Končna cena:</b> <?= $narocilo[$i]["total"] ?> </h6> 
                             <hr class="mt-2 mb-3" style ="border-top: 1.6px solid rgba(0,0,0,.55)"/>
                        <?php endfor;?>
                        
@@ -73,8 +75,8 @@
                     <?php  foreach ($narocila as $narocilo): ?>
                        <?php for($i = 0; $i < count($narocilo); $i++):?>
                             <?php if($narocilo[$i]["potrjeno"] == 1):?>
-                                <h6>ID naročila: <?= $narocilo[$i]["idNaročila"]?></h6>
-                                IZDELKI:
+                                <h5><b>ID naročila:</b> <?= $narocilo[$i]["idNaročila"]?></h5>
+                                <h6><b>IZDELKI: </b>
                                 <?php 
                 
                                     $id["idNarocila"] = $narocilo[$i]["idNaročila"];
@@ -92,9 +94,10 @@
                                     <?= $Artikel["imeArtikla"] ?> (<?= $Artikli[$l]["kolicina"] ?>) 
                                     
                                     <?php endfor;?>
-                                    <h7>KONČNA CENA: <?= $narocilo[$i]["total"] ?> </h7> 
+                                    <h6><b>Končna cena:</b> <?= $narocilo[$i]["total"] ?> </h6> 
+                            <hr class="mt-2 mb-3" style ="border-top: 1.6px solid rgba(0,0,0,.55)"/>
                             <?php endif;?>
-                            
+                            </h6>
                             
                        <?php endfor;?>
                        
@@ -118,8 +121,8 @@
                     <?php  foreach ($narocila as $narocilo): ?>
                        <?php for($i = 0; $i < count($narocilo); $i++):?>
                             <?php if($narocilo[$i]["preklicano"] == 1):?>
-                                <h6>ID naročila: <?= $narocilo[$i]["idNaročila"]?></h6>
-                                IZDELKI: 
+                                <h5><b>ID naročila:</b> <?= $narocilo[$i]["idNaročila"]?></h5>
+                                <h6><b>IZDELKI: </b>
                                 <?php 
                 
                                     $id["idNarocila"] = $narocilo[$i]["idNaročila"];
@@ -137,9 +140,10 @@
                                     <?= $Artikel["imeArtikla"] ?> (<?= $Artikli[$l]["kolicina"] ?>) 
                                     
                                     <?php endfor;?>
-                                    <h7>KONČNA CENA: <?= $narocilo[$i]["total"] ?> </h7> 
+                                    <h6><b>Končna cena:</b> <?= $narocilo[$i]["total"] ?> </h6> 
+                            <hr class="mt-2 mb-3" style ="border-top: 1.6px solid rgba(0,0,0,.55)"/>
                             <?php endif;?>
-                            
+                            </h6>
                             
                        <?php endfor;?>
                        

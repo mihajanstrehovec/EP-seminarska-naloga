@@ -42,7 +42,7 @@ V vlogi administratorja imate lahko zgolj enega uporabnika, ki ga lahko kreirate
   - [-] Dodajanja in odstranjevanja artiklov v košarico ter spreminjanja količine v košarici;
    - [-] Zaključka nakupa. Tu se naj stranki prikaže povzetek kupljenih izdelkov s predračunom. Ko stranka naročilo potrdi, se to doda v čakalno vrsto neobdelanih naročil, kjer ga lahko v obravnavo prevzame Prodajalec.
 - [-] Dostop do seznama preteklih nakupov. Uporabnik lahko vidi vsa svoja pretekla naročila: oddana, potrjena, preklicana in stornirana.
-- [ ] Uporaba vmesnika Stranka je dovoljena le preko zavarovanega kanala. Odjemalca overite z uporabniškim imenom in geslom, ki naj bosta shranjena v SUPB.
+- [-] Uporaba vmesnika Stranka je dovoljena le preko zavarovanega kanala. Odjemalca overite z uporabniškim imenom in geslom, ki naj bosta shranjena v SUPB.
 
 
 ## SPLETNI VMESNIK | GOST
