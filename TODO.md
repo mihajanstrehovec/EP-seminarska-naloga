@@ -6,7 +6,7 @@ https://stackoverflow.com/questions/10097887/using-sessions-session-variables-in
 
 # OSNOVNE STORITVE
 
-## SPLETNI VMESNIK | ADMIN #Delamo potem, ko se nareita stranka in prodajalec
+## SPLETNI VMESNIK | ADMIN 
 - [ ] Prijavo in odjavo. Dostop je dovoljen le odjemalcem, ki se overijo s pomočjo certifikatov X.509;
 - [ ] Posodobitev lastnega gesla in ostalih atributov;
 - [-] Ustvarjanje, aktiviranje in deaktiviranje uporabniškega računa Prodajalec ter posodobitev njegovih atributov. (Deaktivirati nek podatkovni objekt pomeni, da deluje kot da bi bil izbrisan: denimo deaktiviran uporabnik se ne more prijaviti v sistem, vendar se njegovi podatki v sistemu še vedno nahajajo, deaktiviranega artikla ne prikažemo v prodajali in podobno. Takšno deaktivacijo imenujemo tudi "mehki izbris".)
@@ -15,8 +15,8 @@ https://stackoverflow.com/questions/10097887/using-sessions-session-variables-in
 
 V vlogi administratorja imate lahko zgolj enega uplahkorabnika, ki ga lahko kreirate ročno, denimo z uporabo določene skripte, vmesnika phpmyadmin in podobno.
 
-## SPLETNI VMESNIK | PRODAJALEC #Ami
-- [ ] OVERJANJE S CERTIFIKATOM
+## SPLETNI VMESNIK | PRODAJALEC 
+- [-] OVERJANJE S CERTIFIKATOM
 - [-] Prijavo in odjavo.
 - [-] Posodobitev lastnega gesla in ostalih atributov;
 - [-] Obdelavo naročil. Slednje obsega:
