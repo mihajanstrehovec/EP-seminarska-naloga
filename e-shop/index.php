@@ -4,6 +4,8 @@
 session_start();
 
 require_once("controller/eshopController.php");
+require_once("controller/prodajalecController.php");
+require_once("controller/strankaController.php");
 
 define("BASE_URL", $_SERVER["SCRIPT_NAME"] . "/");
 define("IMAGES_URL", rtrim($_SERVER["SCRIPT_NAME"], "index.php") . "static/images/");
@@ -33,34 +35,37 @@ $urls = [
     },
     "artikel/dodaj" => function () {
         if ($_SERVER["REQUEST_METHOD"] == "POST") {
-            eshopController::add();
+            prodajalecController::add();
         } else {
-            eshopController::addForm();
+            prodajalecController::addForm();
         }
     },
     "uporabnik/registracija" => function () {
         if ($_SERVER["REQUEST_METHOD"] == "POST") {
-            eshopController::registracijaSubmit();
+            strankaController::registracijaSubmit();
         } else {
-            eshopController::registracijaForm();
+            strankaController::registracijaForm();
         }
     },
     "uporabnik/vpis" => function () {
         if ($_SERVER["REQUEST_METHOD"] == "POST") {
-            eshopController::vpisSubmit();
+            strankaController::vpisSubmit();
         } else {
-            eshopController::vpisForm();
+            strankaController::vpisForm();
         }
     },
     "artikel/uredi" => function () {
         if ($_SERVER["REQUEST_METHOD"] == "POST") {
-            eshopController::edit();
+            prodajalecController::edit();
         } else {
-            eshopController::editForm();
+            prodajalecController::editForm();
         }
     },
     "artikel/izbrisi" => function () {
-        eshopController::delete();
+        prodajalecController::deaktiviraj();
+    },
+    "artikel/aktiviraj" => function () {
+        prodajalecController::aktiviraj();
     },
     "" => function () {
         ViewHelper::redirect(BASE_URL . "trgovina");
@@ -70,58 +75,58 @@ $urls = [
     },
     "profil" => function () {
         if ($_SERVER["REQUEST_METHOD"] == "POST") {
-            eshopController::editProfil();
+            strankaController::editProfil();
         } else {
-            eshopController::profil();
+            strankaController::profil();
         }
     },
     "izprazni" => function () {
         if ($_SERVER["REQUEST_METHOD"] == "POST") {
-            eshopController::dodajVkosarico();
+            strankaController::dodajVkosarico();
         } else {
-            eshopController::index();
+            strankaController::index();
         }
     },
     "zakljucekNakupa" => function () {
         if ($_SERVER["REQUEST_METHOD"] == "POST") {
-            eshopController::oddajNarocilo();
+            strankaController::oddajNarocilo();
         } else {
-            eshopController::zakljucekNakupa();
+            strankaController::zakljucekNakupa();
         }
     },
     "profil/narocila" => function () {
         if ($_SERVER["REQUEST_METHOD"] == "POST") {
-            eshopController::oddajNarocilo();
+            strankaController::oddajNarocilo();
         } else {
-            eshopController::mojaNarocila();
+            strankaController::mojaNarocila();
         }
     },
     "prodajalec/narocila" => function () {
         if ($_SERVER["REQUEST_METHOD"] == "POST") {
-            eshopController::prodajalecNarocilaEdit();
+            prodajalecController::prodajalecNarocilaEdit();
         } else {
-            eshopController::prodajalecNarocila();
+            prodajalecController::prodajalecNarocila();
         }
     },
     "prodajalec/stranke" => function () {
         if ($_SERVER["REQUEST_METHOD"] == "POST") {
-            eshopController::prodajalecStrankeEdit();
+            prodajalecController::prodajalecStrankeEdit();
         } else {
-            eshopController::prodajalecStranke();
+            prodajalecController::prodajalecStranke();
         }
     },
     "prodajalec/vpis" => function () {
         if ($_SERVER["REQUEST_METHOD"] == "POST") {
-            eshopController::prodajalecVpisSubmit();
+            prodajalecController::prodajalecVpisSubmit();
         } else {
-            eshopController::prodajalecVpis();
+            prodajalecController::prodajalecVpis();
         }
     },
     "prodajalec/profil" => function () {
         if ($_SERVER["REQUEST_METHOD"] == "POST") {
-            eshopController::prodajalecProfilSubmit();
+            prodajalecController::prodajalecProfilSubmit();
         } else {
-            eshopController::prodajalecProfil();
+            prodajalecController::prodajalecProfil();
         }
     }
 ];

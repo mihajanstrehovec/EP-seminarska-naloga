@@ -50,12 +50,24 @@ require_once 'db_files/db_artikel.php';
                 
                 <div class ="row no-gutters justify-content-center dodVkos">
                     
-                    <button form = "urediArtikel" type="submit" class="btn btn-light dodajVKos">POTRDI SPREMEMBE</button>
-                    <form action="<?= BASE_URL . "artikel/izbrisi" ?>" method="post" style="margin-top:1.5vh;">
-                        <input type="hidden" name="idArtikla" value="<?= $Artikel["idArtikla"] ?>"  />
-                        <label style ="color: red;">Delete? <input type="checkbox" name="delete_confirmation" /></label>
-                        <button type="submit" class="btn btn-danger">Delete record</button>
-                    </form>
+                    <?php if($Artikel["aktiviran"] == 1):?>
+
+                        <button form = "urediArtikel" type="submit" class="btn btn-light dodajVKos">POTRDI SPREMEMBE</button>
+                        <form action="<?= BASE_URL . "artikel/izbrisi" ?>" method="post" style="margin-top:1.5vh;">
+                            <input type="hidden" name="idArtikla" value="<?= $Artikel["idArtikla"] ?>"  />
+                            <label class = "text-danger">Deaktiviraj? <input type="checkbox" name="delete_confirmation" /></label>
+                            <button type="submit" class="btn btn-danger">Deaktiviraj artikel</button>
+                        </form>
+
+                    <?php elseif($Artikel["aktiviran"] == 0):?>
+
+                        <form action="<?= BASE_URL . "artikel/aktiviraj" ?>" method="post" style="margin-top:1.5vh;">
+                            <input type="hidden" name="idArtikla" value="<?= $Artikel["idArtikla"] ?>"  />
+                            <label class = "text-success">Aktiviraj? <input type="checkbox" name="delete_confirmation" /></label>
+                            <button type="submit" class="btn btn-success">Aktiviraj artikel</button>
+                        </form>
+
+                    <?php endif;?>
 
                     
             </div> 
