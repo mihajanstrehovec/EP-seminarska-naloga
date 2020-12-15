@@ -144,6 +144,13 @@ $urls = [
             prodajalecController::urediStranko();
         }
     },
+    "admin/prijava" => function () {
+        if ($_SERVER["REQUEST_METHOD"] == "POST") {
+            adminController::adminPrijavaSubmit();
+        } else {
+            adminController::adminPrijavaForm();
+        }
+    },
     "admin/prodajalec/uredi" => function () {
         if ($_SERVER["REQUEST_METHOD"] == "POST") {
             adminController::urediProdajalcaSubmit();
@@ -163,6 +170,13 @@ $urls = [
             adminController::seznamProdajalcevEdit();
         } else {
             adminController::seznamProdajalcev();
+        }
+    },
+    "admin/spremeni-geslo" => function () {
+        if ($_SERVER["REQUEST_METHOD"] == "POST") {
+            adminController::spremeniGesloSubmit();
+        } else {
+            adminController::spremeniGeslo();
         }
     }
 ];

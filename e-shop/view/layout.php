@@ -29,10 +29,24 @@ require_once 'db_files/db_artikel.php';
     <div class="collapse navbar-collapse" id="navbarResponsive">
       <ul class="navbar-nav ml-auto">
         <li class="nav-item active">
+
+        <?php if($_SESSION["tipUporabnika"] == "admin") :?> <!-- PRODAJALEC MENI -->
         <li class="nav-item">
             <a class="navbar-brand" href ="<?= BASE_URL . "/admin/prodajalci" ?>"> PRODAJALCI</a>
           </li>
-        <?php if($_SESSION["tipUporabnika"] == "prodajalec") :?> <!-- PRODAJALEC MENI -->
+
+        <li class="nav-item">
+            <a class="navbar-brand" href ="<?= BASE_URL . "admin/spremeni-geslo" ?>"> NASTAVITVE </a>
+        </li>
+
+        <li class="nav-item">
+            <a class="navbar-brand" href ="<?= BASE_URL . "izpisi" ?>"> IZPIS </a>
+        </li>
+       
+
+
+
+        <?php elseif($_SESSION["tipUporabnika"] == "prodajalec") :?> <!-- PRODAJALEC MENI -->
 
           <li class="nav-item">
             <a class="navbar-brand" href ="<?= BASE_URL . "/artikel/dodaj" ?>"> DODAJ ARTIKEL</a>
@@ -89,7 +103,7 @@ require_once 'db_files/db_artikel.php';
           </li>
 
           <li class="nav-item">
-            <a class="navbar-brand" href ="<?= BASE_URL . "/prodajalec/vpis" ?>"> VPIS - PRODAJALEC </a>
+            <!--<a class="navbar-brand" href ="<?= BASE_URL . "/prodajalec/vpis" ?>" VPIS - PRODAJALEC </a>-->
           </li>
 
         <?php endif?>
