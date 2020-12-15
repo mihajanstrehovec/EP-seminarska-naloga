@@ -151,6 +151,11 @@ class eshopDB extends AbstractDB {
                         . " WHERE mailStranke = :mailStranke", $params); 
     }
 
+    public static function urediNaslov(array $params) {
+        return parent::modify("UPDATE Stranka SET ulica = :ulica, hisnaSt = :hisnaSt, postnaSt = :postnaSt, posta = :posta"
+                        . " WHERE mailStranke = :mailStranke", $params); 
+    }
+
     public static function urejanjeGeslaProdajalec(array $params) {
         return parent::modify("UPDATE Prodajalec SET geslo = :geslo"
                         . " WHERE uporabniskoIme = :uporabniskoIme", $params); 
