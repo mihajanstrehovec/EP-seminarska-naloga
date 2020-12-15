@@ -59,12 +59,12 @@ $url = filter_input(INPUT_SERVER, "PHP_SELF", FILTER_SANITIZE_SPECIAL_CHARS);
                 </div>
                 
 
-                <?php if($_SESSION["mailStranke"] == "prodajalec") :?>
-                <div class ="row no-gutters justify-content-center dodVkos">
-                    <a href ="<?= BASE_URL . "/artikel/uredi?idArtikla=" . $Artikel["idArtikla"]?>"> 
-                    <button type="button" class="btn btn-light dodajVKos">Uredi artikel</button>
-                    </a>
-                </div> 
+                <?php if($_SESSION["tipUporabnika"] == "prodajalec") :?>
+                    <div class ="row no-gutters justify-content-center dodVkos">
+                        <a href ="<?= BASE_URL . "/artikel/uredi?idArtikla=" . $Artikel["idArtikla"]?>"> 
+                        <button type="button" class="btn btn-light dodajVKos">Uredi artikel</button>
+                        </a>
+                    </div> 
                 <?php endif ?>
 
             

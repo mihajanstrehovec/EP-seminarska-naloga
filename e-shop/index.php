@@ -109,6 +109,20 @@ $urls = [
         } else {
             eshopController::prodajalecStranke();
         }
+    },
+    "prodajalec/vpis" => function () {
+        if ($_SERVER["REQUEST_METHOD"] == "POST") {
+            eshopController::prodajalecVpisSubmit();
+        } else {
+            eshopController::prodajalecVpis();
+        }
+    },
+    "prodajalec/profil" => function () {
+        if ($_SERVER["REQUEST_METHOD"] == "POST") {
+            eshopController::prodajalecProfilSubmit();
+        } else {
+            eshopController::prodajalecProfil();
+        }
     }
 ];
 

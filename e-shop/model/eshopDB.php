@@ -101,12 +101,14 @@ class eshopDB extends AbstractDB {
 
     public static function getStranka(array $mailStranke) {
         
-        $Stranka = parent::query("SELECT gesloStranke"
+        $Stranka = parent::query("SELECT gesloStranke, aktivirana"
                         . " FROM Stranka"
                         . " WHERE mailStranke = :mailStranke", $mailStranke);
         
         return($Stranka);
     }
+
+
 
     public static function getStrankaID(array $mailStranke) {
         
@@ -116,6 +118,8 @@ class eshopDB extends AbstractDB {
         
         return($Stranka);
     }
+
+
 
 
     public static function getAll() {
@@ -141,6 +145,16 @@ class eshopDB extends AbstractDB {
                         . " WHERE mailStranke = :mailStranke", $params); 
     }
 
+    public static function urejanjeGeslaProdajalec(array $params) {
+        return parent::modify("UPDATE Prodajalec SET geslo = :geslo"
+                        . " WHERE uporabniskoIme = :uporabniskoIme", $params); 
+    }
+
+    public static function urejanjeUporabniskegaImena(array $params) {
+        return parent::modify("UPDATE Prodajalec SET uporabniskoIme = :novoUporabniskoIme"
+                        . " WHERE uporabniskoIme = :uporabniskoIme", $params); 
+    }
+
     public static function urejanjeMaila(array $params) {
         return parent::modify("UPDATE Stranka SET mailStranke = :noviMailStranke"
                         . " WHERE mailStranke = :mailStranke", $params); 
@@ -153,10 +167,29 @@ class eshopDB extends AbstractDB {
                         . " VALUES (:uporabniskoIme,:eMail,:geslo)", $params);
     }
 
+    public static function getProdajalec(array $uporabniskoIme) {
+        
+        $Stranka = parent::query("SELECT geslo"
+                        . " FROM Prodajalec"
+                        . " WHERE uporabniskoIme = :uporabniskoIme", $uporabniskoIme);
+        
+        return($Stranka);
+    }
+
     public static function getStranke() {
         return parent::query("SELECT idStranke, imeStranke, priimekStranke, aktivirana"
                         . " FROM Stranka"
                         . " ORDER BY idStranke DESC");
+    }
+
+    public static function deaktivirajStranko(array $params) {
+        return parent::modify("UPDATE Stranka SET aktivirana = 0"
+                        . " WHERE idStranke = :idStranke", $params); 
+    }
+
+    public static function aktivirajStranko(array $params) {
+        return parent::modify("UPDATE Stranka SET aktivirana = 1"
+                        . " WHERE idStranke = :idStranke", $params); 
     }
 
 

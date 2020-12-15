@@ -15,6 +15,7 @@ require_once 'db_files/db_artikel.php';
 <link rel ="stylesheet" href ="<?= CSS_URL . "kosaricaStyle.css" ?>">
 <link rel ="stylesheet" href ="<?= CSS_URL . "zakljucek_nakupaStyle.css" ?>">
 <link rel ="stylesheet" href ="<?= CSS_URL . "moja_narocilaStyle.css" ?>">
+<link rel ="stylesheet" href ="<?= CSS_URL . "strankeStyle.css" ?>">
 
 <nav class="navbar navbar-expand-lg navbar-dark static-top">
   <div class="container">
@@ -28,41 +29,73 @@ require_once 'db_files/db_artikel.php';
     <div class="collapse navbar-collapse" id="navbarResponsive">
       <ul class="navbar-nav ml-auto">
         <li class="nav-item active">
+        
+        <?php if($_SESSION["tipUporabnika"] == "prodajalec") :?> <!-- PRODAJALEC MENI -->
           
-        <li class="nav-item">
-          <a class="navbar-brand" href ="<?= BASE_URL . "/prodajalec/narocila" ?>"> NAROČILA - PRODAJALEC </a>
-        </li>
-        
-        <li class="nav-item">
-          <a class="navbar-brand" href ="<?= BASE_URL . "/prodajalec/stranke" ?>"> STRANKE </a>
-        </li>
-        
-        <?php if($_SESSION["mailStranke"] == NULL) :?>
-        <li class="nav-item">
-          <a class="navbar-brand" href ="<?= BASE_URL . "/uporabnik/registracija" ?>"> REGISTRACIJA </a>
-        </li>
+          <li class="nav-item">
+            <a class="navbar-brand" href ="<?= BASE_URL . "/prodajalec/narocila" ?>"> NAROČILA</a>
+          </li>
 
-        <li class="nav-item">
-          <a class="navbar-brand" href ="<?= BASE_URL . "/uporabnik/vpis" ?>"> VPIS </a>
-        </li>
+          <li class="nav-item">
+            <a class="navbar-brand" href ="<?= BASE_URL . "/prodajalec/stranke" ?>"> STRANKE </a>
+          </li>
+
+          <li class="nav-item">
+            <a class="navbar-brand" href ="<?= BASE_URL . "/prodajalec/profil" ?>"> PROFIL </a>
+          </li>
+
+          <li class="nav-item">
+            <a class="navbar-brand" href ="<?= BASE_URL . "izpisi" ?>"> IZPIS </a>
+          </li>
+
+        
+        
+        
+        
+        
+        
+        
+        <?php elseif($_SESSION["tipUporabnika"] == "stranka") :?>
+          <li class="nav-item">
+            <a class="navbar-brand" href ="<?= BASE_URL . "profil/narocila" ?>"> MOJA NAROČILA </a>
+          </li>
+          
+          
+
+          <li class="nav-item">
+            <a class="navbar-brand" href ="<?= BASE_URL . "profil" ?>"> PROFIL </a>
+          </li>
+
+          <li class="nav-item">
+            <a class="navbar-brand" href ="<?= BASE_URL . "izpisi" ?>"> IZPIS </a>
+          </li>
+
+          
+        
+        <?php else:?>
+
+          <li class="nav-item">
+              <a class="navbar-brand" href ="<?= BASE_URL . "/uporabnik/registracija" ?>"> REGISTRACIJA </a>
+            </li>
+
+          <li class="nav-item">
+              <a class="navbar-brand" href ="<?= BASE_URL . "/uporabnik/vpis" ?>"> VPIS </a>
+          </li>
+
+          <li class="nav-item">
+            <a class="navbar-brand" href ="<?= BASE_URL . "/prodajalec/vpis" ?>"> VPIS - PRODAJALEC </a>
+          </li>
+
         <?php endif?>
 
-        <?php if($_SESSION["mailStranke"] != NULL) :?>
-        <li class="nav-item">
-          <a class="navbar-brand" href ="<?= BASE_URL . "profil/narocila" ?>"> MOJA NAROČILA </a>
-        </li>
-        <li class="nav-item">
-          <a class="navbar-brand" href ="<?= BASE_URL . "profil" ?>"> PROFIL </a>
-        </li>
-        <li class="nav-item">
-          <a class="navbar-brand" href ="<?= BASE_URL . "izpisi" ?>"> IZPIS </a>
-        </li>
-        <?php endif?>
+        
       </ul>
     </div>
     
   </div>
-  <a href ="<?= BASE_URL . "zakljucekNakupa" ?>"><button  id = "cartBtn" onmouseover ="showCart()" onmouseout = "hideCart()"><img src = "<?= IMAGES_URL . "shopping-cart.png"?>" width = "20px" height = "20px"></button></a>
+  <?php if($_SESSION["tipUporabnika"] == "stranka") :?>
+    <a href ="<?= BASE_URL . "zakljucekNakupa" ?>"><button  id = "cartBtn" onmouseover ="showCart()" onmouseout = "hideCart()"><img src = "<?= IMAGES_URL . "shopping-cart.png"?>" width = "20px" height = "20px"></button></a>
+  <?php endif?>
 </nav> 
 
 <?php

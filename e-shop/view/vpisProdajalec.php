@@ -11,9 +11,9 @@
     
         <div class ="registerVsebnik" style="padding-top: 3vh;">
 
-        <form action = "<?= BASE_URL . "uporabnik/vpis"?>" method = "POST">
+        <form action = "<?= BASE_URL . "prodajalec/vpis"?>" method = "POST">
             
-            <?php if($err ==  "Email naslov in geslo se ne ujemata") :?>
+            <?php if($err ==  "Uporabniško ime in geslo se ne ujemata") :?>
                     <div class = "form-row justify-content-center">
                         <h7 style ="color: red;" > <?= $err ?> </h7>
                     </div>
@@ -36,7 +36,7 @@
                 
                 
                 <div class ="col-lg-7">
-                    <input type = "text" name = "mailStranke" placeholder = "E-pošta" class = "form-control">
+                    <input type = "text" name = "uporabniskoIme" placeholder = "Uporabniško ime" class = "form-control">
                 </div>
   
             </div>
@@ -44,7 +44,7 @@
             <div class = "form-row justify-content-center" style = "margin-top: 3vh;">
                 
                 <div class ="col-lg-7">
-                    <input type = "password" name = "gesloStranke" placeholder = "Geslo" class = "form-control">
+                    <input type = "password" name = "geslo" placeholder = "Geslo" class = "form-control">
                 </div>
   
             </div>

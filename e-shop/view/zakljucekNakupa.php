@@ -1,5 +1,5 @@
 <?php
-#var_dump();
+#var_dump($_SESSION);
 
 $total = floatval($_SESSION['total']);
 ?>

@@ -162,7 +162,7 @@
                 <div class = "row">
                 <div class = "col-lg-12 overflow-auto narocila" 
                     style ="background-color: rgba(0,0,0,0); border-style: solid; border-width:1px; border-color: rgba(41, 43, 44, 1);
-                    box-shadow: 0px 0px 8px rgba(41, 43, 44, 0.4); height: 45vh">
+                    box-shadow: 0px 0px 8px rgba(41, 43, 44, 0.4); height: 45vh; margin-bottom: 9vh;">
                     <?php  foreach ($narocila as $narocilo): ?>
                        <?php for($i = 0; $i < count($narocilo); $i++):?>
                             <?php if($narocilo[$i]["stornirano"] == 1):?>

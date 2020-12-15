@@ -13,17 +13,18 @@ https://stackoverflow.com/questions/10097887/using-sessions-session-variables-in
 
 -> dodaj boolean atribut za preverjanje stanja aktivnosti, false ni aktiven in izdelka ne prikazujemo na strani, prodajalec se pa ne more prijavit.
 
-V vlogi administratorja imate lahko zgolj enega uporabnika, ki ga lahko kreirate ročno, denimo z uporabo določene skripte, vmesnika phpmyadmin in podobno.
+V vlogi administratorja imate lahko zgolj enega uplahkorabnika, ki ga lahko kreirate ročno, denimo z uporabo določene skripte, vmesnika phpmyadmin in podobno.
 
 ## SPLETNI VMESNIK | PRODAJALEC #Ami
-- [ ] Prijavo in odjavo. Dostop je dovoljen le odjemalcem, ki se overijo s pomočjo certifikatov X.509;
-- [ ] Posodobitev lastnega gesla in ostalih atributov;
+- [ ] OVERJANJE S CERTIFIKATOM
+- [-] Prijavo in odjavo.
+- [-] Posodobitev lastnega gesla in ostalih atributov;
 - [-] Obdelavo naročil. Slednje obsega:
   - [-] Pregled še neobdelanih naročil in njihovih postavk. Posamezno naročilo se prodajalcu prikaže šele, ko Stranka z nakupom zaključi;
   - [-] Potrjevanje ali preklic oddanih naročil;
   - [-] Ogled zgodovine potrjenih naročil in možnost storniranja potrjenih naročil.
 - [-] Ustvarjanje, aktiviranje in deaktiviranje artiklov in posodabljanje njihovih atributov. Pri obravnavi artiklov lahko upravljanje z zalogami izpustite. Z drugimi besedami -- v aplikaciji lahko vedno predpostavite, da je na zalogi dovolj artiklov;
-- [ ] Ustvarjanje, aktiviranje in deaktiviranje uporabniških računov tipa Stranka in posodabljanje njegovih atributov.
+- [-] Ustvarjanje, aktiviranje in deaktiviranje uporabniških računov tipa Stranka in posodabljanje njegovih atributov.
 
 
 <b>Razlaga statusa naročila:</b>
@@ -40,7 +41,7 @@ V vlogi administratorja imate lahko zgolj enega uporabnika, ki ga lahko kreirate
 - [-] Nakupovanje. To naj bo sestavljeno iz:
   - [-] Pregledovanja artiklov trgovine;
   - [-] Dodajanja in odstranjevanja artiklov v košarico ter spreminjanja količine v košarici;
-   - [-] Zaključka nakupa. Tu se naj stranki prikaže povzetek kupljenih izdelkov s predračunom. Ko stranka naročilo potrdi, se to doda v čakalno vrsto neobdelanih naročil, kjer ga lahko v obravnavo prevzame Prodajalec.
+  - [-] Zaključka nakupa. Tu se naj stranki prikaže povzetek kupljenih izdelkov s predračunom. Ko stranka naročilo potrdi, se to doda v čakalno vrsto neobdelanih naročil, kjer ga lahko v obravnavo prevzame Prodajalec.
 - [-] Dostop do seznama preteklih nakupov. Uporabnik lahko vidi vsa svoja pretekla naročila: oddana, potrjena, preklicana in stornirana.
 - [-] Uporaba vmesnika Stranka je dovoljena le preko zavarovanega kanala. Odjemalca overite z uporabniškim imenom in geslom, ki naj bosta shranjena v SUPB.
 
