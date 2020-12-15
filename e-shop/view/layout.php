@@ -29,7 +29,9 @@ require_once 'db_files/db_artikel.php';
     <div class="collapse navbar-collapse" id="navbarResponsive">
       <ul class="navbar-nav ml-auto">
         <li class="nav-item active">
-        
+        <li class="nav-item">
+            <a class="navbar-brand" href ="<?= BASE_URL . "/admin/prodajalci" ?>"> PRODAJALCI</a>
+          </li>
         <?php if($_SESSION["tipUporabnika"] == "prodajalec") :?> <!-- PRODAJALEC MENI -->
 
           <li class="nav-item">

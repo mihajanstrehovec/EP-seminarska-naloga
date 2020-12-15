@@ -6,6 +6,7 @@ session_start();
 require_once("controller/eshopController.php");
 require_once("controller/prodajalecController.php");
 require_once("controller/strankaController.php");
+require_once("controller/adminController.php");
 
 define("BASE_URL", $_SERVER["SCRIPT_NAME"] . "/");
 define("IMAGES_URL", rtrim($_SERVER["SCRIPT_NAME"], "index.php") . "static/images/");
@@ -80,6 +81,13 @@ $urls = [
             strankaController::profil();
         }
     },
+    "profil/posodobiNaslov" => function () {
+        if ($_SERVER["REQUEST_METHOD"] == "POST") {
+            strankaController::editProfilNaslov();
+        } else {
+            strankaController::index();
+        }
+    },
     "izprazni" => function () {
         if ($_SERVER["REQUEST_METHOD"] == "POST") {
             strankaController::dodajVkosarico();
@@ -127,6 +135,27 @@ $urls = [
             prodajalecController::prodajalecProfilSubmit();
         } else {
             prodajalecController::prodajalecProfil();
+        }
+    },
+    "admin/prodajalec/uredi" => function () {
+        if ($_SERVER["REQUEST_METHOD"] == "POST") {
+            adminController::urediProdajalcaSubmit();
+        } else {
+            adminController::urediProdajalcaForm();
+        }
+    },
+    "admin/prodajalec/ustvari" => function () {
+        if ($_SERVER["REQUEST_METHOD"] == "POST") {
+            adminController::ustvariProdajalcaSubmit();
+        } else {
+            adminController::ustvariProdajalcaForm();
+        }
+    },
+    "admin/prodajalci" => function () {
+        if ($_SERVER["REQUEST_METHOD"] == "POST") {
+            adminController::seznamProdajalcevEdit();
+        } else {
+            adminController::seznamProdajalcev();
         }
     }
 ];

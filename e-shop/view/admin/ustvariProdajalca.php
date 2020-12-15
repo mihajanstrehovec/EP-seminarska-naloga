@@ -6,7 +6,7 @@
        
         <div class = col-lg-6>
         <div class ="titleRegister" align ="center" style ="padding-top: 0.4vh;">
-            <h4 style ="font-weight: 600;">REGISTRACIJA</h4>
+            <h4 style ="font-weight: 600;">USTVARI PRODAJALCA</h4>
         </div>
     
         <div class ="registerVsebnik" style="padding: 60px;">
@@ -37,9 +37,8 @@
   
             </div>
             
-            
             <div class = "form-row" style = "margin-top: 3vh;">
-           
+                
                 <div class ="col">
                     <input type = "password" name = "gesloStranke" placeholder = "Geslo" class = "form-control">
                 </div>
@@ -56,33 +55,10 @@
             <div class = "form-row">
                 
                 <div class ="col">
-                    <input type = "password" name = "gesloPonovi" placeholder = "Ponovite geslo" class = "form-control"
-                    style = "margin-bottom: 1vh;">
+                    <input type = "password" name = "gesloPonovi" placeholder = "Ponovite geslo" class = "form-control">
                 </div>
 
             </div>
-           Naslov 
-            <div class = "form-row">
-                <div class ="col-lg-9">
-                    
-                    <input type = "text" name = "ulica" placeholder = "Ulica" class = "form-control">
-                </div>
-                <div class ="col-lg-3">
-                    <input type = "number" name = "hisnaSt" placeholder = "Št" class = "form-control">
-                </div>
-            </div>
-
-            <div class = "form-row">
-                <div class ="col-lg-9">
-                    
-                    <input type = "text" name = "posta" placeholder = "Pošta" class = "form-control">
-                </div>
-                <div class ="col-lg-3">
-                    <input type = "number" name = "postnaSt" placeholder = "Št" class = "form-control">
-                </div>
-            </div>
-
-
 
             <div class = "form-row justify-content-center">
                 <div class = "col-lg-6" allign ="center">
@@ -90,8 +66,6 @@
                     style = "margin-top: 3vh; background-color: rgba(89,145,144,1); color: white;">REGISTRACIJA</button>
                 </div>
             </div>
-
-            
         
         </form> 
             

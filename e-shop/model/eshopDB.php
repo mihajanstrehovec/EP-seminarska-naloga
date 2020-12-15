@@ -142,8 +142,8 @@ class eshopDB extends AbstractDB {
     }
 
     public static function ustvariStranko(array $params) {
-        return parent::modify("INSERT INTO Stranka (imeStranke, priimekStranke, mailStranke, gesloStranke) "
-                        . " VALUES (:imeStranke, :priimekStranke, :mailStranke, :gesloStranke)", $params);
+        return parent::modify("INSERT INTO Stranka (imeStranke, priimekStranke, mailStranke, gesloStranke, ulica, posta, postnaSt, hisnaSt) "
+                        . " VALUES (:imeStranke, :priimekStranke, :mailStranke, :gesloStranke, :ulica, :posta, :postnaSt, :hisnaSt)", $params);
     }
 
     public static function urejanjeGesla(array $params) {
@@ -198,5 +198,42 @@ class eshopDB extends AbstractDB {
                         . " WHERE idStranke = :idStranke", $params); 
     }
 
+
+    // ADMIN SHIT
+
+    public static function getProdajalci() {
+        return parent::query("SELECT idProdajalca, uporabniskoIme, eMail, aktiviran"
+                            . " FROM Prodajalec"
+                            . " ORDER BY idProdajalca DESC");
+    }
+
+    public static function deaktivirajProdajalca(array $params) {
+        return parent::modify("UPDATE Prodajalec SET aktiviran = 0"
+                        . " WHERE idProdajalca = :idProdajalca", $params); 
+    }
+
+    public static function aktivirajProdajalca(array $params) {
+        return parent::modify("UPDATE Prodajalec SET aktiviran = 1"
+                        . " WHERE idProdajalca = :idProdajalca", $params); 
+    }
+
+    public static function urejanjeUporabniskegaImenaP(array $params) {
+        return parent::modify("UPDATE Prodajalec SET uporabniskoIme = :ime"
+                        . " WHERE idProdajalca = :id", $params); 
+    }
+
+    public static function getProdajalecByID(array $id) {
+        
+        $Stranka = parent::query("SELECT geslo"
+                        . " FROM Prodajalec"
+                        . " WHERE idProdajalca = :idProdajalca", $id);
+        
+        return($Stranka);
+    }
+
+    public static function urejanjeGeslaProdajalecID(array $params) {
+        return parent::modify("UPDATE Prodajalec SET geslo = :geslo"
+                        . " WHERE idProdajalca = :idProdajalca", $params); 
+    }
 
 }

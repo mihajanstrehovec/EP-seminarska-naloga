@@ -187,6 +187,10 @@ public static function dodajVkosarico() {
         "geslo" => "",
         "ime" => "",
         "priimek" => "",
+        "hisnaSt" => "",
+        "ulica" => "",
+        "posta" => "",
+        "postnaSt" => "",
     ]) {
         $err = "";
         echo ViewHelper::renderRegError("view/layout.php", "view/stranka/register.php", $values, $err);
@@ -195,7 +199,8 @@ public static function dodajVkosarico() {
     public static function registracijaSubmit() {
         $data = filter_input_array(INPUT_POST, self::getRulesRegistracijaStranka());
 
-        var_dump($data);
+        #var_dump($data);
+        #exit();
         # Preverimo, če je email naslov ustrezen
         if(!filter_var($data['mailStranke'], FILTER_VALIDATE_EMAIL)){
            
@@ -366,6 +371,26 @@ public static function dodajVkosarico() {
      
     }
 
+    public static function editProfilNaslov() {
+        $data = filter_input_array(INPUT_POST, self::getRulesRegistracijaStranka());
+
+        #var_dump($data);
+        #exit();
+        # Preverimo, če je email naslov ustrezen
+       
+        
+        
+        if (self::checkValues($data)) {
+            
+            eshopDB::urediNaslov($data);
+            
+            echo ViewHelper::redirect(BASE_URL. "trgovina");
+            
+        } else {
+            self::editProfil($data);
+        }
+    }
+
 
     /**
      * Returns TRUE if given $input array contains no FALSE values
@@ -440,6 +465,7 @@ public static function dodajVkosarico() {
             'uporabniskoIme' => FILTER_SANITIZE_SPECIAL_CHARS,
             'geslo' => FILTER_SANITIZE_SPECIAL_CHARS,
             
+            
             /*'year' => [
                 'filter' => FILTER_VALIDATE_INT,
                 'options' => [
@@ -458,7 +484,10 @@ public static function dodajVkosarico() {
             'mailStranke' => FILTER_SANITIZE_EMAIL,
             'gesloStranke' => FILTER_SANITIZE_SPECIAL_CHARS,
             'gesloPonovi' => FILTER_SANITIZE_SPECIAL_CHARS,
-            
+            "hisnaSt" => FILTER_SANITIZE_SPECIAL_CHARS,
+            "ulica" => FILTER_SANITIZE_SPECIAL_CHARS,
+            "posta" => FILTER_SANITIZE_SPECIAL_CHARS,
+            "postnaSt" => FILTER_VALIDATE_INT,
             
             /*'year' => [
                 'filter' => FILTER_VALIDATE_INT,

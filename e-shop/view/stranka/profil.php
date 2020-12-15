@@ -14,28 +14,30 @@
                 <h4 style ="font-weight: 600;">PROFIL</h4>
             </div>
     
-            <div class ="profilVsebnik" style="padding: 7%;">
+            <div class ="profilVsebnik overflow-auto" style="padding: 7%;">
             
                 <form action = "<?= BASE_URL . "profil" ?>" method = "POST">
-                
+                Sprememba gesla
                 <div class ="form-group ">
-                        <label for = "gesloStranke">Sprememba gesla</label>
-                        
+                       
+                       
                         <?php if($err ==  "Vnešeno geslo je napačno") :?>
                             <div class = "form-row">
                                 <h7 style ="color: red;" > <?= $err ?> </h7>
                             </div>
                         <?php endif;?>
-                        
-                        <div class = "col-lg-5">
 
-                            <input type = "password" class ="form-control" name = "trenutnoGeslo" id ="gesloStranke" placeholder = "Vpišite trenutno geslo">
+                        <div class = "form-row">
+                            <div class = "col-lg-5" style = "padding:0px;">
+
+                                <input type = "password" class ="form-control" name = "trenutnoGeslo" id ="gesloStranke" placeholder = "Vpišite trenutno geslo" style = "margin-left: 0px;important">
+                            </div>
                         </div>
-                        
                        
-                        
-                        <div class = "col-lg-5" style ="margin-top: 1vh;">
-                            <input type = "password" class = "form-control" name = "gesloStranke" placeholder = "Vpišite novo geslo">
+                        <div class = "form-row">
+                            <div class = "col-lg-5" style ="margin-top: 1vh; padding:0px;">
+                                <input type = "password" class = "form-control" name = "gesloStranke" placeholder = "Vpišite novo geslo">
+                            </div>
                         </div>
                         <button type = "submit" class ="btn my-4" 
                         style ="background-color: rgba(89,145,144,1); color: white; ">
@@ -48,25 +50,65 @@
 
                 </form>
 
+            
+
+                Posodobitev naslova
                 <form action = "<?= BASE_URL . "profil" ?>" method = "POST">
-
-                <div class ="form-row justify-content-center" style = "margin-top: 4vh;">
-                    
-                        <label for = "mailStranke">Sprememba e-pošte</label>
-                            <div class = "col-lg-5">
-                        <input type = "text" class = "form-control" name = "mailStranke"  placeholder = "Vpišite nov epoštni naslov" style ="margin-left: 20px;">
+                    <div class = "form-row">
+                        <div class = "col-lg-5">
+                            <input type = "text" class = "form-control" name = "mailStranke"  placeholder = "Vpišite nov epoštni naslov" >
                         </div>
+                    </div>
 
+
+                    <div class = "form-row">
                         <div class = "col-lg-2">
-                        <button type = "submit" class ="btn my-4" 
-                        style ="background-color: rgba(89,145,144,1); color: white; margin-top: 0px !important; margin-left: 40px;">
-                        Spremeni</button>
+                            <button type = "submit" class ="btn my-4" 
+                            style ="background-color: rgba(89,145,144,1); color: white; margin-top: 0px !important;">
+                            Spremeni</button>
                         </div>
-                </div>
+                    </div>
+                
+
+                </form>
+
+
+                Posodobitev naslova
+                <form action = "<?= BASE_URL . "profil/spremeniNaslov" ?>" method = "POST">
+
+                            <div class = "form-row">
+                                <div class ="col-lg-5">
+                                    
+                                    <input type = "text" name = "ulica" placeholder = "Ulica" class = "form-control">
+                                </div>
+                                <div class ="col-lg-2">
+                                    <input type = "number" name = "hisnaSt" placeholder = "Št" class = "form-control">
+                                </div>
+                            </div>
+
+                            <div class = "form-row">
+                                <div class ="col-lg-5">
+                                    
+                                    <input type = "text" name = "posta" placeholder = "Pošta" class = "form-control">
+                                </div>
+                                <div class ="col-lg-2">
+                                    <input type = "number" name = "postnaSt" placeholder = "Št" class = "form-control">
+                                </div>
+                            </div>
+
+
+
+                            <div class = "form-row ">
+                                <div class = "col-lg-2" allign ="center">
+                                    <button type = "submit" class = "btn my-4 btn-block waves-effect waves-light" 
+                                    style = "margin-top: 3vh; background-color: rgba(89,145,144,1); color: white;">SPREMENI</button>
+                                </div>
+                            </div>
 
                 
 
                 </form>
+        
         
             </div>
 

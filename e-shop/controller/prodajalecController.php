@@ -111,7 +111,7 @@ class prodajalecController {
         
        
         $data = filter_input_array(INPUT_POST, $rules);
-        #var_dump($data, $_SESSION);
+        #var_dump($data);
         #exit();
 
         
