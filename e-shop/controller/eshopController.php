@@ -143,7 +143,7 @@ class eshopController {
             #var_dump($Narocilo);
             #exit();
         
-        echo ViewHelper::render("view/layout.php", "view/zakljucekNakupa.php", ["Narocilo" => $Narocilo]);
+        echo ViewHelper::render("view/layout.php", "view/stranka/zakljucekNakupa.php", ["Narocilo" => $Narocilo]);
         
     
     }
@@ -219,7 +219,7 @@ class eshopController {
         #$preklicanaNarocila = eshopDB::preklicanaNarocila($idStranke);
         #$storniranaNarocila = eshopDB::storniranaNarocila($idStranke);
         
-        echo ViewHelper::renderNarocila("view/layout.php", "view/mojaNarocila.php", ["narocila" => $narocila], ["imenaNarocil" => $ArtikliInfo]);
+        echo ViewHelper::renderNarocila("view/layout.php", "view/stranka/mojaNarocila.php", ["narocila" => $narocila], ["imenaNarocil" => $ArtikliInfo]);
         
         
         
@@ -242,7 +242,7 @@ class eshopController {
         $ArtikliInfo = [[]];
 
         
-        echo ViewHelper::renderNarocila("view/layout.php", "view/narocilaProdajalec.php", ["narocila" => $narocila], ["imenaNarocil" => $ArtikliInfo]);
+        echo ViewHelper::renderNarocila("view/layout.php", "view/prodajalec/narocilaProdajalec.php", ["narocila" => $narocila], ["imenaNarocil" => $ArtikliInfo]);
         
         
         
@@ -281,7 +281,7 @@ class eshopController {
 
 
         
-        echo ViewHelper::render("view/layout.php", "view/prodajalecStranke.php", ["Stranke" => $Stranke]);
+        echo ViewHelper::render("view/layout.php", "view/prodajalec/prodajalecStranke.php", ["Stranke" => $Stranke]);
         
         
         
@@ -315,7 +315,7 @@ class eshopController {
     public static function prodajalecProfil() {
         
         
-        echo ViewHelper::render("view/layout.php", "view/profilProdajalec.php", ["Stranke" => $Stranke]);
+        echo ViewHelper::render("view/layout.php", "view/prodajalec/profilProdajalec.php", ["Stranke" => $Stranke]);
        
         
             
@@ -358,7 +358,7 @@ class eshopController {
             #exit();
             }else{
                 $err = "Vnešeno geslo je napačno";
-                echo ViewHelper::renderRegError("view/layout.php", "view/profilProdajalec.php", $values, $err);
+                echo ViewHelper::renderRegError("view/layout.php", "view/prodajalec/profilProdajalec.php", $values, $err);
             }
 
         }
@@ -394,7 +394,7 @@ class eshopController {
         "geslo" => "",
     ]) {
         $err = "";
-        echo ViewHelper::renderRegError("view/layout.php", "view/vpisProdajalec.php", $values, $err);
+        echo ViewHelper::renderRegError("view/layout.php", "view/prodajalec/vpisProdajalec.php", $values, $err);
     }
 
     public static function prodajalecVpisSubmit() {
@@ -427,7 +427,7 @@ class eshopController {
         
         }else{
             $err = "Uporabniško ime in geslo se ne ujemata";
-            echo ViewHelper::renderRegError("view/layout.php", "view/vpisProdajalec.php", $values, $err);
+            echo ViewHelper::renderRegError("view/layout.php", "view/prodajalec/vpisProdajalec.php", $values, $err);
         }
 
         
@@ -457,7 +457,7 @@ class eshopController {
         "kategorijaArtikla" => "",
         "zalogaArtikla" => "",
     ]) {
-        echo ViewHelper::render("view/layout.php", "view/dodajArtikel.php", $values);
+        echo ViewHelper::render("view/layout.php", "view/prodajalec/dodajArtikel.php", $values);
     }
 
     
@@ -490,7 +490,7 @@ class eshopController {
         "priimek" => "",
     ]) {
         $err = "";
-        echo ViewHelper::renderRegError("view/layout.php", "view/register.php", $values, $err);
+        echo ViewHelper::renderRegError("view/layout.php", "view/stranka/register.php", $values, $err);
     }
 
     public static function registracijaSubmit() {
@@ -501,7 +501,7 @@ class eshopController {
         if(!filter_var($data['mailStranke'], FILTER_VALIDATE_EMAIL)){
            
             $err = "Prosimo vnesite validen e-mail";
-            echo ViewHelper::renderRegError("view/layout.php", "view/register.php", $values, $err);
+            echo ViewHelper::renderRegError("view/layout.php", "view/stranka/register.php", $values, $err);
             
         }
         
@@ -509,7 +509,7 @@ class eshopController {
         else if($data["gesloStranke"] != $data["gesloPonovi"]){
             
             $err = "Gesli se ne ujemata";
-            echo ViewHelper::renderRegError("view/layout.php", "view/register.php", $values, $err);
+            echo ViewHelper::renderRegError("view/layout.php", "view/stranka/register.php", $values, $err);
            
         }
 
@@ -532,7 +532,7 @@ class eshopController {
         "gesloStranke" => "",
     ]) {
         $err = "";
-        echo ViewHelper::renderRegError("view/layout.php", "view/vpis.php", $values, $err);
+        echo ViewHelper::renderRegError("view/layout.php", "view/stranka/vpis.php", $values, $err);
     }
 
     public static function vpisSubmit() {
@@ -543,7 +543,7 @@ class eshopController {
         if(!filter_var($data['mailStranke'], FILTER_VALIDATE_EMAIL)){
            
             $err = "Email naslov in geslo se ne ujemata";
-            echo ViewHelper::renderRegError("view/layout.php", "view/vpis.php", $values, $err);
+            echo ViewHelper::renderRegError("view/layout.php", "view/stranka/vpis.php", $values, $err);
             
         }
         
@@ -574,13 +574,13 @@ class eshopController {
                 echo ViewHelper::redirect(BASE_URL. "trgovina"/*. "books?id=" . $id*/);
             }else{
                 $err = "Vaš račun je bil deaktiviran.";
-                echo ViewHelper::renderRegError("view/layout.php", "view/vpis.php", $values, $err);
+                echo ViewHelper::renderRegError("view/layout.php", "view/stranka/vpis.php", $values, $err);
             }
 
         exit();
         }else{
             $err = "Email naslov in geslo se ne ujemata";
-            echo ViewHelper::renderRegError("view/layout.php", "view/vpis.php", $values, $err);
+            echo ViewHelper::renderRegError("view/layout.php", "view/stranka/vpis.php", $values, $err);
         }
 
         
@@ -618,7 +618,7 @@ class eshopController {
             $Artikel = eshopDB::get($data);
         }
 
-        echo ViewHelper::render("view/layout.php", "view/urediArtikel.php", ["Artikel" => $Artikel]);
+        echo ViewHelper::render("view/layout.php", "view/prodajalec/urediArtikel.php", ["Artikel" => $Artikel]);
     }
 
     public static function edit() {
@@ -650,7 +650,7 @@ class eshopController {
     }
 
     public static function profil() {
-        echo ViewHelper::render("view/layout.php", "view/profil.php");
+        echo ViewHelper::render("view/layout.php", "view/stranka/profil.php");
     }
 
     public static function editProfil() {
@@ -689,7 +689,7 @@ class eshopController {
             exit();
             }else{
                 $err = "Vnešeno geslo je napačno";
-                echo ViewHelper::renderRegError("view/layout.php", "view/profil.php", $values, $err);
+                echo ViewHelper::renderRegError("view/layout.php", "view/stranka/profil.php", $values, $err);
             }
 
         }

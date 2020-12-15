@@ -45,6 +45,7 @@ $url = filter_input(INPUT_SERVER, "PHP_SELF", FILTER_SANITIZE_SPECIAL_CHARS);
                 <div class ="row no-gutters justify-content-center nakup">
                 <s style = "margin-right: 5px;">250€</s><?= $Artikel["cenaArtikla"]?>
                 </div>
+                <?php if($_SESSION["tipUporabnika"] == "stranka"): ?> 
                 <div class ="row no-gutters justify-content-center dodVkos">
                     <form action ="" method = "POST">
                         <input type="hidden" name="do" value="add_into_cart" />    
@@ -57,6 +58,7 @@ $url = filter_input(INPUT_SERVER, "PHP_SELF", FILTER_SANITIZE_SPECIAL_CHARS);
                     
                     </form>
                 </div>
+                <?php endif; ?>
                 
 
                 <?php if($_SESSION["tipUporabnika"] == "prodajalec") :?>

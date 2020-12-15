@@ -31,6 +31,10 @@ require_once 'db_files/db_artikel.php';
         <li class="nav-item active">
         
         <?php if($_SESSION["tipUporabnika"] == "prodajalec") :?> <!-- PRODAJALEC MENI -->
+
+          <li class="nav-item">
+            <a class="navbar-brand" href ="<?= BASE_URL . "/artikel/dodaj" ?>"> DODAJ ARTIKEL</a>
+          </li>
           
           <li class="nav-item">
             <a class="navbar-brand" href ="<?= BASE_URL . "/prodajalec/narocila" ?>"> NAROČILA</a>
