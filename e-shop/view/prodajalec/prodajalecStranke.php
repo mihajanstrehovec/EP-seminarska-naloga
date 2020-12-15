@@ -32,7 +32,13 @@
                     <div class = "row">
                         <b class = "atribute">Priimek:</b>  <?= $stranka["priimekStranke"] ?> 
                     </div>
-                    
+
+                    <div class = "row">
+                        <b class = "atribute">Naslov:</b>  <?= $stranka["ulica"] ?> <?= $stranka["hisnaSt"] ?>,  <?= $stranka["posta"] ?> <?= $stranka["postnaSt"] ?>
+                    </div>
+                    <a href = "<?= BASE_URL . "prodajalec/urediStranko?idStranke=".   $stranka["idStranke"] ?>">
+                      <button type = "submit" class = "btn btn-info" style ="width: 8vw; margin-left: 10%; margin-top: 3vh; height: 4vh;"> Uredi stranko </button>
+                    </a>
                     <?php if($stranka["aktivirana"] == 1): ?>
                         <form action = "" method = "POST">
                             <input type ="hidden" value = "<?= $stranka["idStranke"]?>" name = "idStranke">

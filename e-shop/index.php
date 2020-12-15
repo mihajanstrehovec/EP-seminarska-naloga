@@ -137,6 +137,13 @@ $urls = [
             prodajalecController::prodajalecProfil();
         }
     },
+    "prodajalec/urediStranko" => function () {
+        if ($_SERVER["REQUEST_METHOD"] == "POST") {
+            prodajalecController::urediStrankoSubmit();
+        } else {
+            prodajalecController::urediStranko();
+        }
+    },
     "admin/prodajalec/uredi" => function () {
         if ($_SERVER["REQUEST_METHOD"] == "POST") {
             adminController::urediProdajalcaSubmit();

@@ -195,13 +195,17 @@ class prodajalecController {
        
 
         if($data["geslo"] == $Prodajalec[0]["geslo"]){
-            
-                session_destroy();
-                session_regenerate_id();
-                session_start();
-                $_SESSION["prodajalec"] = $data["uporabniskoIme"];
-                $_SESSION["tipUporabnika"] = "prodajalec";
-                echo ViewHelper::redirect(BASE_URL. "trgovina"/*. "books?id=" . $id*/);
+                if($Prodajalec[0]["aktiviran"] == 1){
+                    session_destroy();
+                    session_regenerate_id();
+                    session_start();
+                    $_SESSION["prodajalec"] = $data["uporabniskoIme"];
+                    $_SESSION["tipUporabnika"] = "prodajalec";
+                    echo ViewHelper::redirect(BASE_URL. "trgovina"/*. "books?id=" . $id*/);
+                } else{
+                    $err = "Vaš račun je bil deaktiviran!";
+                    echo ViewHelper::renderRegError("view/layout.php", "view/prodajalec/vpisProdajalec.php", $values, $err);
+                }
            
 
         
@@ -351,6 +355,53 @@ class prodajalecController {
         ViewHelper::redirect($url);
     }
 
+
+    public static function urediStranko() {
+        echo ViewHelper::render("view/layout.php", "view/prodajalec/urediStranko.php");
+    }
+
+    public static function urediStrankoSubmit() {
+        $rules = self::getRulesEditProfil();
+        
+        
+   
+        
+        
+        
+       
+        $data = filter_input_array(INPUT_POST, $rules);
+        #var_dump($data["mailStranke"], $_SESSION);
+        #exit();
+
+        var_dump($data);
+       
+        
+        eshopDB::spremeniNaslovStranke($data);
+
+        echo ViewHelper::redirect(BASE_URL. "prodajalec/stranke");
+       
+     
+    }
+
+    public static function editProfilNaslov() {
+        $data = filter_input_array(INPUT_POST, self::getRulesRegistracijaStranka());
+
+        
+        # Preverimo, če je email naslov ustrezen
+       
+        $data["mailStranke"] = $_SESSION["mailStranke"];
+        
+        
+       
+            #var_dump($data);
+            #exit();
+        eshopDB::urediNaslov($data);
+            
+            echo ViewHelper::redirect(BASE_URL. "trgovina");
+            
+      
+    }
+
     /**
      * Returns TRUE if given $input array contains no FALSE values
      * @param type $input
@@ -442,6 +493,11 @@ class prodajalecController {
             'mailStranke' => FILTER_SANITIZE_EMAIL,
             'uporabniskoIme' => FILTER_SANITIZE_EMAIL,
             'geslo' => FILTER_SANITIZE_SPECIAL_CHARS,
+            "hisnaSt" => FILTER_SANITIZE_SPECIAL_CHARS,
+            "ulica" => FILTER_SANITIZE_SPECIAL_CHARS,
+            "posta" => FILTER_SANITIZE_SPECIAL_CHARS,
+            "postnaSt" => FILTER_VALIDATE_INT,
+            "idStranke" => FILTER_VALIDATE_INT,
             
             
             /*'year' => [
@@ -493,9 +549,36 @@ class prodajalecController {
     private static function getRulesUrediStranko() {
         return [
             'idStranke' => FILTER_VALIDATE_INT,
-            'ukaz' => FILTER_SANITIZE_SPECIAL_CHARS
+            'ukaz' => FILTER_SANITIZE_SPECIAL_CHARS,
+            "hisnaSt" => FILTER_SANITIZE_SPECIAL_CHARS,
+            "ulica" => FILTER_SANITIZE_SPECIAL_CHARS,
+            "posta" => FILTER_SANITIZE_SPECIAL_CHARS,
+            "postnaSt" => FILTER_VALIDATE_INT,
             
             
+            
+            /*'year' => [
+                'filter' => FILTER_VALIDATE_INT,
+                'options' => [
+                    'min_range' => 1800,
+                    'max_range' => date("Y")
+                ]
+            ]*/
+        ];
+   
+    }
+
+    private static function getRulesRegistracijaStranka() {
+        return [
+            'imeStranke' => FILTER_SANITIZE_SPECIAL_CHARS,
+            'priimekStranke' => FILTER_SANITIZE_SPECIAL_CHARS,
+            'mailStranke' => FILTER_SANITIZE_EMAIL,
+            'gesloStranke' => FILTER_SANITIZE_SPECIAL_CHARS,
+            'gesloPonovi' => FILTER_SANITIZE_SPECIAL_CHARS,
+            "hisnaSt" => FILTER_SANITIZE_SPECIAL_CHARS,
+            "ulica" => FILTER_SANITIZE_SPECIAL_CHARS,
+            "posta" => FILTER_SANITIZE_SPECIAL_CHARS,
+            "postnaSt" => FILTER_VALIDATE_INT,
             
             /*'year' => [
                 'filter' => FILTER_VALIDATE_INT,

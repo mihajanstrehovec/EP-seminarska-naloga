@@ -49,20 +49,20 @@
                 </form>
 
                 <form action = "" method = "POST">
-
-                <div class ="form-row justify-content-center" style = "margin-top: 4vh;">
+                Spremeni uporabniško ime:
+                
                         <input type = "hidden" name = "idProdajalca" value = "<?= INPUT_GET ?>">
-                        <label for = "mailStranke">Sprememba uporabniškega imena</label>
+                       
                             <div class = "col-lg-5">
-                        <input type = "text" class = "form-control" name = "uporabniskoIme"  placeholder = "Vpišite novo uporabniško ime" style ="margin-left: 20px;">
+                        <input type = "text" class = "form-control" name = "uporabniskoIme"  placeholder = "Vpišite novo uporabniško ime" >
                         </div>
 
                         <div class = "col-lg-2">
                         <button type = "submit" class ="btn my-4" 
-                        style ="background-color: rgba(89,145,144,1); color: white; margin-top: 0px !important; margin-left: 40px;">
+                        style ="background-color: rgba(89,145,144,1); color: white; margin-top: 0px !important; ">
                         Spremeni</button>
                         </div>
-                </div>
+                
 
                 
 

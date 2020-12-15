@@ -125,6 +125,15 @@ class eshopDB extends AbstractDB {
         return($Stranka);
     }
 
+    public static function getStrankaMail(array $idStranke) {
+        
+        $Stranka = parent::query("SELECT mailStranke"
+                        . " FROM Stranka"
+                        . " WHERE idStranke = :idStranke", $idStranke);
+        
+        return($Stranka);
+    }
+
 
 
 
@@ -156,6 +165,11 @@ class eshopDB extends AbstractDB {
                         . " WHERE mailStranke = :mailStranke", $params); 
     }
 
+    public static function spremeniNaslovStranke(array $params) {
+        return parent::modify("UPDATE Stranka SET ulica = :ulica, hisnaSt = :hisnaSt, postnaSt = :postnaSt, posta = :posta"
+                        . " WHERE idStranke = :idStranke", $params); 
+    }
+
     public static function urejanjeGeslaProdajalec(array $params) {
         return parent::modify("UPDATE Prodajalec SET geslo = :geslo"
                         . " WHERE uporabniskoIme = :uporabniskoIme", $params); 
@@ -180,7 +194,7 @@ class eshopDB extends AbstractDB {
 
     public static function getProdajalec(array $uporabniskoIme) {
         
-        $Stranka = parent::query("SELECT geslo"
+        $Stranka = parent::query("SELECT geslo, aktiviran"
                         . " FROM Prodajalec"
                         . " WHERE uporabniskoIme = :uporabniskoIme", $uporabniskoIme);
         
@@ -188,7 +202,7 @@ class eshopDB extends AbstractDB {
     }
 
     public static function getStranke() {
-        return parent::query("SELECT idStranke, imeStranke, priimekStranke, aktivirana"
+        return parent::query("SELECT idStranke, imeStranke, priimekStranke, aktivirana, ulica, hisnaSt, posta, postnaSt"
                         . " FROM Stranka"
                         . " ORDER BY idStranke DESC");
     }

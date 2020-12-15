@@ -374,21 +374,20 @@ public static function dodajVkosarico() {
     public static function editProfilNaslov() {
         $data = filter_input_array(INPUT_POST, self::getRulesRegistracijaStranka());
 
-        #var_dump($data);
-        #exit();
+        
         # Preverimo, če je email naslov ustrezen
        
+        $data["mailStranke"] = $_SESSION["mailStranke"];
         
         
-        if (self::checkValues($data)) {
-            
-            eshopDB::urediNaslov($data);
+       
+            #var_dump($data);
+            #exit();
+        eshopDB::urediNaslov($data);
             
             echo ViewHelper::redirect(BASE_URL. "trgovina");
             
-        } else {
-            self::editProfil($data);
-        }
+      
     }
 
 

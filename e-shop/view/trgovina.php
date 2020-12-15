@@ -30,19 +30,19 @@ require_once 'db_files/db_artikel.php';
             <?php if($_SESSION["tipUporabnika"] == "stranka" or $_SESSION["tipUporabnika"] == NULL):?>
                 <?php if($Artikel["aktiviran"] == 1):?>
                         <a href ="<?= BASE_URL . "/artikel?idArtikla=" . $Artikel["idArtikla"]?>"><div class ="item" >
-                        <div id ="prikaznoImeArtikla" style ="margin-top: 65%;color: white;"><?=  $Artikel["imeArtikla"] ?> <?= $Artikel["cenaArtikla"] ?> </div>
+                        <div id ="prikaznoImeArtikla" style ="margin-top: 65%;color: white;"><?=  $Artikel["imeArtikla"] ?> <br><?= $Artikel["cenaArtikla"] ?>€ </div>
                         </div></a>
                 <?php endif;?>
             <?php else:?>
                 <?php if($Artikel["aktiviran"] == 0):?>
                         <a href ="<?= BASE_URL . "/artikel?idArtikla=" . $Artikel["idArtikla"]?>"><div class ="item" style =" background-color: rgba(255, 0, 0, 0.4)!important;">
                         <div id ="prikaznoImeArtikla" style ="margin-top: 65%;color: white;">
-                            <?=  $Artikel["imeArtikla"] ?> <?= $Artikel["cenaArtikla"] ?> 
+                            <?=  $Artikel["imeArtikla"] ?> <br><?= $Artikel["cenaArtikla"] ?>€
                         </div>
                         </div></a>
                 <?php else:?>
                 <a href ="<?= BASE_URL . "/artikel?idArtikla=" . $Artikel["idArtikla"]?>"><div class ="item" >
-                        <div id ="prikaznoImeArtikla" style ="margin-top: 65%;color: white;"><?=  $Artikel["imeArtikla"] ?> <?= $Artikel["cenaArtikla"] ?> </div>
+                        <div id ="prikaznoImeArtikla" style ="margin-top: 65%;color: white;"><?=  $Artikel["imeArtikla"] ?> <br><?= $Artikel["cenaArtikla"] ?>€ </div>
                         </div></a>
                 <?php endif;?> 
             <?php endif;?>    

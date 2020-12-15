@@ -1,6 +1,6 @@
 
 <?php
-    var_dump($_SESSION);
+    #var_dump($_SESSION);
     #exit();
 ?>
 
@@ -74,7 +74,7 @@
 
 
                 Posodobitev naslova
-                <form action = "<?= BASE_URL . "profil/spremeniNaslov" ?>" method = "POST">
+                <form action = "<?= BASE_URL . "profil/posodobiNaslov" ?>" method = "POST">
 
                             <div class = "form-row">
                                 <div class ="col-lg-5">

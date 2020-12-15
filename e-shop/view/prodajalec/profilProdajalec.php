@@ -17,9 +17,9 @@
             <div class ="profilVsebnik" style="padding: 7%;">
             
                 <form action = "" method = "POST">
-                
+                Sprememba gesla:
                 <div class ="form-group ">
-                        <label for = "gesloStranke">Sprememba gesla</label>
+                        
                         
                         <?php if($err ==  "Vnešeno geslo je napačno") :?>
                             <div class = "form-row">
@@ -38,7 +38,7 @@
                             <input type = "password" class = "form-control" name = "geslo" placeholder = "Vpišite novo geslo">
                         </div>
                         <button type = "submit" class ="btn my-4" 
-                        style ="background-color: rgba(89,145,144,1); color: white; ">
+                        style ="background-color: rgba(89,145,144,1); color: white; margin: 0px;">
                         Spremeni</button>
                         
 
@@ -50,19 +50,19 @@
 
                 <form action = "" method = "POST">
 
-                <div class ="form-row justify-content-center" style = "margin-top: 4vh;">
+                
                     
-                        <label for = "mailStranke">Sprememba uporabniškega imena</label>
-                            <div class = "col-lg-5">
-                        <input type = "text" class = "form-control" name = "uporabniskoIme"  placeholder = "Vpišite novo uporabniško ime" style ="margin-left: 20px;">
+                        Sprememba uporabniškega imena:
+                        <div class = "col-lg-5">
+                            <input type = "text" class = "form-control" name = "uporabniskoIme"  placeholder = "Vpišite novo uporabniško ime" >
                         </div>
 
                         <div class = "col-lg-2">
                         <button type = "submit" class ="btn my-4" 
-                        style ="background-color: rgba(89,145,144,1); color: white; margin-top: 0px !important; margin-left: 40px;">
+                        style ="background-color: rgba(89,145,144,1); color: white; margin-top: 0px !important; ">
                         Spremeni</button>
                         </div>
-                </div>
+                
 
                 
 

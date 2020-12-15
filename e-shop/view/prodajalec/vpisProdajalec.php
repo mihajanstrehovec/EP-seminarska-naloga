@@ -26,7 +26,7 @@
                     </div>
             <?php endif;?>
 
-            <?php if($err ==  "Vaš račun je bil deaktiviran.") :?>
+            <?php if($err ==  "Vaš račun je bil deaktiviran!") :?>
                     <div class = "form-row form-row justify-content-center">
                         <h7 style ="color: red;"> <?= $err ?> </h7>
                     </div>
