@@ -16,6 +16,8 @@ require_once 'db_files/db_artikel.php';
 <link rel ="stylesheet" href ="<?= CSS_URL . "zakljucek_nakupaStyle.css" ?>">
 <link rel ="stylesheet" href ="<?= CSS_URL . "moja_narocilaStyle.css" ?>">
 <link rel ="stylesheet" href ="<?= CSS_URL . "strankeStyle.css" ?>">
+<link rel ="stylesheet" href ="<?= CSS_URL . "links.css" ?>">
+
 
 <nav class="navbar navbar-expand-lg navbar-dark static-top">
   <div class="container">

@@ -359,10 +359,9 @@ public static function dodajVkosarico() {
             $input["mailStranke"] = $_SESSION["mailStranke"];
             $input["noviMailStranke"] = $data["mailStranke"];
             
-
-           
+                    
                 eshopDB::urejanjeMaila($input);
-                
+                $_SESSION["mailStranke"] = $input["noviMailStranke"];   
                 #var_dump("JAJA");
                 ViewHelper::redirect(BASE_URL . "" );
 
@@ -389,8 +388,10 @@ public static function dodajVkosarico() {
             #var_dump($data);
             #exit();
         eshopDB::urediNaslov($data);
+
+      
             
-            echo ViewHelper::redirect(BASE_URL. "trgovina");
+        echo ViewHelper::redirect(BASE_URL. "trgovina");
             
       
     }

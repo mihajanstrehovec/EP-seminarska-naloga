@@ -47,9 +47,10 @@ h3{
     float: left;
     width: 20vw;
     height: 30vh;
-    background: rgb(218,224,224);
+    
     position: absolute;
     margin-top: 11.6vh;
+    
 }
 
 .kategorijeTitle{
