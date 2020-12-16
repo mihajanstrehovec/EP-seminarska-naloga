@@ -81,8 +81,8 @@
                     <input type = "number" name = "postnaSt" placeholder = "Št" class = "form-control">
                 </div>
             </div>
-
-
+               
+            
 
             <div class = "form-row justify-content-center">
                 <div class = "col-lg-6" allign ="center">
@@ -99,8 +99,5 @@
         </div>
         
     </div>
-</div
-
 </div>
-        
-       
+</div>

@@ -7,6 +7,7 @@ require_once("controller/eshopController.php");
 require_once("controller/prodajalecController.php");
 require_once("controller/strankaController.php");
 require_once("controller/adminController.php");
+require_once("controller/eShopRestControler.php");
 
 define("BASE_URL", $_SERVER["SCRIPT_NAME"] . "/");
 define("IMAGES_URL", rtrim($_SERVER["SCRIPT_NAME"], "index.php") . "static/images/");
@@ -164,6 +165,10 @@ $urls = [
         } else {
             adminController::seznamProdajalcev();
         }
+    },
+    //REST API
+    "api/artikli" => function () {
+        eShopRestControler::index();
     }
 ];
 
