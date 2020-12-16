@@ -185,12 +185,6 @@ class eshopDB extends AbstractDB {
                         . " WHERE mailStranke = :mailStranke", $params); 
     }
 
-    ##vse v zvezi s prodajalcem 
-    #ustvari prasico prodajalsko
-    public static function ustvariProdajalca(array $params) {
-        return parent::modify("INSERT INTO Prodajalec (uporabniskoime, eMail,geslo)"
-                        . " VALUES (:uporabniskoIme,:eMail,:geslo)", $params);
-    }
 
     public static function getProdajalec(array $uporabniskoIme) {
         
@@ -253,6 +247,38 @@ class eshopDB extends AbstractDB {
     public static function urejanjeGeslaProdajalecID(array $params) {
         return parent::modify("UPDATE Prodajalec SET geslo = :geslo"
                         . " WHERE idProdajalca = :idProdajalca", $params); 
+    }
+
+    public static function getAdmin(array $mailStranke) {
+        
+        $Stranka = parent::query("SELECT geslo"
+                        . " FROM Administrator"
+                        . " WHERE eMail = :eMail", $mailStranke);
+        
+        return($Stranka);
+    }
+
+    public static function getAdminID() {
+        
+        $Stranka = parent::query("SELECT geslo"
+                        . " FROM Administrator"
+                        . " WHERE idAdmin = 2");
+        
+        return($Stranka);
+    }
+
+
+    public static function urejanjeGeslaAdmin(array $input) {
+        
+        $Stranka = parent::modify("UPDATE Administrator SET geslo = :geslo"
+                        . " WHERE idAdmin = 2", $input);
+        
+        return($Stranka);
+    }
+
+    public static function ustvariProdajalca(array $params) {
+        return parent::modify("INSERT INTO Prodajalec (imeProdajalca, priimekProdajalca, eMail, geslo, uporabniskoIme) "
+                        . " VALUES (:imeProdajalca, :priimekProdajalca, :eMail, :geslo, :uporabniskoIme)", $params);
     }
 
 }

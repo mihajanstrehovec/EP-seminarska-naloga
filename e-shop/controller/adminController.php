@@ -63,10 +63,10 @@ class adminController {
             $Prodajalec = eshopDB::getProdajalecByID($input);
             
             
-            $input["geslo"] = $data["geslo"];
+            $input["geslo"] = password_hash($data["geslo"], PASSWORD_BCRYPT);
             
 
-            if($data["trenutnoGeslo"] == $Prodajalec[0]["geslo"]){
+            if(password_verify($data["trenutnoGeslo"], $Prodajalec[0]["geslo"])){
                 #$_SESSION["stranka"] = $data["mailStranke"];
                 eshopDB::urejanjeGeslaProdajalecID($input);
                 
@@ -104,12 +104,158 @@ class adminController {
         }
 
     }
+
+    public static function adminPrijavaForm($values = [
+        "eMail" => "",
+        "geslo" => "",
+    ]) {
+        $err = "";
+        echo ViewHelper::renderRegError("view/layout.php", "view/admin/vpisAdmin.php", $values, $err);
+    }
+
+    public static function adminPrijavaSubmit() {
+        $data = filter_input_array(INPUT_POST, self::getRulesRegistracija());
+
+
+        # Preverimo, če je email naslov ustrezen
+        if(!filter_var($data['eMail'], FILTER_VALIDATE_EMAIL)){
+           
+            $err = "Email naslov in geslo se ne ujemata";
+            echo ViewHelper::renderRegError("view/layout.php", "view/stranka/vpis.php", $values, $err);
+            
+        }
+        
+       
+     
+        #$mail = [$data["mailStranke"]];
+        $Admin = eshopDB::getAdmin($data);
+        #var_dump($Admin);
+        #exit();
+        
+       
+
+        if(password_verify($data["geslo"],$Admin[0]["geslo"])){
+           
+                session_destroy();
+                session_regenerate_id();
+                session_start();
+                
+                $_SESSION["tipUporabnika"] = "admin";
+                echo ViewHelper::redirect(BASE_URL. "trgovina");
+           
+
+        exit();
+        }else{
+            $err = "Email naslov in geslo se ne ujemata";
+            echo ViewHelper::renderRegError("view/layout.php", "view/admin/vpisAdmin.php", $values, $err);
+        }
+
+        
+        
+
+        
+      
+    }
+
+    public static function spremeniGeslo() {
+        echo ViewHelper::render("view/layout.php", "view/admin/profilAdmin.php");
+    }
+
+    public static function spremeniGesloSubmit() {
+        $rules = self::getRulesEditProfil();
+        
+        
+   
+        
+        
+        
+       
+        $data = filter_input_array(INPUT_POST, $rules);
+        #var_dump($data);
+        #exit();
+
+        $Admin = eshopDB::getAdminID();
+
+        #var_dump($data);
+        #exit();
+
+            
+        #$input["mailStranke"] = $_SESSION["mailStranke"];
+        $input["geslo"] = password_hash($data["geslo"], PASSWORD_BCRYPT);
+       
+        #var_dump($input);
+        #exit();
+        
+            #$mail = [$data["mailStranke"]];
+            
+            
+
+            if(password_verify($data["trenutnoGeslo"], $Admin[0]["geslo"])){
+                #$_SESSION["stranka"] = $data["mailStranke"];
+                eshopDB::urejanjeGeslaAdmin($input);
+                
+                #var_dump("JAJA");
+                ViewHelper::redirect(BASE_URL . "" );
+
+                exit();
+
+            exit();
+            }else{
+                $err = "Vpisano trenutno geslo je napačno";
+                echo ViewHelper::renderRegError("view/layout.php", "view/admin/profilAdmin.php", $values, $err);
+            }
+
+        
+
+
+
+       
+     
+    }
     
     public static function ustvariProdajalcaForm(){
+
+        echo ViewHelper::render("view/layout.php", "view/admin/ustvariProdajalca.php");
+
+       
+
+        
+    
         
     }
 
     public static function ustvariProdajalcaSubmit(){
+
+        $data = filter_input_array(INPUT_POST, self::getRulesRegistracija());
+
+        #var_dump($data);
+        #exit();
+       
+        if(!filter_var($data['eMail'], FILTER_VALIDATE_EMAIL)){
+           
+            $err = "Prosimo vnesite validen e-mail";
+            echo ViewHelper::renderRegError("view/layout.php", "view/admin/prodajalec/ustvari.php", $values, $err);
+            
+        }
+        
+         
+
+        # Preverimo, če se gesli ujemata
+        else if($data["geslo"] != $data["gesloPonovi"]){
+            
+            $err = "Gesli se ne ujemata";
+            echo ViewHelper::renderRegError("view/layout.php", "view/admin/prodajalec/ustvari.php", $values, $err);
+           
+        }
+
+        
+        
+        else{
+            $data["geslo"] = password_hash($data["geslo"], PASSWORD_BCRYPT);
+            $id = eshopDB::ustvariProdajalca($data);
+            
+            echo ViewHelper::redirect(BASE_URL. "trgovina");
+        }
         
     }
 
@@ -178,13 +324,14 @@ class adminController {
 
     private static function getRulesRegistracija() {
         return [
-            'imeStranke' => FILTER_SANITIZE_SPECIAL_CHARS,
-            'priimekStranke' => FILTER_SANITIZE_SPECIAL_CHARS,
-            'mailStranke' => FILTER_SANITIZE_EMAIL,
+            'imeProdajalca' => FILTER_SANITIZE_SPECIAL_CHARS,
+            'priimekProdajalca' => FILTER_SANITIZE_SPECIAL_CHARS,
+            'eMail' => FILTER_SANITIZE_EMAIL,
             'gesloStranke' => FILTER_SANITIZE_SPECIAL_CHARS,
             'gesloPonovi' => FILTER_SANITIZE_SPECIAL_CHARS,
             'uporabniskoIme' => FILTER_SANITIZE_SPECIAL_CHARS,
             'geslo' => FILTER_SANITIZE_SPECIAL_CHARS,
+            'eMail' => FILTER_SANITIZE_EMAIL,
             
             /*'year' => [
                 'filter' => FILTER_VALIDATE_INT,

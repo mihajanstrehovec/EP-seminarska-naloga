@@ -11,13 +11,13 @@
        
         
             <div class ="titleProfil" align ="center" style ="padding-top: 0.4vh;">
-                <h4 style ="font-weight: 600;">UREDI PRODAJALCA</h4>
+                <h4 style ="font-weight: 600;">UREDI PRODAJALCA - ID: <?= $_GET["idProdajalca"]?></h4>
             </div>
             
             <div class ="profilVsebnik" style="padding: 7%;">
             
                 <form action = "<?= BASE_URL . "admin/prodajalec/uredi"?>" method = "POST">
-                <input type = "hidden" name = "idProdajalca" value = "<?= INPUT_GET ?>">
+                <input type = "hidden" name = "idProdajalca" value = "<?= $_GET["idProdajalca"] ?>">
                 <div class ="form-group ">
                         <label for = "gesloStranke">Sprememba gesla</label>
                         

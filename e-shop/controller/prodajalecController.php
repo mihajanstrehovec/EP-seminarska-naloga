@@ -123,10 +123,10 @@ class prodajalecController {
             $Prodajalec = eshopDB::getProdajalec($input);
             
             
-            $input["geslo"] = $data["geslo"];
+            $input["geslo"] = password_hash($data["geslo"], PASSWORD_BCRYPT);
             
 
-            if($data["trenutnoGeslo"] == $Prodajalec[0]["geslo"]){
+            if(password_verify($data["trenutnoGeslo"], $Prodajalec[0]["geslo"])){
                 #$_SESSION["stranka"] = $data["mailStranke"];
                 eshopDB::urejanjeGeslaProdajalec($input);
                 
@@ -194,7 +194,7 @@ class prodajalecController {
         
        
 
-        if($data["geslo"] == $Prodajalec[0]["geslo"]){
+        if(password_verify($data["geslo"], $Prodajalec[0]["geslo"])){
                 if($Prodajalec[0]["aktiviran"] == 1){
                     session_destroy();
                     session_regenerate_id();
