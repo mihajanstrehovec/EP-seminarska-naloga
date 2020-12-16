@@ -220,6 +220,10 @@ public static function dodajVkosarico() {
         
         
         else if (self::checkValues($data)) {
+
+            $data["gesloStranke"] = password_hash($data["gesloStranke"], PASSWORD_BCRYPT);
+            #var_dump($data["gesloStranke"]);
+            #exit();
             
             $id = eshopDB::ustvariStranko($data);
             
@@ -264,11 +268,12 @@ public static function dodajVkosarico() {
         #$mail = [$data["mailStranke"]];
         $Stranka = eshopDB::getStranka($mail);
         #var_dump($Stranka);
+        #var_dump($password_hash($data["gesloStranke"], PASSWORD_BCRYPT));
         #exit();
         
        
 
-        if($data["gesloStranke"] == $Stranka[0]["gesloStranke"]){
+        if(password_verify($data["gesloStranke"], $Stranka[0]["gesloStranke"])){
             if($Stranka[0]["aktivirana"] == 1){
                 session_destroy();
                 session_regenerate_id();
@@ -327,10 +332,10 @@ public static function dodajVkosarico() {
             $Stranka = eshopDB::getStranka($_SESSION);
             
             $input["mailStranke"] = $_SESSION["mailStranke"];
-            $input["gesloStranke"] = $data["gesloStranke"];
+            $input["gesloStranke"] = password_hash($data["gesloStranke"], PASSWORD_BCRYPT);
             
 
-            if($data["trenutnoGeslo"] == $Stranka[0]["gesloStranke"]){
+            if(password_verify($data["trenutnoGeslo"], $Stranka[0]["gesloStranke"])){
                 #$_SESSION["stranka"] = $data["mailStranke"];
                 eshopDB::urejanjeGesla($input);
                 
@@ -498,6 +503,8 @@ public static function dodajVkosarico() {
         ];
    
     }
+
+    
 
     private static function getRulesEditProfil() {
         return [

@@ -3,6 +3,9 @@ require_once 'db_files/db_artikel.php';
 #session_start();
 #var_dump($_SESSION);
 #exit();
+
+#echo(password_hash("amazon", PASSWORD_BCRYPT));
+#exit();
 ?>
 
 

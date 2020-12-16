@@ -63,10 +63,10 @@ class adminController {
             $Prodajalec = eshopDB::getProdajalecByID($input);
             
             
-            $input["geslo"] = $data["geslo"];
+            $input["geslo"] = password_hash($data["geslo"], PASSWORD_BCRYPT);
             
 
-            if($data["trenutnoGeslo"] == $Prodajalec[0]["geslo"]){
+            if(password_verify($data["trenutnoGeslo"], $Prodajalec[0]["geslo"])){
                 #$_SESSION["stranka"] = $data["mailStranke"];
                 eshopDB::urejanjeGeslaProdajalecID($input);
                 
@@ -134,7 +134,7 @@ class adminController {
         
        
 
-        if($data["geslo"] == $Admin[0]["geslo"]){
+        if(password_verify($data["geslo"],$Admin[0]["geslo"])){
            
                 session_destroy();
                 session_regenerate_id();
@@ -181,7 +181,7 @@ class adminController {
 
             
         #$input["mailStranke"] = $_SESSION["mailStranke"];
-        $input["geslo"] = $data["geslo"];
+        $input["geslo"] = password_hash($data["geslo"], PASSWORD_BCRYPT);
        
         #var_dump($input);
         #exit();
@@ -190,7 +190,7 @@ class adminController {
             
             
 
-            if($data["trenutnoGeslo"] == $Admin[0]["geslo"]){
+            if(password_verify($data["trenutnoGeslo"], $Admin[0]["geslo"])){
                 #$_SESSION["stranka"] = $data["mailStranke"];
                 eshopDB::urejanjeGeslaAdmin($input);
                 
@@ -230,6 +230,7 @@ class adminController {
 
         #var_dump($data);
         #exit();
+       
         if(!filter_var($data['eMail'], FILTER_VALIDATE_EMAIL)){
            
             $err = "Prosimo vnesite validen e-mail";
@@ -237,6 +238,8 @@ class adminController {
             
         }
         
+         
+
         # Preverimo, če se gesli ujemata
         else if($data["geslo"] != $data["gesloPonovi"]){
             
@@ -248,7 +251,7 @@ class adminController {
         
         
         else{
-            
+            $data["geslo"] = password_hash($data["geslo"], PASSWORD_BCRYPT);
             $id = eshopDB::ustvariProdajalca($data);
             
             echo ViewHelper::redirect(BASE_URL. "trgovina");
