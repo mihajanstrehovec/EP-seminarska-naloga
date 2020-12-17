@@ -12,7 +12,11 @@
         <div class ="registerVsebnik" style="padding: 60px;">
 
         <form action = "<?= BASE_URL . "uporabnik/registracija"?>" method = "POST">
-            
+            <?php if($err !=  "Vnesite pravilno Captcho") :?>
+                    <div class = "form-row">
+                        <h7 style ="color: red;"> <?= $err ?> </h7>
+                    </div>
+            <?php endif;?>
             <div class = "form-row">
                 <div class ="col">
                     <input type = "text" name = "imeStranke" placeholder = "Ime" class = "form-control">
@@ -82,7 +86,8 @@
                 </div>
             </div>
                
-            
+            <img src="https://localhost//server//h/EP-seminarska-naloga/e-shop/view/stranka/captcha.php">
+	        <input type="text" placeholder = "Vnesite captcho"name="captcha">
 
             <div class = "form-row justify-content-center">
                 <div class = "col-lg-6" allign ="center">

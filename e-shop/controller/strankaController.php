@@ -191,6 +191,7 @@ public static function dodajVkosarico() {
         "ulica" => "",
         "posta" => "",
         "postnaSt" => "",
+        "captcha" => "",
     ]) {
         $err = "";
         echo ViewHelper::renderRegError("view/layout.php", "view/stranka/register.php", $values, $err);
@@ -200,8 +201,14 @@ public static function dodajVkosarico() {
         $data = filter_input_array(INPUT_POST, self::getRulesRegistracijaStranka());
 
         #var_dump($data);
+        #var_dump($_SESSION);
         #exit();
-        # Preverimo, če je email naslov ustrezen
+        # Preverimo, če je captcha naslov ustrezen
+        if($data["captcha"] != $_SESSION["captcha_code"]){
+            $err = "Vnesite pravilno Captcho";
+            echo ViewHelper::renderRegError("view/layout.php", "view/stranka/register.php", $values, $err);
+        }
+
         if(!filter_var($data['mailStranke'], FILTER_VALIDATE_EMAIL)){
            
             $err = "Prosimo vnesite validen e-mail";
@@ -493,6 +500,7 @@ public static function dodajVkosarico() {
             "ulica" => FILTER_SANITIZE_SPECIAL_CHARS,
             "posta" => FILTER_SANITIZE_SPECIAL_CHARS,
             "postnaSt" => FILTER_VALIDATE_INT,
+            "captcha" => FILTER_VALIDATE_INT,
             
             /*'year' => [
                 'filter' => FILTER_VALIDATE_INT,
