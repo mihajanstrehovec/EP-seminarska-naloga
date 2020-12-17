@@ -173,18 +173,16 @@ $urls = [
             adminController::seznamProdajalcev();
         }
     },
-<<<<<<< HEAD
     //REST API
     "api/artikli" => function () {
         eShopRestControler::index();
-=======
+    },
     "admin/spremeni-geslo" => function () {
         if ($_SERVER["REQUEST_METHOD"] == "POST") {
             adminController::spremeniGesloSubmit();
         } else {
             adminController::spremeniGeslo();
         }
->>>>>>> f12325b0837624a805f064f64668b2ef461b44a1
     }
 ];
 
