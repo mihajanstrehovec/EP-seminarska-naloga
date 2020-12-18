@@ -201,7 +201,7 @@ $url = filter_input(INPUT_SERVER, "PHP_SELF", FILTER_SANITIZE_SPECIAL_CHARS);
                       <button style="background-color:rgba(0,0,0,0);border:0px " id=<?="rating$i"?> onclick="seosSiTU()"><img id=<?="zvezdica$i"?> style="width:2em" src="<?= IMAGES_URL . "star.png"?>"></button> 
                 <?php
                     }
-                    if($i > $Artikel["ocena"]){ ?>
+                    else if($i > $Artikel["ocena"]){ ?>
 
                       <button style="background-color:rgba(0,0,0,0);border:0px " id=<?="rating$i"?> onclick="seosSiTU()"><img id=<?="zvezdica$i"?> style="width:2em" src="<?= IMAGES_URL . "gray-star.png"?>"></button> 
                 <?php    } 
