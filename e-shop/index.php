@@ -42,6 +42,7 @@ $urls = [
             prodajalecController::addForm();
         }
     },
+    
     "uporabnik/registracija" => function () {
         if ($_SERVER["REQUEST_METHOD"] == "POST") {
             strankaController::registracijaSubmit();
