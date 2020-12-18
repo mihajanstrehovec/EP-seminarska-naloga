@@ -92,6 +92,12 @@ class eshopDB extends AbstractDB {
             throw new InvalidArgumentException("No such book");
         }
     }
+    public static function getArtikel(array $id) {
+        return parent::query("SELECT idArtikla, imeArtikla, cenaArtikla, opisArtikla, zalogaArtikla, kategorijaArtikla, aktiviran"
+                        . " FROM Artikel"
+                        . " WHERE idArtikla = :idArtikla", $id);
+        
+    }
 
     public static function getArtikelCompressed(array $id) {
         $books = parent::query("SELECT imeArtikla, cenaArtikla"

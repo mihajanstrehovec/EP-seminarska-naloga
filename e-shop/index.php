@@ -184,7 +184,15 @@ $urls = [
     //REST API
     "api/artikli" => function () {
         eShopRestControler::index();
+    },
+    "api/artikli/detail" => function() {
+        if($_SERVER["REQUEST_METHOD"] == "GET"){
+            
+            eShopRestControler::getArt($_GET["idARTIKLA"]);
+            
+        }
     }
+    
 ];
 
 try {
