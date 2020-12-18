@@ -23,6 +23,16 @@ class ViewHelper {
         return ob_get_clean();
     }
 
+    public static function error($error, $msg) {
+        extract($msg);
+
+        ob_start();
+        
+        include($error);
+        
+        return ob_get_clean();
+    }
+
     public static function renderRegError($layout, $file, $variables = array(), $err) {
         extract($variables);
 
