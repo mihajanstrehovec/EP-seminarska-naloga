@@ -102,7 +102,7 @@ a:hover{
 
 <?php 
 
-#var_dump($Artikel["Images"][0]);
+#var_dump($Artikel["Images"]);
 #exit();
 ?>
 
