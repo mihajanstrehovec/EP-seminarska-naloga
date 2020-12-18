@@ -6,5 +6,13 @@ class eShopRestControler {
     public static function index() {
             
         echo restViewHelper::renderJSON(eshopDB::getAll());
+    
+    }
+
+    public static function getArt($id){
+        
+        $input ["idArtikla"] = $id;
+        echo restViewHelper::renderJSON(eshopDB::get($input));
+        
     }
 }
