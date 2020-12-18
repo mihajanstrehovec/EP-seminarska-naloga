@@ -67,6 +67,13 @@ $urls = [
     "artikel/izbrisi" => function () {
         prodajalecController::deaktiviraj();
     },
+    "artikel/izbrisi/slike" => function () {
+        if ($_SERVER["REQUEST_METHOD"] == "POST") {
+            prodajalecController::artikelIzbrisiSlike();
+        } else {
+            eshopController::index();
+        }
+    },
     "artikel/aktiviraj" => function () {
         prodajalecController::aktiviraj();
     },
@@ -181,6 +188,7 @@ $urls = [
             adminController::spremeniGeslo();
         }
     },
+    
     //REST API
     "api/artikli" => function () {
         eShopRestControler::index();

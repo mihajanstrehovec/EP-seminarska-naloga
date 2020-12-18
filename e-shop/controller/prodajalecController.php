@@ -354,7 +354,8 @@ class prodajalecController {
 
             $Artikel = eshopDB::get($data);
             $Images = eshopDB::getImages($data);
-            $Artikel["images"] = $Images; 
+            $Artikel["Images"] = $Images; 
+            
         }
 
         echo ViewHelper::render("view/layout.php", "view/prodajalec/urediArtikel.php", ["Artikel" => $Artikel]);
@@ -374,18 +375,116 @@ class prodajalecController {
         
        
         $data = filter_input_array(INPUT_POST, $rules);
-        #var_dump($data);
+        #var_dump($_FILES);
         #exit();
        
         if (self::checkValues($data)) {
-            eshopDB::update($data);
-            ViewHelper::redirect(BASE_URL . "" );
+            // Count total files
+            $countfiles = count($_FILES['file']['name']);
+            $uploadOk = 1;
+            // Creating fileNames Array
+            $fileNames = [$countfiles];
+            #var_dump("HH");
+                #exit(); 
+            if(strlen($_FILES["file"]["name"][0]) > 0){
+                   
+                for($i=0;$i<$countfiles;$i++){
+                        
+                        $filename = $_FILES['file']['name'][$i];
+                        $text = explode('.', $filename);
+                        $fileExt = strtolower(end($text));
+                        $imageFileType = strtolower(pathinfo($target_file,PATHINFO_EXTENSION));
+                        
+                    // Check file type
+                        if($uploadOk == 1 &&  $fileExt != "jpg" && $fileExt != "png" && $fileExt != "jpeg" && $fileExt != "gif" ) {
+                                $uploadOk = 0;
+                                // Error modal
+                                echo ViewHelper::render("view/layout.php", "view/prodajalec/urediArtikel.php", $values);
+                                echo ViewHelper::error("view/error.php", "Podprti so zgolj tipi datotek JPG, PNG, GIF in JPEG.");
+                                
+                                break;
+                                
+                            }
+                       
+                            // Check file size
+                            if ($uploadOk == 1 && $_FILES["file"]["size"][$i] > 500000) {
+                                echo "Sorry, your file is too large.";
+                                
+                                // Error modal => rendered in seperate php; needs bootstrap and material icons to work
+                                $values = $data["idArtikla"];
+                                echo ViewHelper::render("view/layout.php", "view/prodajalec/urediArtikel.php", $values);
+                                echo ViewHelper::error("view/error.php", "Datoteka je prevelika.");
+                                
+                                $uploadOk = 0;
+                            }
+                           
+                            $fileNameNew =  uniqid('IMG_');
+                            $fileNameNew = $fileNameNew .".". $fileExt;
+
+                            // Storing file name to put in database as reference to a local file
+                            $fileNames[$i] = $fileNameNew;
+                
+                           
+
+                            if($uploadOk == 1){
+                                
+                                move_uploaded_file($_FILES['file']['tmp_name'][$i],'/home/miha/programming/h/EP-seminarska-naloga/e-shop/static/images/products/'.$fileNameNew);
+                                
+                            } else {
+                               
+                                #echo "File doesn't meet requierments.";
+                                self::editForm($data);
+                                echo ViewHelper::error("view/error.php", "Na žalost je pri nalaganju slik prišlo do napake.");
+                                
+                                $uploadOk = 0;
+                            }
+                        
+                    
+                    }
+            }
+
+                if($uploadOk == 1) {
+                    #var_dump($data["idArtikla"]);
+                    #exit();
+                    eshopDB::update($data);
+
+                    // Storing images in DB
+                    $dataIn["idArtikla"] = intval($data["idArtikla"]);
+                    for($i = 0; $i < $countfiles; $i++){
+                        
+                        
+                        $dataIn["imeSlike"] = $fileNames[$i];
+                        $g = eshopDB::addImage($dataIn);
+                    }     
+                
+                } 
+            ViewHelper::redirect(BASE_URL . "artikel?idArtikla=" .$data["idArtikla"]);
+        
+        
         } else {
            
             
             self::editForm($data);
             
         }
+    }
+
+    public static function artikelIzbrisiSlike() {
+            $id = $_GET["idArtikla"];
+            $Slike = $_POST["izbraneSlike"];
+            #var_dump($id);
+            #exit();
+
+            foreach($Slike as $Slika){
+                $input['imeSlike'] = $Slika;
+                eshopDB::izbrisiSliko($input); 
+            }
+            #exit();
+                
+            ViewHelper::redirect(BASE_URL . "artikel?idArtikla=" .$id);
+        
+        
+     
     }
 
     public static function deaktiviraj() {

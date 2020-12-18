@@ -31,6 +31,11 @@ class eshopDB extends AbstractDB {
         return($Slike);
     }
 
+    public static function izbrisiSliko(array $imeSlike) {
+        return parent::modify("DELETE FROM Images"
+                        . " WHERE imeSlike = :imeSlike", $imeSlike); 
+    }
+
 
 
 
