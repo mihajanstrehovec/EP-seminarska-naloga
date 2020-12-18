@@ -256,12 +256,18 @@ class prodajalecController {
                 // Count total files
                 $countfiles = count($_FILES['file']['name']);
                 
-                $imageFileType = strtolower(pathinfo($target_file,PATHINFO_EXTENSION));
+                $fileNames = [$countfiles];
 
                 // Looping all files
                 for($i=0;$i<$countfiles;$i++){
-                    $filename = $_FILES['file']['name'][$i];
 
+                    $filename = $_FILES['file']['name'][$i];
+                    $text = explode('.', $fileName);
+                    $fileExt = strtolower(end($text));
+                    $imageFileType = strtolower(pathinfo($target_file,PATHINFO_EXTENSION));
+
+                    $fileNames[$i] = $filename;
+                    /*
                     $check = getimagesize($_FILES["file"]["tmp_name"][$i]);
                     if($check !== false) {
                         echo "File is an image - " . $check["mime"] . ".";
@@ -285,69 +291,36 @@ class prodajalecController {
                             $uploadOk = 0;
                         }
                     
+                    */
+                    
                     // Upload file
-                    move_uploaded_file($_FILES['file']['tmp_name'][$i],'/home/miha/programming/h/EP-seminarska-naloga/e-shop/static/images/'.$filename);
+                    #$fileNameNew = uniqid('', true).".".$fileExt;
+                    move_uploaded_file($_FILES['file']['tmp_name'][$i],'/home/miha/programming/h/EP-seminarska-naloga/e-shop/static/images/products/'.$filename);
+                    
+                    
                 
                 }
-
-                /*
-                // Looping all files
-                for($i=0;$i<$countfiles;$i++){
+                #var_dump($fileNames);
+                #exit();
                 
-                        // Naštimamo atribute file uploada
-                        $target_dir = "/home/miha/programming/h/EP-seminarska-naloga/e-shop/static/images//";
-                        $target_file = $target_dir . basename($_FILES["fileToUpload"]["name"][$i]);
-                        $uploadOk = 1;
-                        $imageFileType = strtolower(pathinfo($target_file,PATHINFO_EXTENSION));
-
-                        // Check if image file is a actual image or fake image
-                        
-                        $check = getimagesize($_FILES["fileToUpload"]["tmp_name"][$i]);
-                        if($check !== false) {
-                            echo "File is an image - " . $check["mime"] . ".";
-                            $uploadOk = 1;
-                        } else {
-                            echo "File is not an image.";
-                            $uploadOk = 0;
-                        }
-                        
-
-                        // Check if file already exists
-                        if (file_exists($target_file)) {
-                            echo "Sorry, file already exists.";
-                            $uploadOk = 0;
-                        }
-
-                        // Check file size
-                        if ($_FILES["fileToUpload"]["size"][$i] > 500000) {
-                            echo "Sorry, your file is too large.";
-                            $uploadOk = 0;
-                        }
-
-                        // Allow certain file formats
-                        if($imageFileType != "jpg" && $imageFileType != "png" && $imageFileType != "jpeg"
-                            && $imageFileType != "gif" ) {
-                            echo "Sorry, only JPG, JPEG, PNG & GIF files are allowed.";
-                            $uploadOk = 0;
-                        }
-
-                        // Check if $uploadOk is set to 0 by an error
-                        if ($uploadOk == 0) {
-                            echo "Sorry, your file was not uploaded.";
-                            // if everything is ok, try to upload file
-                        } else {
-                            if (move_uploaded_file($_FILES["fileToUpload"]["tmp_name"][$i], $target_file)) {
-                                echo "The file ". htmlspecialchars( basename( $_FILES["fileToUpload"]["name"][$i])). " has been uploaded.";
-                            } else {
-                                echo "Sorry, there was an error uploading your file.";
-                            }
-                        }
-                    
-                }*/
-            
-            
+            var_dump(count($fileNames));
+            #exit();
+            #
             
             $id = eshopDB::insert($data);
+
+            #var_dump($id);
+            #exit();
+            $dataIn["idArtikla"] = intval($id);
+            for($i = 0; $i < $countfiles; $i++){
+                
+                
+                $dataIn["imeSlike"] = $fileNames[$i];
+                $g = eshopDB::addImage($dataIn);
+                
+                
+            }
+            
             
             echo ViewHelper::redirect(BASE_URL. "trgovina"/*. "books?id=" . $id*/);
             

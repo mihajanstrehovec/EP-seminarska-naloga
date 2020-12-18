@@ -13,6 +13,16 @@ class ViewHelper {
         return ob_get_clean();
     }
 
+    public static function renderArtikel($layout, $file, $variables = array(), $variables2 = array()) {
+        extract($variables);
+
+        ob_start();
+        include($layout);
+        include($file);
+        
+        return ob_get_clean();
+    }
+
     public static function renderRegError($layout, $file, $variables = array(), $err) {
         extract($variables);
 

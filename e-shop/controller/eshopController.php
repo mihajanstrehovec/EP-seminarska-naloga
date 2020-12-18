@@ -46,10 +46,14 @@ class eshopController {
             }
 
             $Artikel = eshopDB::get($data);
-        }
-            echo ViewHelper::render("view/layout.php", "view/artikel.php", [
-                "Artikel" => $Artikel
-            ]);
+            $Images = eshopDB::getImages($data);
+            $Artikel["Images"] = $Images;
+            }
+            #var_dump($Artikel);
+           # exit();
+
+
+            echo ViewHelper::renderArtikel("view/layout.php", "view/artikel.php", ["Artikel" => $Artikel]);
         
     }
 
