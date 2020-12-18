@@ -85,9 +85,9 @@
                     <input type = "number" name = "postnaSt" placeholder = "Št" class = "form-control">
                 </div>
             </div>
-               
+            
             <img src="https://localhost//server//h/EP-seminarska-naloga/e-shop/view/stranka/captcha.php">
-	        <input type="text" placeholder = "Vnesite captcho"name="captcha">
+	        <input type="text" placeholder = "Vnesite captcho" name="captcha">
 
             <div class = "form-row justify-content-center">
                 <div class = "col-lg-6" allign ="center">
