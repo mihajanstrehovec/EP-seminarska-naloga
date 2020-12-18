@@ -1,6 +1,7 @@
 <?php 
 
-#var_dump($_SESSION);
+#var_dump($Artikel["Images"][0]);
+#exit();
 ?>
 
 <?php
@@ -38,8 +39,49 @@ $url = filter_input(INPUT_SERVER, "PHP_SELF", FILTER_SANITIZE_SPECIAL_CHARS);
             </div>
             
             <div id ="desno">
-                <div class ="row no-gutters justify-content-center">
-                    <img id ="artikelSlika" src = "<?= IMAGES_URL . "dildak.jpeg"?>">
+                <div class ="row no-gutters ">
+                    
+                    <?php for($i = 0; $i < count($Artikel["Images"]); $i++):?>
+                        <div class ="col-lg-10">
+                        <img onclick = "myFunction()" id ="artikelSlika" src = "<?= IMAGES_URL . "/products/". $Artikel["Images"][0]["imeSlike"]?>">
+                        </div>
+                    <?php endfor;?>
+
+                    <div class="slideshow-container">
+                        
+                            <!-- Full-width images with number and caption text -->
+                            <div class="mySlides fade">
+                                <div class="numbertext">1 / 3</div>
+                                <img src="<?= IMAGES_URL . "/products/". $Artikel["Images"][0]["imeSlike"]?>" style="width:100%">
+                                <div class="text">Caption Text</div>
+                            </div>
+
+                            <div class="mySlides fade">
+                                <div class="numbertext">2 / 3</div>
+                                <img src="<?= IMAGES_URL . "/products/". $Artikel["Images"][1]["imeSlike"]?>" style="width:100%">
+                                <div class="text">Caption Two</div>
+                            </div>
+
+                            <div class="mySlides fade">
+                                <div class="numbertext">3 / 3</div>
+                                <img src="<?= IMAGES_URL . "/products/". $Artikel["Images"][1]["imeSlike"]?>" style="width:100%">
+                                <div class="text">Caption Three</div>
+                            </div>
+
+                            <!-- Next and previous buttons -->
+                            <a class="prev" onclick="plusSlides(-1)">&#10094;</a>
+                            <a class="next" onclick="plusSlides(1)">&#10095;</a>
+                            </div>
+                            <br>
+
+                            <!-- The dots/circles -->
+                            <div style="text-align:center">
+                            <span class="dot" onclick="currentSlide(1)"></span>
+                            <span class="dot" onclick="currentSlide(2)"></span>
+                            <span class="dot" onclick="currentSlide(3)"></span>
+                            </div>
+                        
+                    
                 </div>
                 
                 <div class ="row no-gutters justify-content-center nakup">
@@ -76,5 +118,13 @@ $url = filter_input(INPUT_SERVER, "PHP_SELF", FILTER_SANITIZE_SPECIAL_CHARS);
         
         
     </div>
-</div
+</div>
+
+
+<script>
+    function myFunction() {
+        var mm = "<?php echo $Artikel["images"][0]["imeSlike"]; ?>";
+       console.log(mm);
+    }
+</script>
 

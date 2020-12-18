@@ -303,11 +303,24 @@ class prodajalecController {
                 #var_dump($fileNames);
                 #exit();
                 
-            
+            var_dump(count($fileNames));
+            #exit();
+            #
             
             $id = eshopDB::insert($data);
+
+            #var_dump($id);
+            #exit();
+            $dataIn["idArtikla"] = intval($id);
+            for($i = 0; $i < $countfiles; $i++){
+                
+                
+                $dataIn["imeSlike"] = $fileNames[$i];
+                $g = eshopDB::addImage($dataIn);
+                
+                
+            }
             
-            eshopDB::insertImage()
             
             echo ViewHelper::redirect(BASE_URL. "trgovina"/*. "books?id=" . $id*/);
             

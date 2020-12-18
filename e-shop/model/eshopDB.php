@@ -11,6 +11,29 @@ class eshopDB extends AbstractDB {
                         . " VALUES (:imeArtikla, :cenaArtikla, :opisArtikla, :kategorijaArtikla, :zalogaArtikla)", $params);
     }
 
+    public static function addImage(array $params) {
+        return parent::modify("INSERT INTO Images (idArtikla, imeSlike) "
+                        . " VALUES (:idArtikla, :imeSlike)", $params);
+    }
+
+    public static function insertImage(array $params) {
+        return parent::modify("INSERT INTO Images (idArtikla, imeSlike) "
+                        . " VALUES (:idArtikla, :imeSlike)", $params);
+    }
+
+    public static function getImages(array $idArtikla) {
+        
+        $Slike = parent::query("SELECT imeSlike"
+                        . " FROM Images"
+                        . " WHERE idArtikla = :idArtikla", $idArtikla);
+        #var_dump($Slike);
+        #exit();
+        return($Slike);
+    }
+
+
+
+
     public static function insertNarocilo(array $params) {
         return parent::modify("INSERT INTO Naročilo (idStranke, total, potrjeno) "
                         . " VALUES (:idStranke, :total, :potrjeno)", $params);
