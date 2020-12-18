@@ -23,13 +23,58 @@
     height: 50vh;
     width: 50vw;
     text-align: center;
+    padding-bottom: 5%;
+    
 }
 
 .modalIzbris-content > h4 {
     color: rgb(255, 56, 56);
     font-weight: 600;
     margin-top: 5vh;
+    margin-bottom: 10vh;
 }
+
+
+/* Modal izbris slike content */
+
+/* HIDE RADIO */
+[type=checkbox] { 
+    position: absolute;
+    opacity: 0;
+    width: 0;
+    height: 0;
+}
+  
+  /* IMAGE STYLES */
+[type=checkbox] + img {
+    cursor: pointer;
+}
+  
+  /* CHECKED STYLES */
+[type=checkbox]:checked + img {
+    outline: 2px solid #f00;
+}
+
+.modalIzbris-content > form{
+    margin-top: 100px;
+}
+
+.modalIzbris-content > button{
+    margin-top: 2%;
+    width: 5vw;
+}
+
+#image-gallery{
+    width: 80%;
+    text-align: center;
+    justify-content: center;
+    align-items: center;
+    padding-left: 18%;
+    overflow-y: auto;
+    overflow-x: none;
+}
+
+
 
 
 /* Modal za opozarjanje o napakah slik */

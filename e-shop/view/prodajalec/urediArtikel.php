@@ -84,19 +84,22 @@ require_once 'db_files/db_artikel.php';
                 <div class="modal fade bd-example-modal-lg modalIzbris" tabindex="-1" role="dialog" aria-labelledby="myLargeModalLabel" aria-hidden="true">
                     <div class="modal-dialog modal-lg modalIzbris-dialog">
                         <div class="modal-content modalIzbris-content" style = "color: black;">
-                            <h4>Brisanje slik</h4>
-                            <div>
-                                <form action = "<?= BASE_URL . "artikel/izbrisi/slike" ?>" method = "POST">
-                                <label>
-                                        <input type="checkbox" name="test" value="small" checked>
-                                        <img src="http://placehold.it/40x60/0bf/fff&text=A">
-                                    </label>
-
-                                    <label>
-                                        <input type="checkbox" name="test" value="big">
-                                        <img src="http://placehold.it/40x60/b0f/fff&text=B">
-                                    </label>
+                            <h4 style = "margin-bottom: 5%;">Brisanje slik</h4>
+                            <div id = "image-gallery" class = "row no-gutters justify-content-center">
+                                <form action = "<?= BASE_URL . "artikel/izbrisi/slike?idArtikla=".$_GET['idArtikla'] ?>" method = "POST" id="brisiSlike">
+                                    <?php for($i = 0; $i < count($Artikel["Images"]); $i++):?>
+                                        <label>
+                                            
+                                            <input type="checkbox" name="izbraneSlike[]" value="<?=$Artikel["Images"][$i]["imeSlike"]?>" checked>
+                                            <img src="<?= IMAGES_URL . "/products/". $Artikel["Images"][$i]["imeSlike"]?>" height = "100px;">
+                                            
+                                        </label>
+                                    <?php endfor;?>
+                                    
                                 </form>
+                            </div>
+                            <div class = "row justify-content-center" style = "margin-top: 2%">
+                                <button form = "brisiSlike" type="submit" class="btn btn-danger">Izbrisi</button>
                             </div>
                         </div>
                     </div>

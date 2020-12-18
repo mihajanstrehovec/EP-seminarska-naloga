@@ -469,6 +469,24 @@ class prodajalecController {
         }
     }
 
+    public static function artikelIzbrisiSlike() {
+            $id = $_GET["idArtikla"];
+            $Slike = $_POST["izbraneSlike"];
+            #var_dump($id);
+            #exit();
+
+            foreach($Slike as $Slika){
+                $input['imeSlike'] = $Slika;
+                eshopDB::izbrisiSliko($input); 
+            }
+            #exit();
+                
+            ViewHelper::redirect(BASE_URL . "artikel?idArtikla=" .$id);
+        
+        
+     
+    }
+
     public static function deaktiviraj() {
         $rules = [
             'delete_confirmation' => FILTER_REQUIRE_SCALAR,
