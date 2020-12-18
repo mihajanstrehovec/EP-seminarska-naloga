@@ -58,6 +58,17 @@ $url = filter_input(INPUT_SERVER, "PHP_SELF", FILTER_SANITIZE_SPECIAL_CHARS);
                     
                     </form>
                 </div>
+                                        //$Artikel["ocena"]
+                <?php for($i = 0; $i < $Artikel["ocena"];$i++){ ?>
+                        
+                    <button id=<?="rating$i"?>><img style="width:2em" src="<?= IMAGES_URL . "star.png"?>"></button> 
+
+                <?php } ?>
+                <script>
+                        function name() {
+                        document.getElementById("rating3").src="<?= IMAGES_URL . "shopping-cart.png"?>";
+                    }
+                </script>
                 <?php endif; ?>
                 
 
