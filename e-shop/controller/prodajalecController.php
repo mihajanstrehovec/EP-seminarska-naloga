@@ -251,78 +251,86 @@ class prodajalecController {
         
         if (self::checkValues($data)) {
 
-            
+                $uploadOk = 1;
  
                 // Count total files
                 $countfiles = count($_FILES['file']['name']);
                 
+                // Creating fileNames Array
                 $fileNames = [$countfiles];
+
+                // Checking if this is still equal to one later to determine if file meets requirments
+                
 
                 // Looping all files
                 for($i=0;$i<$countfiles;$i++){
 
                     $filename = $_FILES['file']['name'][$i];
-                    $text = explode('.', $fileName);
+                    $text = explode('.', $filename);
                     $fileExt = strtolower(end($text));
                     $imageFileType = strtolower(pathinfo($target_file,PATHINFO_EXTENSION));
 
-                    $fileNames[$i] = $filename;
-                    /*
-                    $check = getimagesize($_FILES["file"]["tmp_name"][$i]);
-                    if($check !== false) {
-                        echo "File is an image - " . $check["mime"] . ".";
-                        $uploadOk = 1;
-                        } else {
-                            #echo "File is not an image.";
+                   // Check file type
+                    if($uploadOk == 1 &&  $fileExt != "jpg" && $fileExt != "png" && $fileExt != "jpeg" && $fileExt != "gif" ) {
+                            
+                            // Error modal
                             echo ViewHelper::render("view/layout.php", "view/prodajalec/dodajArtikel.php", $values);
+                            echo ViewHelper::error("view/error.php", "Podprti so zgolj tipi datotek JPG, PNG, GIF in JPEG.");
                             $uploadOk = 0;
-                    }
-
-                    if ($_FILES["file"]["size"][$i] > 500000) {
-                        #echo "Sorry, your file is too large.";
-                        echo ViewHelper::render("view/layout.php", "view/prodajalec/dodajArtikel.php", $values);
-                        $uploadOk = 0;
-                    }
-
-                    if($imageFileType != "jpg" && $imageFileType != "png" && $imageFileType != "jpeg"
-                            && $imageFileType != "gif" ) {
-                            #echo "Sorry, only JPG, JPEG, PNG & GIF files are allowed.";
+                            break;
+                            
+                        }
+                        
+                        // Check file size
+                        if ($uploadOk == 1 && $_FILES["file"]["size"][$i] > 500000) {
+                            echo "Sorry, your file is too large.";
+                            
+                            // Error modal => rendered in seperate php; needs bootstrap and material icons to work
                             echo ViewHelper::render("view/layout.php", "view/prodajalec/dodajArtikel.php", $values);
+                            echo ViewHelper::error("view/error.php", "Datoteka je prevelika.");
+                            
+                            $uploadOk = 0;
+                        }
+                        
+
+                        $fileNameNew =  uniqid('IMG_');
+                        $fileNameNew = $fileNameNew .".". $fileExt;
+
+                        // Storing file name to put in database as reference to a local file
+                        $fileNames[$i] = $fileNameNew;
+            
+                        
+                        if($uploadOk == 1){
+                            move_uploaded_file($_FILES['file']['tmp_name'][$i],'/home/miha/programming/h/EP-seminarska-naloga/e-shop/static/images/products/'.$fileNameNew);
+                        } else {
+                            #echo "File doesn't meet requierments.";
+                            echo ViewHelper::render("view/layout.php", "view/prodajalec/dodajArtikel.php", $values);
+                            echo ViewHelper::error("view/error.php", "Na žalost je pri nalaganju slik prišlo do napake.");
+                            
                             $uploadOk = 0;
                         }
                     
-                    */
-                    
-                    // Upload file
-                    #$fileNameNew = uniqid('', true).".".$fileExt;
-                    move_uploaded_file($_FILES['file']['tmp_name'][$i],'/home/miha/programming/h/EP-seminarska-naloga/e-shop/static/images/products/'.$filename);
-                    
-                    
                 
                 }
-                #var_dump($fileNames);
-                #exit();
                 
-            var_dump(count($fileNames));
-            #exit();
-            #
-            
-            $id = eshopDB::insert($data);
+            // Vsavljanje artikla v podatkovno bazo
+            if($uploadOk == 1){
+                // Inserting new Artikel
+                $id = eshopDB::insert($data);
 
-            #var_dump($id);
-            #exit();
-            $dataIn["idArtikla"] = intval($id);
-            for($i = 0; $i < $countfiles; $i++){
+                // Storing images in DB
+                $dataIn["idArtikla"] = intval($id);
+                for($i = 0; $i < $countfiles; $i++){
+                    
+                    
+                    $dataIn["imeSlike"] = $fileNames[$i];
+                    $g = eshopDB::addImage($dataIn);
+                    
+                    
+                }
                 
-                
-                $dataIn["imeSlike"] = $fileNames[$i];
-                $g = eshopDB::addImage($dataIn);
-                
-                
+                echo ViewHelper::redirect(BASE_URL. "artikel?idArtikla=". $id/*. "books?id=" . $id*/);
             }
-            
-            
-            echo ViewHelper::redirect(BASE_URL. "trgovina"/*. "books?id=" . $id*/);
             
         } else {
             self::addForm($data);
@@ -345,6 +353,8 @@ class prodajalecController {
             }
 
             $Artikel = eshopDB::get($data);
+            $Images = eshopDB::getImages($data);
+            $Artikel["images"] = $Images; 
         }
 
         echo ViewHelper::render("view/layout.php", "view/prodajalec/urediArtikel.php", ["Artikel" => $Artikel]);

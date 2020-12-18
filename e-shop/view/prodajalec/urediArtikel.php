@@ -1,5 +1,4 @@
 
-
 <?php
 require_once 'db_files/db_artikel.php';
 #var_dump($Artikel);
@@ -16,11 +15,11 @@ require_once 'db_files/db_artikel.php';
         
        
         <div class ="titleArtikel" align ="center" style ="padding-top: 0.4vh;">
-            <form id = "urediArtikel" action ="<?= BASE_URL . "artikel/uredi" ?>" method = "POST">
-            <input form = "urediArtikel" type = "hidden" name = "zalogaArtikla" value ="<?= $Artikel["zalogaArtikla"]?>" placeholder ="<?= $Artikel["zalogaArtikla"]?>">
-            <input form = "urediArtikel" type = "hidden" name = "kategorijaArtikla" placeholder ="<?= $Artikel["kategorijaArtikla"]?>" value ="<?= $Artikel["kategorijaArtikla"]?>">
-            <input form = "urediArtikel" type = "hidden" name = "idArtikla" value ="<?=$_GET['idArtikla']?>">
-            <h4 style ="font-weight: 600;"><input form = "urediArtikel" type ="text" placeholder ="<?= $Artikel["imeArtikla"]?>" value = "<?= $Artikel["imeArtikla"]?>" name = "imeArtikla" style ="background-color: rgba(0,0,0,0); border: 0px; color: white;"></h4>
+            <form id = "urediArtikel" action ="<?= BASE_URL . "artikel/uredi" ?>" method = "POST" enctype="multipart/form-data">
+                <input form = "urediArtikel" type = "hidden" name = "zalogaArtikla" value ="<?= $Artikel["zalogaArtikla"]?>" placeholder ="<?= $Artikel["zalogaArtikla"]?>">
+                <input form = "urediArtikel" type = "hidden" name = "kategorijaArtikla" placeholder ="<?= $Artikel["kategorijaArtikla"]?>" value ="<?= $Artikel["kategorijaArtikla"]?>">
+                <input form = "urediArtikel" type = "hidden" name = "idArtikla" value ="<?=$_GET['idArtikla']?>">
+                <h4 style ="font-weight: 600;"><input form = "urediArtikel" type ="text" placeholder ="<?= $Artikel["imeArtikla"]?>" value = "<?= $Artikel["imeArtikla"]?>" name = "imeArtikla" style ="background-color: rgba(0,0,0,0); border: 0px; color: white;"></h4>
             </form>
         </div>
         
@@ -43,8 +42,14 @@ require_once 'db_files/db_artikel.php';
                     <img id ="artikelSlika" src = "<?= IMAGES_URL . "dildak.jpeg"?>">
                 </div>
                 
+                <div form = "urediArtikel" class = "form-group row" style = "margin: 20px 0px 0px 1px;">
+                
+                    <input type="file" name="file[]" id="file" multiple>
+                
+                </div>
+                
                 <div class ="row no-gutters justify-content-center nakup">
-                <input form ="urediArtikel" class="form-control" type="number" name="cenaArtikla" value="<?= $Artikel["cenaArtikla"]?>" id="example-number-input" style ="width: 20%; flaot: left; margin-top: 20px; background-color: rgba(0,0,0,0); border: 0px; color: rgba(89,145,144,0.7);;">
+                    <input form ="urediArtikel" class="form-control" type="number" name="cenaArtikla" value="<?= $Artikel["cenaArtikla"]?>" id="example-number-input" style ="width: 20%; flaot: left; margin-top: 20px; background-color: rgba(0,0,0,0); border: 0px; color: rgba(89,145,144,0.7);;">
                 </div>
                
                 

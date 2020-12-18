@@ -5,7 +5,7 @@
         
        
     
-        <div class ="titleArtikel" align ="center" style ="padding-top: 0.4vh;">
+        <div class ="titleArtikel" align ="center" style ="padding-top: 0.4vh; margin-top: 5vh!important;">
             <h4 style ="font-weight: 600;">DODAJ ARTIKEL</h4>
         </div>
     
@@ -35,7 +35,7 @@
       
         <div class = "form-group row" style = "margin: 20px 0px 0px 1px;">
             <input type="file" name="file[]" id="file" multiple>
-            <input type="submit" value="Dodaj sliko" > 
+            
         </div>
        
         
@@ -52,7 +52,7 @@
         </div>   
         
       
-                    <button type="submit" name="submit" class="btn btn-light dodajVKos">Ustvari izdelek</button>
+                    <button type="submit" name="submit" class="btn btn-light dodajVKos" style = "margin-top: 5vh; background-color: rgba(89,145,144,0.7); color: white;">Ustvari izdelek</button>
                
         </form>
             
@@ -64,9 +64,19 @@
         
         
     </div>
-</div
+</div>
 
         
         
         
-       
+<script>
+    $(document).ready(function() {
+    $('#global-modal').modal('show');
+    });
+</script>
+
+<script src="https://code.jquery.com/jquery-3.3.1.slim.min.js" integrity="sha384-q8i/X+965DzO0rT7abK41JStQIAqVgRVzpbzo5smXKp4YfRvH+8abtTE1Pi6jizo" crossorigin="anonymous"></script>
+<script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.14.7/umd/popper.min.js" integrity="sha384-UO2eT0CpHqdSJQ6hJty5KVphtPhzWj9WO1clHTMGa3JDZwrnQq4sF86dIHNDz0W1" crossorigin="anonymous"></script>
+<script src="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/js/bootstrap.min.js" integrity="sha384-JjSmVgyd0p3pXB1rRibZUAYoIIy6OrQ6VrjIEaFf/nJGzIxFDsf4x0xIM+B07jRM" crossorigin="anonymous"></script>
+<script src = "<?= JS_URL . "cart.js"?>"></script>
+   
