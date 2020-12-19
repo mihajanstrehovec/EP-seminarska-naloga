@@ -297,7 +297,8 @@ public static function dodajVkosarico() {
     }
 
     public static function profil() {
-        echo ViewHelper::render("view/layout.php", "view/stranka/profil.php");
+        $Stranka = eshopDB::getStrankaNaslov($_SESSION);
+        echo ViewHelper::render("view/layout.php", "view/stranka/profil.php", ['Stranka' => $Stranka]);
     }
 
     public static function editProfil() {

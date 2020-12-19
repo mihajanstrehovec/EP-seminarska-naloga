@@ -142,6 +142,11 @@ class eshopDB extends AbstractDB {
         return($Stranka);
     }
 
+    public static function getStrankaNaslov(array $mailStranke) {
+        return parent::query("SELECT ulica, hisnaSt, posta, postnaSt"
+                        . " FROM Stranka"
+                        . "  WHERE mailStranke = :mailStranke", $mailStranke);
+    }
 
 
     public static function getStrankaID(array $mailStranke) {
