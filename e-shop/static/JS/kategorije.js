@@ -16,23 +16,21 @@ kategorija = urlParams.get("kategorija");
 switch(kategorija){
     
     case "Fekalije":
-       k1.style.backgroundColor = "rgba(89,145,144,0.7)";
-       k1l.style.color = "rgba(255,255,255,1)";
+      
+       k1.style.boxShadow = "0px 2px 0px rgba(0,0,0,0.25)";
+       
     break;
 
     case "Orbanove orgije":
-       k2.style.backgroundColor = "rgba(89,145,144,0.7)";
-       k2l.style.color = "rgba(255,255,255,1)";
+      k2.style.boxShadow = "0px 2px 0px rgba(0,0,0,0.25)";
     break;
 
     case "Gaming":
-       k3.style.backgroundColor = "rgba(89,145,144,0.7)";
-       k3l.style.color = "rgba(255,255,255,1)";
+      k3.style.boxShadow = "0px 2px 0px rgba(0,0,0,0.25)";
     break;
 
     case "Fresh gum":
-       k4.style.backgroundColor = "rgba(89,145,144,0.7)";
-       k4l.style.color = "rgba(255,255,255,1)";
+      k4.style.boxShadow = "0px 2px 0px rgba(0,0,0,0.25)";
     break;
 
 }

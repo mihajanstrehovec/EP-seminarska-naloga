@@ -19,7 +19,7 @@
 
 	//create the image resource 
 	$im = imagecreatetruecolor($width, $height);
-	$bg = imagecolorallocate($im, 89, 145, 144); //background color
+	$bg = imagecolorallocate($im, 240, 210, 157); //background color
 	$fg = imagecolorallocate($im, 255, 255, 255);//text color
 	$ns = imagecolorallocate($im, 200, 200, 200);//noise color
 	

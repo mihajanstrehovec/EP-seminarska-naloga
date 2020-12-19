@@ -68,7 +68,7 @@ require_once "model/eshopDB.php";
                                         <img src="<?= IMAGES_URL . "/products/". $imeSlike[0]["imeSlike"]?>" height = "100px" style="width:100%; margin-top: 20%;">
 
                                         <!-- Text pri artiklu -->
-                                        <div id ="prikaznoImeArtikla" style ="margin-top: 15%;color: white;">
+                                        <div id ="prikaznoImeArtikla" style ="margin-top: 15%; color: #515151;">
                                             <?=  $Artikel["imeArtikla"] ?> <br>
                                             <s style = "margin-right: 5px;"><?= $Artikel["cenaArtikla"] + rand(0, 30)?> €</s>
                                             <?= $Artikel["cenaArtikla"] ?>€ 
@@ -88,7 +88,7 @@ require_once "model/eshopDB.php";
                                         <img src="<?= IMAGES_URL . "/products/". $imeSlike[0]["imeSlike"]?>" height = "100px" style="width:100%; margin-top: 20%;">
 
                                         <!-- Text pri artiklu -->
-                                        <div id ="prikaznoImeArtikla" style ="margin-top: 15%;color: white;">
+                                        <div id ="prikaznoImeArtikla" style ="margin-top: 15%;color: #515151;">
                                             <?=  $Artikel["imeArtikla"] ?> <br>
                                             <s style = "margin-right: 5px;"><?= $Artikel["cenaArtikla"] + rand(0, 30)?> €</s>
                                             <?= $Artikel["cenaArtikla"] ?>€ 

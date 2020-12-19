@@ -19,7 +19,7 @@
                 <h4 style ="font-weight: 600;">UREDI PRODAJALCA - ID: <?= $idProdajalca?></h4>
             </div>
             
-            <div class ="profilVsebnik" style="padding: 7%;">
+            <div class ="profilVsebnik" style="padding: 7%; height: 70vh;">
             
                 <form action = "<?= BASE_URL . "admin/prodajalec/uredi"?>" method = "POST">
                     <input type = "hidden" name = "idProdajalca" value = "<?=$idProdajalca ?>">

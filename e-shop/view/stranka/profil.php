@@ -69,7 +69,7 @@
                     <div class = "form-row">
                         <div class = "col-lg-2">
                             <button type = "submit" class ="btn my-4" 
-                            style ="background-color: rgba(89,145,144,1); color: white; margin-top: 0px !important;">
+                            style ="background-color: rgba(89,145,144,1); color: white; ">
                             Spremeni</button>
                         </div>
                     </div>

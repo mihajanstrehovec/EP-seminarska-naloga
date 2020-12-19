@@ -34,7 +34,7 @@
                                 <input type = "password" class = "form-control" name = "geslo" placeholder = "Vpišite novo geslo">
                             </div>
 
-                            <button type = "submit" class ="btn my-4" style ="background-color: rgba(89,145,144,1); color: white; margin: 0px;">
+                            <button type = "submit" class ="btn my-4" style ="background-color: rgba(89,145,144,1); color: white; margin-top: 10px!important; margin-left:16px!important;">
                                 Spremeni
                             </button>  
 
@@ -52,7 +52,7 @@
 
                         <div class = "col-lg-2">
 
-                        <button type = "submit" class ="btn my-4" style ="background-color: rgba(89,145,144,1); color: white; margin-top: 0px !important; ">
+                        <button type = "submit" class ="btn my-4" style ="background-color: rgba(89,145,144,1); color: white; margin-top: 10px !important; ">
                             Spremeni
                         </button>
 

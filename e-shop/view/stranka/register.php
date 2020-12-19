@@ -5,7 +5,7 @@
             
         
             <div class = col-lg-6>
-                <div class ="titleRegister" align ="center" style ="padding-top: 0.4vh;">
+                <div class ="titleRegister" align ="center" style ="padding-top: 0.4vh; margin-top: 10vh;">
                     <h4 style ="font-weight: 600;">REGISTRACIJA</h4>
                 </div>
             
@@ -97,8 +97,8 @@
                         </div>
                         
                         <!-- CAPTCHA -->
-                        <img src="https://localhost//server//h/EP-seminarska-naloga/e-shop/view/stranka/captcha.php">
-                        <input type="text" placeholder = "Vnesite captcho" name="captcha">
+                        <img src="https://localhost//server//h/EP-seminarska-naloga/e-shop/view/stranka/captcha.php" class = "captcha">
+                        <input type="text" placeholder = "Vnesite captcho" name="captcha"class = "captcha">
 
                         <div class = "form-row justify-content-center">
                             <div class = "col-lg-6" allign ="center">

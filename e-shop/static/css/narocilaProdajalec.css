@@ -2,8 +2,8 @@
     background-color: rgba(0,0,0,0); 
     border-style: solid; 
     border-width:1px; 
-    border-color: rgba(89,145,144,1);
-    box-shadow: 0px 0px 8px rgba(89,145,144,0.4); 
+    border-color:rgb(240, 210, 157);
+    box-shadow: 0px 0px 8px rgba(240, 210, 157,0.4); 
     height: 45vh;
 }
 

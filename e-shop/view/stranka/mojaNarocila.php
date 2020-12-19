@@ -26,7 +26,7 @@
             <div class ="overflow-auto profilVsebnik" style="padding: 7%;">
 
                 <div class = "row justify-content-center">
-                    <h5 style ="font-weight:600; color: rgba(89,145,144,1);">V ČAKALNI VRSTI</h5> 
+                    <h5 style ="font-weight:600; color: rgb(240, 210, 157);">V ČAKALNI VRSTI</h5> 
                 </div>
 
                 <div class = "row ">

@@ -5,7 +5,7 @@
         
             <div class = col-lg-6>
                 
-                <div class ="titleRegister" align ="center" style ="padding-top: 0.4vh;">
+                <div class ="titleRegister" align ="center" style ="padding-top: 0.4vh; margin-top: 20vh;">
                     <h4 style ="font-weight: 600;">SPREMENI GESLO</h4>
                 </div>
             

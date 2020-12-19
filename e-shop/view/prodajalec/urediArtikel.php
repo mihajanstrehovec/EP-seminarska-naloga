@@ -75,7 +75,7 @@
                 <!-- FORM dodajanje slik -->
                 <div  class = "form-group row" style = "margin: 20px 0px 0px 1px;">
                 
-                    <em style = "color: rgba(89, 145, 144);">Dodaj slike: </em><input form = "urediArtikel" type="file"  name="file[]" id="file" multiple>
+                    <em style = "color: rgb(240, 210, 157); font-weight: 600;">Dodaj slike: </em><input form = "urediArtikel" type="file"  name="file[]" id="file" multiple>
                 
                 </div>
 

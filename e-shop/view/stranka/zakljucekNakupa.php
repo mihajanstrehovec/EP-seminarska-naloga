@@ -13,7 +13,7 @@ $total = floatval($_SESSION['total']);
                 <h4 style ="font-weight: 600;">PREGLED NAROCILA</h4>
             </div>
     
-            <div class ="profilVsebnik" style="padding: 7%;">
+            <div class ="profilVsebnik" style="padding: 7%; height: 70vh">
                 <div class ="overflow-auto narocilo">
                     
                 <?php foreach ($Narocilo as $Artikel): ?>
@@ -39,7 +39,7 @@ $total = floatval($_SESSION['total']);
                     <div class = "row justify-content-center">
                     
                         <form action = "<?php BASE_URL . "zakljucekNakupa"?>" method ="POST">
-                            <button type = "submit" class = "btn" style = "background-color: rgba(89,145,144,1); color: white; margin-top: 5vh;">Oddaj naročilo</button>
+                            <button type = "submit" class = "btn my-4" style = "background-color: rgba(89,145,144,1); color: white; margin-top: 5vh;">Oddaj naročilo</button>
                         </form>
                     
                     </div>
