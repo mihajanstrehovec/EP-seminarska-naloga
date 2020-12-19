@@ -241,6 +241,7 @@ public static function dodajVkosarico() {
            
             $err = "Email naslov in geslo se ne ujemata";
             echo ViewHelper::renderRegError("view/layout.php", "view/stranka/vpis.php", $values, $err);
+            exit();
             
         }
         

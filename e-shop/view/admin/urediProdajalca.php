@@ -1,7 +1,14 @@
 
 <?php
-    #var_dump($_SESSION);
-    #exit();
+    
+   if($vars!=NULL){
+        #header('Location: https://localhost/server/h/EP-seminarska-naloga/e-shop/index.php/admin/prodajalec/uredi?idProdajalca=' . $vars["idProdajalca"] . "?err=" . $vars["error"]);
+        $error = $vars["err"];
+        $idProdajalca = $vars["idProdajalca"];
+    } else{
+        $idProdajalca = $_GET["idProdajalca"];
+   }
+ 
 ?>
 
 <div class ="container">
@@ -9,21 +16,22 @@
         <div class ="col-lg-10" >
         
             <div class ="titleProfil" align ="center" style ="padding-top: 0.4vh;">
-                <h4 style ="font-weight: 600;">UREDI PRODAJALCA - ID: <?= $_GET["idProdajalca"]?></h4>
+                <h4 style ="font-weight: 600;">UREDI PRODAJALCA - ID: <?= $idProdajalca?></h4>
             </div>
             
             <div class ="profilVsebnik" style="padding: 7%;">
             
                 <form action = "<?= BASE_URL . "admin/prodajalec/uredi"?>" method = "POST">
-                    <input type = "hidden" name = "idProdajalca" value = "<?= $_GET["idProdajalca"] ?>">
+                    <input type = "hidden" name = "idProdajalca" value = "<?=$idProdajalca ?>">
                     
                     <div class ="form-group ">
                             <label for = "gesloStranke">Sprememba gesla</label>
                             
-                            <?php if($err ==  "Vnešeno geslo je napačno") :?>
+                            <?php if($vars["error"] !=  NULL) :?>
                                 <div class = "form-row">
-                                    <h7 style ="color: red;" > <?= $err ?> </h7>
+                                    <h7 style ="color: red;" > <?=$vars["error"]?> </h7>
                                 </div>
+                                
                             <?php endif;?>
                             
                             <div class = "col-lg-5">
@@ -50,7 +58,7 @@
                 <form action = "" method = "POST">
                     Spremeni uporabniško ime:
                 
-                        <input type = "hidden" name = "idProdajalca" value = "<?= INPUT_GET ?>">
+                        <input type = "hidden" name = "idProdajalca" value = "<?= $idProdajalca ?>">
                             <div class = "col-lg-5">
                                 <input type = "text" class = "form-control" name = "uporabniskoIme"  placeholder = "Vpišite novo uporabniško ime" >
                             </div>

@@ -53,13 +53,13 @@ class adminController {
         
         $data = filter_input_array(INPUT_POST, $rules);
 
-        #var_dump($data);
-        #exit();
-
+        
         if($data["geslo"] != NULL){
             #$mail = [$data["mailStranke"]];
             $input["idProdajalca"] = $data["idProdajalca"];
+           
             
+
             $Prodajalec = eshopDB::getProdajalecByID($input);
             
             
@@ -67,40 +67,57 @@ class adminController {
             
 
             if(password_verify($data["trenutnoGeslo"], $Prodajalec[0]["geslo"])){
+                
                 #$_SESSION["stranka"] = $data["mailStranke"];
                 eshopDB::urejanjeGeslaProdajalecID($input);
                 
                 #var_dump("JAJA");
-                ViewHelper::redirect(BASE_URL . "" );
+                ViewHelper::redirect(BASE_URL . "admin/prodajalci" );
 
                 #exit();
 
             #exit();
             }else{
-                $err = "Vnešeno geslo je napačno";
-                echo ViewHelper::renderRegError("view/layout.php", "view/admin/urediProdajalca.php", $values, $err);
+                
+                $vars["idProdajalca"] = $input["idProdajalca"];
+                $vars["error"] = "Vnešeno geslo je napačno";
+                
+                echo ViewHelper::render("view/layout.php", "view/admin/urediProdajalca.php", [vars => $vars]);
+                #var_dump("sadasdas");
             }
 
         }
-
         
-        if($data["uporabniskoIme"] != NULL){
+        
+        else if($data["uporabniskoIme"] != NULL){
             
            
             
             
             $input["ime"] = $data["uporabniskoIme"];
-            $input["id"] = $data["idProdajalca"];
             
-
+            if(filter_var($_GET["idProdajalca"], FILTER_VALIDATE_INT)){
+                $input["id"] = $_GET["idProdajalca"];
+            } else{
+                echo("link variable not ok, set error screen"); 
+                exit();
+            }
+            
+            
+            
+            
+            #exit();
            
-                eshopDB::urejanjeUporabniskegaImenaP($input);
+            eshopDB::urejanjeUporabniskegaImenaP($input);
                 
-                #var_dump("JAJA");
-                ViewHelper::redirect(BASE_URL . "" );
+            #var_dump("JAJA");
+            ViewHelper::redirect(BASE_URL . "admin/prodajalci" );
 
 
 
+        }else{
+            $err = "Vnesite podatke!";
+            echo ViewHelper::renderRegError("view/layout.php", "view/admin/urediProdajalca.php", $values, $err);
         }
 
     }
@@ -121,8 +138,8 @@ class adminController {
         if(!filter_var($data['eMail'], FILTER_VALIDATE_EMAIL)){
            
             $err = "Email naslov in geslo se ne ujemata";
-            echo ViewHelper::renderRegError("view/layout.php", "view/stranka/vpis.php", $values, $err);
-            
+            echo ViewHelper::renderRegError("view/layout.php", "view/admin/vpisAdmin.php", $values, $err);
+            exit();
         }
         
        

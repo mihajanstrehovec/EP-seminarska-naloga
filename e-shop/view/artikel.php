@@ -106,7 +106,7 @@
                 <!-- Se prikaže če je  prijavljen prodajalec -->
                 <?php if($_SESSION["tipUporabnika"] == "prodajalec") :?>
                     <div class ="row no-gutters justify-content-center dodVkos">
-                        <a href ="<?= BASE_URL . "/artikel/uredi?idArtikla=" . $Artikel["idArtikla"]?>"> 
+                        <a href ="<?= BASE_URL . "artikel/uredi?idArtikla=" . $Artikel["idArtikla"]?>"> 
                           <button type="button" class="btn btn-light dodajVKos">Uredi artikel</button>
                         </a>
                     </div> 

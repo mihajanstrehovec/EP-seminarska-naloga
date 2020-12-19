@@ -22,7 +22,7 @@ require_once 'db_files/db_artikel.php';
 
 <nav class="navbar navbar-expand-lg navbar-dark static-top">
   <div class="container">
-    <a class="navbar-brand" href ="<?= BASE_URL . "/trgovina" ?>">
+    <a class="navbar-brand" href ="<?= BASE_URL . "trgovina" ?>">
           E-SHOP
     </a>
    
@@ -39,7 +39,7 @@ require_once 'db_files/db_artikel.php';
           </li>
 
         <li class="nav-item">
-            <a class="navbar-brand" href ="<?= BASE_URL . "/admin/prodajalci" ?>"> PRODAJALCI</a>
+            <a class="navbar-brand" href ="<?= BASE_URL . "admin/prodajalci" ?>"> PRODAJALCI</a>
           </li>
 
         <li class="nav-item">
@@ -56,19 +56,19 @@ require_once 'db_files/db_artikel.php';
         <?php elseif($_SESSION["tipUporabnika"] == "prodajalec") :?> <!-- PRODAJALEC MENI -->
 
           <li class="nav-item">
-            <a class="navbar-brand" href ="<?= BASE_URL . "/artikel/dodaj" ?>"> DODAJ ARTIKEL</a>
+            <a class="navbar-brand" href ="<?= BASE_URL . "artikel/dodaj" ?>"> DODAJ ARTIKEL</a>
           </li>
           
           <li class="nav-item">
-            <a class="navbar-brand" href ="<?= BASE_URL . "/prodajalec/narocila" ?>"> NAROČILA</a>
+            <a class="navbar-brand" href ="<?= BASE_URL . "prodajalec/narocila" ?>"> NAROČILA</a>
           </li>
 
           <li class="nav-item">
-            <a class="navbar-brand" href ="<?= BASE_URL . "/prodajalec/stranke" ?>"> STRANKE </a>
+            <a class="navbar-brand" href ="<?= BASE_URL . "prodajalec/stranke" ?>"> STRANKE </a>
           </li>
 
           <li class="nav-item">
-            <a class="navbar-brand" href ="<?= BASE_URL . "/prodajalec/profil" ?>"> PROFIL </a>
+            <a class="navbar-brand" href ="<?= BASE_URL . "prodajalec/profil" ?>"> PROFIL </a>
           </li>
 
           <li class="nav-item">
@@ -102,15 +102,15 @@ require_once 'db_files/db_artikel.php';
         <?php else:?>
 
           <li class="nav-item">
-              <a class="navbar-brand" href ="<?= BASE_URL . "/uporabnik/registracija" ?>"> REGISTRACIJA </a>
+              <a class="navbar-brand" href ="<?= BASE_URL . "uporabnik/registracija" ?>"> REGISTRACIJA </a>
             </li>
 
           <li class="nav-item">
-              <a class="navbar-brand" href ="<?= BASE_URL . "/uporabnik/vpis" ?>"> VPIS </a>
+              <a class="navbar-brand" href ="<?= BASE_URL . "uporabnik/vpis" ?>"> VPIS </a>
           </li>
 
           <li class="nav-item">
-            <!--<a class="navbar-brand" href ="<?= BASE_URL . "/prodajalec/vpis" ?>" VPIS - PRODAJALEC </a>-->
+            <!--<a class="navbar-brand" href ="<?= BASE_URL . "prodajalec/vpis" ?>" VPIS - PRODAJALEC </a>-->
           </li>
 
         <?php endif?>

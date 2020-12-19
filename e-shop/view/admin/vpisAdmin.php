@@ -14,24 +14,13 @@
                 <form action = "<?= BASE_URL . "admin/prijava"?>" method = "POST">
                     
                     <!-- Error messages -->
-                    <?php if($err ==  "Uporabniško ime in geslo se ne ujemata") :?>
+                    <?php if($err ==  "Email naslov in geslo se ne ujemata") :?>
                             <div class = "form-row justify-content-center">
                                 <h7 style ="color: red;" > <?= $err ?> </h7>
                             </div>
                     <?php endif;?>
+                   
 
-
-                    <?php if($err ==  "Podatki se ne ujemajo") :?>
-                            <div class = "form-row form-row justify-content-center">
-                                <h7 style ="color: red;"> <?= $err ?> </h7>
-                            </div>
-                    <?php endif;?>
-
-                    <?php if($err ==  "Vaš račun je bil deaktiviran.") :?>
-                            <div class = "form-row form-row justify-content-center">
-                                <h7 style ="color: red;"> <?= $err ?> </h7>
-                            </div>
-                    <?php endif;?>
                     
                     <!-- Email admina -->
                     <div class = "form-row justify-content-center">

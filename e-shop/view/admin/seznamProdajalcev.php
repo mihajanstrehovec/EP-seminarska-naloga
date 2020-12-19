@@ -37,7 +37,7 @@
                     <div class = "row">
 
                         <!-- Gumb z apovezavo do urejanaj prodajalca -->
-                        <a href = "<?= BASE_URL . "/admin/prodajalec/uredi?idProdajalca=".   $prodajalec["idProdajalca"] ?>">
+                        <a href = "<?= BASE_URL . "admin/prodajalec/uredi?idProdajalca=".   $prodajalec["idProdajalca"] ?>">
                             <button type = "submit" class = "btn btn-info" style ="width: 8vw; margin-left: 20%; margin-top: 3vh; height: 4vh;"> Uredi prodajalca </button>
                         </a>
                         

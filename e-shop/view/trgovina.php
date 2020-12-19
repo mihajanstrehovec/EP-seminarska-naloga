@@ -59,7 +59,7 @@ require_once "model/eshopDB.php";
                     <?php if($_SESSION["tipUporabnika"] == "stranka" or $_SESSION["tipUporabnika"] == NULL):?>  <!-- STRANKA -->
                         <!-- If stavki za preverjanje stanja aktivnosti izdelka (1 => aktivirano, prikaži in obratno za 0) -->
                         <?php if($Artikel["aktiviran"] == 1 && $_GET["kategorija"] == NULL):?><!-- To prikažemo, ko je izdelek aktiviran in izbrana ni nobena kategorija -->
-                                <a href ="<?= BASE_URL . "/artikel?idArtikla=" . $Artikel["idArtikla"]?>">
+                                <a href ="<?= BASE_URL . "artikel?idArtikla=" . $Artikel["idArtikla"]?>">
                                     
                                     <div class ="item" style = "background-color: rgba(0,0,0,0);">
                                         
@@ -101,7 +101,7 @@ require_once "model/eshopDB.php";
                     <!--  -->
                     <?php else:?> <!-- PRODAJALEC / ADMIN -->
                         <?php if($Artikel["aktiviran"] == 0):?> <!-- deaktiviran artikel, rdeče ime -->
-                            <a href ="<?= BASE_URL . "/artikel?idArtikla=" . $Artikel["idArtikla"]?>">
+                            <a href ="<?= BASE_URL . "artikel?idArtikla=" . $Artikel["idArtikla"]?>">
                                     
                                     <div class ="item" style = "background-color: rgba(0,0,0,0);">
                                         
@@ -119,7 +119,7 @@ require_once "model/eshopDB.php";
 
                                 </a>
                         <?php else:?> <!-- aktiviran artikel, zeleno ime -->
-                            <a href ="<?= BASE_URL . "/artikel?idArtikla=" . $Artikel["idArtikla"]?>">
+                            <a href ="<?= BASE_URL . "artikel?idArtikla=" . $Artikel["idArtikla"]?>">
                                     
                                     <div class ="item" style = "background-color: rgba(0,0,0,0);">
                                         
