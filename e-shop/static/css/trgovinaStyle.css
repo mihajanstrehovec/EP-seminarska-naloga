@@ -36,7 +36,7 @@ h3{
 .item{
     width: 170px;
     height: 245px;
-    background-color: #93b5b4;
+    background-color: rgba(0,0,0,0);
     display: inline-block !important;
     float: none !important;
     margin: 30px;

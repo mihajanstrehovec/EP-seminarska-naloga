@@ -333,7 +333,10 @@ class prodajalecController {
             }
             
         } else {
-            self::addForm($data);
+            echo ViewHelper::render("view/layout.php", "view/prodajalec/dodajArtikel.php", $values);
+            echo ViewHelper::error("view/error.php", "Na žalost je pri ustvarjanju izdelka prišlo do napake. Prosim poskusite ponovno.");
+                            
+            $uploadOk = 0;
         }
     }
 

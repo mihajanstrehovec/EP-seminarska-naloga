@@ -1,8 +1,9 @@
 <?php
 
 // enables sessions for the entire app
-session_start();
-
+ session_start();
+//$_SESSION["tipUporabnika"] = "gost";
+#var_dump($_SESSION);
 require_once("controller/eshopController.php");
 require_once("controller/prodajalecController.php");
 require_once("controller/strankaController.php");

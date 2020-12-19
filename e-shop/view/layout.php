@@ -139,7 +139,7 @@ $_SESSION['price'] = array(100);
             if (isset($_SESSION["cart"])): {
                     
                     
-                    for($i = 0; $i <= 100; $i++){
+                    for($i = 0; $i <= 200; $i++){
                     
                     // Preverimo, če je artikel z id-jem $i nastavljena
                     if(isset($_SESSION["cart"][$i])){

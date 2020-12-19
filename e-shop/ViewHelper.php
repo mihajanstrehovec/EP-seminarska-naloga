@@ -13,6 +13,8 @@ class ViewHelper {
         return ob_get_clean();
     }
 
+
+    // Renderiranje artikla, kjer potrebujemo dodaten variable
     public static function renderArtikel($layout, $file, $variables = array(), $variables2 = array()) {
         extract($variables);
 
@@ -23,6 +25,8 @@ class ViewHelper {
         return ob_get_clean();
     }
 
+
+    // Renderiranje errorja, ki poskrbi za popup modala z vsebovanim msg sporočilom (pri nalaganju slik)
     public static function error($error, $msg) {
         extract($msg);
 
@@ -33,6 +37,7 @@ class ViewHelper {
         return ob_get_clean();
     }
 
+    // Renderiranje errorja, ki poskrbi za prikaz rdečega teksta na obrazcu ob napaki (vpis, registracija...)
     public static function renderRegError($layout, $file, $variables = array(), $err) {
         extract($variables);
 
@@ -43,6 +48,8 @@ class ViewHelper {
         return ob_get_clean();
     }
 
+
+    // Renderiranje naročila, kjer potrebujem dodaten variabel
     public static function renderNarocila($layout, $file, $narocila = array(), $imenaNarocil = array()) {
         #extract($variables);
 

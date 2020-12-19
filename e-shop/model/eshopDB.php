@@ -26,8 +26,7 @@ class eshopDB extends AbstractDB {
         $Slike = parent::query("SELECT imeSlike"
                         . " FROM Images"
                         . " WHERE idArtikla = :idArtikla", $idArtikla);
-        #var_dump($Slike);
-        #exit();
+      
         return($Slike);
     }
 
