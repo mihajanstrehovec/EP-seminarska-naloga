@@ -15,21 +15,21 @@ kategorija = urlParams.get("kategorija");
 
 switch(kategorija){
     
-    case "Fekalije":
+    case "Kornet":
       
        k1.style.boxShadow = "0px 2px 0px rgba(0,0,0,0.25)";
        
     break;
 
-    case "Orbanove orgije":
+    case "Na žlico":
       k2.style.boxShadow = "0px 2px 0px rgba(0,0,0,0.25)";
     break;
 
-    case "Gaming":
+    case "Kepca":
       k3.style.boxShadow = "0px 2px 0px rgba(0,0,0,0.25)";
     break;
 
-    case "Fresh gum":
+    case "Piškotek":
       k4.style.boxShadow = "0px 2px 0px rgba(0,0,0,0.25)";
     break;
 

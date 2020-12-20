@@ -250,7 +250,7 @@ class prodajalecController {
         
         
         if (self::checkValues($data)) {
-
+                
                 $uploadOk = 1;
  
                 // Count total files
@@ -264,15 +264,16 @@ class prodajalecController {
 
                 // Looping all files
                 for($i=0;$i<$countfiles;$i++){
-
+                    
                     $filename = $_FILES['file']['name'][$i];
                     $text = explode('.', $filename);
                     $fileExt = strtolower(end($text));
                     $imageFileType = strtolower(pathinfo($target_file,PATHINFO_EXTENSION));
-
+                    #var_dump($uploadOk);
+                    #exit();
                    // Check file type
-                    if($uploadOk == 1 &&  $fileExt != "jpg" && $fileExt != "png" && $fileExt != "jpeg" && $fileExt != "gif" ) {
-                            
+                    if($fileExt != "jpg" && $fileExt != "png" && $fileExt != "jpeg" && $fileExt != "gif" ) {
+                        
                             // Error modal
                             echo ViewHelper::render("view/layout.php", "view/prodajalec/dodajArtikel.php", $values);
                             echo ViewHelper::error("view/error.php", "Podprti so zgolj tipi datotek JPG, PNG, GIF in JPEG.");
@@ -282,15 +283,16 @@ class prodajalecController {
                         }
                         
                         // Check file size
-                        if ($uploadOk == 1 && $_FILES["file"]["size"][$i] > 500000) {
+                        if ( $_FILES["file"]["size"][$i] > 10097152) {
                             echo "Sorry, your file is too large.";
                             
                             // Error modal => rendered in seperate php; needs bootstrap and material icons to work
                             echo ViewHelper::render("view/layout.php", "view/prodajalec/dodajArtikel.php", $values);
                             echo ViewHelper::error("view/error.php", "Datoteka je prevelika.");
-                            
+                            break;
                             $uploadOk = 0;
                         }
+                        
                         
 
                         $fileNameNew =  uniqid('IMG_');
@@ -302,6 +304,8 @@ class prodajalecController {
                         
                         if($uploadOk == 1){
                             move_uploaded_file($_FILES['file']['tmp_name'][$i],'/home/miha/programming/h/EP-seminarska-naloga/e-shop/static/images/products/'.$fileNameNew);
+                            #var_dump($_FILES['file']['tmp_name'][$i]);
+                            #exit();
                         } else {
                             #echo "File doesn't meet requierments.";
                             echo ViewHelper::render("view/layout.php", "view/prodajalec/dodajArtikel.php", $values);
@@ -410,7 +414,7 @@ class prodajalecController {
                             }
                        
                             // Check file size
-                            if ($uploadOk == 1 && $_FILES["file"]["size"][$i] > 500000) {
+                            if ($uploadOk == 1 && $_FILES["file"]["size"][$i] > 10097152) {
                                 echo "Sorry, your file is too large.";
                                 
                                 // Error modal => rendered in seperate php; needs bootstrap and material icons to work

@@ -11,7 +11,7 @@
             
                 <div class ="registerVsebnik" style="padding: 60px;">
 
-                    <form action = "<?= BASE_URL . "uporabnik/registracija"?>" method = "POST">
+                    <form action = "<?= BASE_URL . "uporabnik/registracija/potrditvenaKoda"?>" method = "POST">
                         
                         <!-- V primeru napačne captche -->
                         <?php if($err !=  "Vnesite pravilno Captcho") :?>
@@ -97,6 +97,7 @@
                         </div>
                         
                         <!-- CAPTCHA -->
+                        <!-- HARD KODIRANO NA NAŠ NASLOV; OB SPREMEMEMBI DIREKTIORIJEV NUJNO POSODOBI LINK -->
                         <img src="https://localhost//server//h/EP-seminarska-naloga/e-shop/view/stranka/captcha.php" class = "captcha">
                         <input type="text" placeholder = "Vnesite captcho" name="captcha"class = "captcha">
 

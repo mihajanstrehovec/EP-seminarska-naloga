@@ -15,20 +15,20 @@ require_once "model/eshopDB.php";
             
             
             <div class = "link" id ="kat1">
-                <a id = "k1l" href ="https://localhost/server/h/EP-seminarska-naloga/e-shop/index.php/trgovina?kategorija=Fekalije"> Kategorija 1</a>
+                <a id = "k1l" href ="https://localhost/server/h/EP-seminarska-naloga/e-shop/index.php/trgovina?kategorija=Kornet"> Kornet</a>
             </div>
             
 
             <div class = "link" id ="kat2">
-                <a id = "k2l" href ="https://localhost/server/h/EP-seminarska-naloga/e-shop/index.php/trgovina?kategorija=Orbanove%20orgije"> Kategorija 2</a>
+                <a id = "k2l" href ="https://localhost/server/h/EP-seminarska-naloga/e-shop/index.php/trgovina?kategorija=Na%20žlico"> Na žlico </a>
             </div>
 
             <div class = "link" id ="kat3">
-                <a id = "k3l" href ="https://localhost/server/h/EP-seminarska-naloga/e-shop/index.php/trgovina?kategorija=Gaming"> Kategorija 3</a>
+                <a id = "k3l" href ="https://localhost/server/h/EP-seminarska-naloga/e-shop/index.php/trgovina?kategorija=Kepca"> Kepca</a>
             </div>
             
             <div class = "link" id ="kat4">
-                <a id = "k4l"  href ="https://localhost/server/h/EP-seminarska-naloga/e-shop/index.php/trgovina?kategorija=Fresh%20gum"> Kategorija 4</a>
+                <a id = "k4l"  href ="https://localhost/server/h/EP-seminarska-naloga/e-shop/index.php/trgovina?kategorija=Piškotek"> Piškotek</a>
             </div>
         </div>
         
@@ -50,7 +50,7 @@ require_once "model/eshopDB.php";
         <div id ="scroller" class ="overflow-auto itemList" style = "padding: 4% 0% 4% 0%;">
             
             <!-- DIV, ki odreže artikle pred robom osnovnega kvadrata -->
-            <div class = "overflow-auto containItems" style = "width: 100%; height: 100%; overflow-y: auto; overflow-x: none;">  
+            <div class = "overflow-auto containItems" style = "width: 100%; height: 100%; overflow-y: auto; overflow-x: none; " align= "center";>  
 
                 <!-- For zanka, ki na začetni strani prikaže vse artikle (eshopDB::getAll()) -->
                 <?php foreach ($Artikli as $Artikel): ?>
@@ -65,10 +65,10 @@ require_once "model/eshopDB.php";
                                         
                                         <!-- Slika artikla -->
                                         <?php   $imeSlike = eshopDB::getImages($Artikel);   ?>
-                                        <img src="<?= IMAGES_URL . "/products/". $imeSlike[0]["imeSlike"]?>" height = "100px" style="width:100%; margin-top: 20%;">
+                                        <img src="<?= IMAGES_URL . "/products/". $imeSlike[0]["imeSlike"]?>" height= "1000px" style="width:100%; " class ="displayImage">
 
                                         <!-- Text pri artiklu -->
-                                        <div id ="prikaznoImeArtikla" style ="margin-top: 15%; color: #515151;">
+                                        <div id ="prikaznoImeArtikla" style ="margin-top: 15%; color: #515151; font-weight:bold!important; font-size: 2em;">
                                             <?=  $Artikel["imeArtikla"] ?> <br>
                                             <s style = "margin-right: 5px;"><?= $Artikel["cenaArtikla"] + rand(0, 30)?> €</s>
                                             <?= $Artikel["cenaArtikla"] ?>€ 
@@ -85,10 +85,10 @@ require_once "model/eshopDB.php";
                                         
                                         <!-- Slika artikla -->
                                         <?php   $imeSlike = eshopDB::getImages($Artikel);   ?>
-                                        <img src="<?= IMAGES_URL . "/products/". $imeSlike[0]["imeSlike"]?>" height = "100px" style="width:100%; margin-top: 20%;">
+                                        <img src="<?= IMAGES_URL . "/products/". $imeSlike[0]["imeSlike"]?>" height = "1000px" style="width:100%; " class ="displayImage">
 
                                         <!-- Text pri artiklu -->
-                                        <div id ="prikaznoImeArtikla" style ="margin-top: 15%;color: #515151;">
+                                        <div id ="prikaznoImeArtikla" style ="margin-top: 15%;color: #515151;  font-weight:bold!important; font-size: 2em;">
                                             <?=  $Artikel["imeArtikla"] ?> <br>
                                             <s style = "margin-right: 5px;"><?= $Artikel["cenaArtikla"] + rand(0, 30)?> €</s>
                                             <?= $Artikel["cenaArtikla"] ?>€ 
@@ -107,10 +107,10 @@ require_once "model/eshopDB.php";
                                         
                                         <!-- Slika artikla -->
                                         <?php   $imeSlike = eshopDB::getImages($Artikel);   ?>
-                                        <img src="<?= IMAGES_URL . "/products/". $imeSlike[0]["imeSlike"]?>" height = "100px" style="width:100%; margin-top: 20%;">
+                                        <img src="<?= IMAGES_URL . "/products/". $imeSlike[0]["imeSlike"]?>" height = "1000px" style="width:100%; " class ="displayImage">
 
                                         <!-- Text pri artiklu -->
-                                        <div id ="prikaznoImeArtikla" style ="margin-top: 15%;color: red;">
+                                        <div id ="prikaznoImeArtikla" style ="margin-top: 15%;color: red;  font-weight:bold!important; font-size: 2em;">
                                             <?=  $Artikel["imeArtikla"] ?> <br>
                                             <s style = "margin-right: 5px;"><?= $Artikel["cenaArtikla"] + rand(0, 30)?>€</s>
                                             <?= $Artikel["cenaArtikla"] ?>€ 
@@ -125,10 +125,10 @@ require_once "model/eshopDB.php";
                                         
                                         <!-- Slika artikla -->
                                         <?php   $imeSlike = eshopDB::getImages($Artikel);   ?>
-                                        <img src="<?= IMAGES_URL . "/products/". $imeSlike[0]["imeSlike"]?>" height = "100px" style="width:100%; margin-top: 20%;">
+                                        <img src="<?= IMAGES_URL . "/products/". $imeSlike[0]["imeSlike"]?>" height = "1000px" style="width:100%;" class ="displayImage">
 
                                         <!-- Text pri artiklu -->
-                                        <div id ="prikaznoImeArtikla" style ="margin-top: 15%;color: green;">
+                                        <div id ="prikaznoImeArtikla" style ="margin-top: 15%;color: green; font-weight:bold!important; font-size: 2em;">
                                             <?=  $Artikel["imeArtikla"] ?> <br>
                                             <s style = "margin-right: 5px;"><?= $Artikel["cenaArtikla"] + rand(0, 30)?> €</s>
                                             <?= $Artikel["cenaArtikla"] ?>€ 

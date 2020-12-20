@@ -1,12 +1,33 @@
-/*
-To change this license header, choose License Headers in Project Properties.
-To change this template file, choose Tools | Templates
-and open the template in the editor.
-*/
-/* 
-    Created on : Dec 4, 2020, 9:43:42 PM
-    Author     : ep
-*/
+
+
+/* POMEMBNO PRI FONT IMPORTU */
+/* URL LINK JE NASTAVLJEN NA MOJO (MIHA) TRENUTNO NASTAVITVE STREŽNIKA, ZATO JE POTREBNO LINK ZAMENJATI NA USTREZNEGA VAŠEGA*/
+
+@font-face {
+    font-family: 'Product Sans';
+    src: url('https://localhost/server/h/EP-seminarska-naloga/e-shop/fonts/ProductSans-Regular.eot');
+    src: url('https://localhost/server/h/EP-seminarska-naloga/e-shop/fonts/ProductSans-Regular.eot?#iefix') format('embedded-opentype'),
+        url('https://localhost/server/h/EP-seminarska-naloga/e-shop/fonts/ProductSans-Regular.woff2') format('woff2'),
+        url('https://localhost/server/h/EP-seminarska-naloga/e-shop/fonts/ProductSans-Regular.woff2.woff') format('woff');
+    font-weight: normal;
+    font-style: normal;
+    font-display: swap;
+}
+
+@font-face {
+    font-family: 'Product Sans';
+    src: url('https://localhost/server/h/EP-seminarska-naloga/e-shop/fonts/ProductSans-Bold.eot');
+    src: url('https://localhost/server/h/EP-seminarska-naloga/e-shop/fonts/ProductSans-Bold.eot?#iefix') format('embedded-opentype'),
+        url('https://localhost/server/h/EP-seminarska-naloga/e-shop/fonts/ProductSans-Bold.woff2') format('woff2'),
+        url('https://localhost/server/h/EP-seminarska-naloga/e-shop/fonts/ProductSans-Bold.woff2.woff') format('woff');
+    font-weight: bold;
+    font-style: normal;
+    font-display: swap;
+}
+
+
+
+
 
 .itemList{
     width: 55vw;
@@ -34,12 +55,15 @@ h3{
 
 
 .item{
-    width: 170px;
-    height: 245px;
+    
+    margin-right: 7%!important;
+    height: fit-content;
     background-color: rgba(0,0,0,0);
     display: inline-block !important;
     float: none !important;
     margin: 30px;
+    margin-top: 40px!important;
+    margin-bottom: 300px;
     
 }
 
@@ -73,3 +97,12 @@ h3{
 }
 
 
+.displayImage{
+    height: 300px;
+    width: auto;
+}
+
+.prikaznoImeArtikla{
+    font-family: "Product Sans";
+        font-weight:bold!important;
+}

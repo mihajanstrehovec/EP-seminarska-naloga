@@ -1,6 +1,8 @@
 <?php
 
-
+use PHPMailer\PHPMailer\PHPMailer;
+use PHPMailer\PHPMailer\Exception;
+use PHPMailer\PHPMailer\SMTP;
 
 require_once("model/eshopDB.php");
 require_once("ViewHelper.php");
@@ -179,7 +181,7 @@ public static function dodajVkosarico() {
         echo ViewHelper::renderRegError("view/layout.php", "view/stranka/register.php", $values, $err);
     }
 
-    public static function registracijaSubmit() {
+    public static function potrditvenaKoda() {
         $data = filter_input_array(INPUT_POST, self::getRulesRegistracijaStranka());
 
         #var_dump($data);
@@ -211,16 +213,74 @@ public static function dodajVkosarico() {
         else if (self::checkValues($data)) {
 
             $data["gesloStranke"] = password_hash($data["gesloStranke"], PASSWORD_BCRYPT);
-            #var_dump($data["gesloStranke"]);
-            #exit();
+
+            $data["potrditvenaKoda"] = rand(100000,999999);
             
-            $id = eshopDB::ustvariStranko($data);
+
             
-            echo ViewHelper::redirect(BASE_URL. "trgovina");
+
+
+            $mail = new PHPMailer(true);
+
+                // Pošiljanje potrditvene kode preko phpmailer  
+                try{
+                
+                $mail->isSMTP();                                            
+                $mail->Host = 'smtp.gmail.com';
+                $mail->SMTPAuth   = true; 
+                                  
+                $mail->Username   = 'mihec.strehci@gmail.com';                    
+                $mail->Password   = 'ritmecarji';     
+                $mail->Port = 587;                       
+                $mail->SMTPSecure = tls;         
+              
+                $mail->setFrom('sladkizob.info@gmail.com', 'Mailer');
+                $mail->addAddress($data["mailStranke"], 'Joe User');     
+                
+               
+                
+                $mail->isHTML(true);                                  
+                $mail->Subject = 'Potrditvena koda';
+                $mail->Body    = 'Pozdravljeni, pošiljamo vam vašo potrditveno kodo: <b>'. $data["potrditvenaKoda"] . '</b>';
+              
+                $mail->send();
+                    } catch (Exception $e) {
+                 echo "Message could not be sent. Mailer Error: {$mail->ErrorInfo}";
+                }
+                
+        
+
+            echo ViewHelper::render("view/layout.php", "view/stranka/emailPotrditev.php", ["data" => $data]);
             
-        } else {
-            self::registracijaForm($data);
-        }
+            }
+    }
+
+    public static function registracijaSubmit() {
+        
+            $data = $_POST;
+            
+            // Preverjanje potrditvene kode
+            if($data["vnesenaPotrditvenaKoda"] == $data["potrditvenaKoda"]){
+                
+                $id = eshopDB::ustvariStranko($data);
+            
+                session_destroy();
+                session_regenerate_id();
+                session_start();
+                $_SESSION["mailStranke"] = $data["mailStranke"];
+                $_SESSION["tipUporabnika"] = "stranka";
+                
+                echo ViewHelper::redirect(BASE_URL. "trgovina");
+
+                
+            } else {
+                $err = "Napačna potrditvena koda.";
+                echo viewHelper::renderRegError("view/layout.php", "view/stranka/emailPotrditev.php", ["data" => $data], $err);
+            }
+            
+            
+            
+      
     }
 
 
@@ -270,7 +330,7 @@ public static function dodajVkosarico() {
                 session_start();
                 $_SESSION["mailStranke"] = $data["mailStranke"];
                 $_SESSION["tipUporabnika"] = "stranka";
-                echo ViewHelper::redirect(BASE_URL. "trgovina"/*. "books?id=" . $id*/);
+                echo ViewHelper::redirect(BASE_URL. "trgovina");
             }else{
                 $err = "Vaš račun je bil deaktiviran.";
                 echo ViewHelper::renderRegError("view/layout.php", "view/stranka/vpis.php", $values, $err);
@@ -283,18 +343,6 @@ public static function dodajVkosarico() {
         }
 
         
-        
-
-        
-        /*
-        else if (self::checkValues($data)) {
-            $id = eshopDB::insert($data);
-            
-            echo ViewHelper::redirect(BASE_URL. "trgovina");
-            
-        } else {
-            self::addForm($data);
-        }*/
     }
 
     public static function profil() {
