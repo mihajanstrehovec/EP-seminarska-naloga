@@ -577,6 +577,7 @@ public static function dodajVkosarico() {
         $idStranke = eshopDB::getStrankaID($_SESSION);
         $params ["idArtikla"] = intval($_POST["idArtikla"]);
         $params ["idStranke"] = intval($idStranke[0]["idStranke"]);
+        
         $paramsOceni ["ocena"] = $_POST["ocena"] + $_POST["submitOcena"];
         $paramsOceni["steviloOcen"] = $_POST["steviloOcen"] + 1;
         $paramsOceni["idArtikla"] = $_POST["idArtikla"];
