@@ -1,3 +1,8 @@
+CREATE DATABASE  IF NOT EXISTS `sladket` /*!40100 DEFAULT CHARACTER SET utf8 */ /*!80016 DEFAULT ENCRYPTION='N' */;
+USE `sladket`;
+
+
+
 -- MySQL dump 10.13  Distrib 8.0.22, for Linux (x86_64)
 --
 -- Host: localhost    Database: final1
