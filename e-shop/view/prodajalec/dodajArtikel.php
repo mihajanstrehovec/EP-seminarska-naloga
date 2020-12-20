@@ -25,10 +25,10 @@
                     <div class="col-lg-12">
                         <select class="form-control" id="exampleFormControlSelect1" name ="kategorijaArtikla"style ="width: 35%; float: left; margin-top: 20px;">
                             <option hidden> Kategorija</option>
-                            <option>Gaming</option>
-                            <option>Fekalije</option>
-                            <option>Orbanove orgije</option>
-                            <option>Fresh gum</option>
+                            <option>Kornet</option>
+                            <option>Na žlico</option>
+                            <option>Kepca</option>
+                            <option>Piškotek</option>
                         </select>
                     </div>
 
@@ -45,14 +45,14 @@
                 <!-- Cena -->
                 <div class="form-group row">
                     <label for="example-number-input" class ="col-1" style ="margin-top: 24px; color: rgb(240, 210, 157); font-weight: 600;">CENA</label>
-                    <input class="form-control" type="number" name="cenaArtikla" value="420" id="example-number-input" style ="width: 10%; flaot: left; margin-top: 20px;">
+                    <input class="form-control" type="number" name="cenaArtikla" value="7" id="example-number-input" style ="width: 10%; flaot: left; margin-top: 20px;">
                 </div>
                 
 
                 <!-- Zaloga -->
                 <div class="form-group row">
                     <label for="example-number-input" class ="col-1" style ="margin-top: 24px; color: rgb(240, 210, 157); font-weight: 600; float: left; margin-right: 10px;">ZALOGA</label>
-                    <input class="form-control" type="number" name="zalogaArtikla" value="420" id="example-number-input" style ="width: 10%; float: left; margin-top: 20px;">
+                    <input class="form-control" type="number" name="zalogaArtikla" value="15" id="example-number-input" style ="width: 10%; float: left; margin-top: 20px;">
                 </div>   
             
         

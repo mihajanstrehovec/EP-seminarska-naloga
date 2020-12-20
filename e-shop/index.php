@@ -1,9 +1,19 @@
 <?php
-
+#var_dump(phpinfo());
+#exit();
 // enables sessions for the entire app
  session_start();
 //$_SESSION["tipUporabnika"] = "gost";
 #var_dump($_SESSION);
+use PHPMailer\PHPMailer\PHPMailer;
+use PHPMailer\PHPMailer\Exception;
+
+require '/home/miha/programming/h/EP-seminarska-naloga/e-shop/PHPMailer-master/src/Exception.php';
+require '/home/miha/programming/h/EP-seminarska-naloga/e-shop/PHPMailer-master/src/PHPMailer.php';
+require '/home/miha/programming/h/EP-seminarska-naloga/e-shop/PHPMailer-master/src/SMTP.php';
+
+
+
 require_once("controller/eshopController.php");
 require_once("controller/prodajalecController.php");
 require_once("controller/strankaController.php");
@@ -50,6 +60,13 @@ $urls = [
             strankaController::registracijaSubmit();
         } else {
             strankaController::registracijaForm();
+        }
+    },
+    "uporabnik/registracija/potrditvenaKoda" => function () {
+        if ($_SERVER["REQUEST_METHOD"] == "POST") {
+            strankaController::potrditvenaKoda();
+        } else {
+            //strankaController::index();
         }
     },
     "uporabnik/vpis" => function () {
