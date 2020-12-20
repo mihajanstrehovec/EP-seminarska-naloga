@@ -4,6 +4,7 @@
 
 #var_dump($Artikel["Images"]);
 #var_dump($_SESSION);
+
 #exit();
 ?>
 
@@ -82,23 +83,50 @@
                         </form>
                     </div>
 
-
+                
                 <!-- OCENJEVANJE ARTIKLA -->
-                <?php for($i = 0; $i < 5;$i++){ 
+                <form action="storeOcena" method = "POST" id="ocenaForm">
+                <input type="hidden" name="submitOcena" value="" id = "submitOcenaID"/>
+                <input type = "hidden" name = "idArtikla" value = "<?= $Artikel["idArtikla"]?>">
+                <input type = "hidden" name = "ocena" value = "<?= $Artikel["ocena"]?>">
+                <input type = "hidden" name = "steviloOcen" value = "<?= $Artikel["steviloOcen"]?>">    
+                </form>
+                <?php 
+                
+                if($Artikel["steviloOcen"] == 0){
                     
-                    if($i <= $Artikel["ocena"]){    ?>
+                    $ocena = 0;
+                }
+                
+                else{
                     
-                      <button style="background-color:rgba(0,0,0,0);border:0px " id=<?="rating$i"?> onclick="seosSiTU()"><img id=<?="zvezdica$i"?> style="width:2em" src="<?= IMAGES_URL . "star.png"?>"></button> 
-                <?php
-                    }
-                    else if($i > $Artikel["ocena"]){ ?>
+                    $ocena = $Artikel["ocena"] / $Artikel["steviloOcen"];
 
-                      <button style="background-color:rgba(0,0,0,0);border:0px " id=<?="rating$i"?> onclick="seosSiTU()"><img id=<?="zvezdica$i"?> style="width:2em" src="<?= IMAGES_URL . "gray-star.png"?>"></button> 
-                <?php    } 
+                }
+                
+                for($i = 1; $i < 6;$i++){ 
+                    
+                    if($i <= $ocena){    ?>
+                    
+                      <button style="background-color:rgba(0,0,0,0);border:0px " id=<?="$i"?> onclick="dodajOceno(this.id)"><img id=<?="zvezdica$i"?> style="width:2em" src="<?= IMAGES_URL . "star.png"?>"></button> 
+                        
+                <?php
+                    
+                    }
+                    
+                    else if($i > $ocena){ ?>
+
+                        <button style="background-color:rgba(0,0,0,0);border:0px " id=<?="$i"?> onclick="dodajOceno(this.id)"><img id=<?="zvezdica$i"?> style="width:2em" src="<?= IMAGES_URL . "gray-star.png"?>"></button> 
+                
+                <?php    
+                    
+                    } 
+                      
                       } ?>
                 
-
-
+                
+                
+                
 
 
                 <?php endif; ?>
@@ -119,4 +147,20 @@
 
 
 <script src = "<?= JS_URL . "galerijaArtikel.js" ?>"></script>
+<script src="jquery-3.5.1.min.js"></script>
+<script>
+    function dodajOceno(id){
+    
+        if (1 == 1){
+            document.getElementById("submitOcenaID").setAttribute("value",id);
+        }        
+        $("#ocenaForm").submit();            
+    
+    }
+</script>
+    
+    
+</script>
+
+
 

@@ -314,4 +314,23 @@ class eshopDB extends AbstractDB {
                         . " VALUES (:imeProdajalca, :priimekProdajalca, :eMail, :geslo, :uporabniskoIme)", $params);
     }
 
+    public static function zabeležiOceno(array $params) {
+        return parent::modify("INSERT INTO ArtikelStrankaOcena (idArtikla, idStranke) "
+                        . " VALUES (:idArtikla, :idStranke)", $params);
+    }
+
+    public static function preveriOceno(array $params) {
+        return parent::query("SELECT idArtStrOcena"
+                        . " FROM ArtikelStrankaOcena"
+                        . " WHERE idArtikla = :idArtikla AND idStranke = :idStranke", $params);
+    }
+
+    public static function oceniArtikel(array $params){
+        return parent::modify("UPDATE Artikel SET ocena = :ocena AND steviloOcen = :steviloOcen"
+                        . " WHERE idArtikla = :idArtikla", $params); 
+
+    }
+
+
+    
 }
