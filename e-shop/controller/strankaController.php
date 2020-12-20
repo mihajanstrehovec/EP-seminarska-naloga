@@ -234,8 +234,8 @@ public static function dodajVkosarico() {
                 $mail->Port = 587;                       
                 $mail->SMTPSecure = tls;         
               
-                $mail->setFrom('sladkizob.info@gmail.com', 'Mailer');
-                $mail->addAddress($data["mailStranke"], 'Joe User');     
+                $mail->setFrom('sladkizob.info@gmail.com', 'sladket');
+                $mail->addAddress($data["mailStranke"]);     
                 
                
                 
