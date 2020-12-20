@@ -201,6 +201,9 @@ $urls = [
             eShopRestControler::getArt($_GET["idARTIKLA"]);
             
         }
+    },
+    "storeOcena" => function () {
+        strankaController:: oceniArtikel();
     }
     
 ];

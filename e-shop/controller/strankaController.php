@@ -572,10 +572,29 @@ public static function dodajVkosarico() {
    
     }
     
+    public static function oceniArtikel() {
+        
+        $idStranke = eshopDB::getStrankaID($_SESSION);
+        $params ["idArtikla"] = intval($_POST["idArtikla"]);
+        $params ["idStranke"] = intval($idStranke[0]["idStranke"]);
+        $paramsOceni ["ocena"] = $_POST["ocena"] + $_POST["submitOcena"];
+        $paramsOceni["steviloOcen"] = $_POST["steviloOcen"] + 1;
+        $paramsOceni["idArtikla"] = $_POST["idArtikla"];
+        
+        
+        //preverimo ali artikel ze ima oceno uporabnika
+        if(eshopDB::preveriOceno($params) == null){
+            
+            eshopDB::zabeležiOceno($params);
+            eShopDB::oceniArtikel($paramsOceni);
+
+        }
+        echo ViewHelper::redirect(BASE_URL . "/artikel?idArtikla=" . $_POST["idArtikla"]);
+        
+    }
 
 
-
-
+  
 }
 
 ?>
