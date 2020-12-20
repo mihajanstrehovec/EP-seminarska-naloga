@@ -47,7 +47,7 @@ require_once "model/eshopDB.php";
         </div>
         
        
-        <div class ="overflow-auto itemList" style = "padding: 4% 0% 4% 0%;">
+        <div id ="scroller" class ="overflow-auto itemList" style = "padding: 4% 0% 4% 0%;">
             
             <!-- DIV, ki odreže artikle pred robom osnovnega kvadrata -->
             <div class = "overflow-auto containItems" style = "width: 100%; height: 100%; overflow-y: auto; overflow-x: none;">  
@@ -146,3 +146,4 @@ require_once "model/eshopDB.php";
 
 <script src = "<?= JS_URL . "kategorije.js"?>"></script>
 
+<script src = "<?= JS_URL . "scroll.js"?>"></script>

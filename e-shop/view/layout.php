@@ -195,7 +195,7 @@ $_SESSION['price'] = array(100);
         <!--<?= var_dump($_SESSION); ?>-->
         
 
-        <!-- <canvas id="canvas1" style="border: 1px solid black; z-index: -10000; position: absolute; left:0; top:0;"></canvas>  -->
+<img id="bgIMGscroll" src = "<?= IMAGES_URL . "bgScroll.png"?>" style=" z-index: -10000; position: absolute; left:0; top:0;">
 
 
 
@@ -204,5 +204,5 @@ $_SESSION['price'] = array(100);
 <script src="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/js/bootstrap.min.js" integrity="sha384-JjSmVgyd0p3pXB1rRibZUAYoIIy6OrQ6VrjIEaFf/nJGzIxFDsf4x0xIM+B07jRM" crossorigin="anonymous"></script>
 <script src = "<?= JS_URL . "cart.js"?>"></script>
 <script src = "<?= JS_URL . "navBar.js"?>"></script>
-<script src = "<?= JS_URL . "scroll.js"?>"></script>
+
 <!-- <script src="scroll.js"></script>  -->

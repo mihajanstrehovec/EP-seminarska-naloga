@@ -29,7 +29,7 @@
 
 body{
     background: rgb(240, 210, 157);
-    overflow: hidden;
+     overflow: hidden; 
     font-family: 'Product Sans';
     font-weight: normal; 
     font-style: normal;
