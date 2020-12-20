@@ -303,7 +303,7 @@ class prodajalecController {
             
                         
                         if($uploadOk == 1){
-                            move_uploaded_file($_FILES['file']['tmp_name'][$i],'/home/miha/programming/h/EP-seminarska-naloga/e-shop/static/images/products/'.$fileNameNew);
+                            move_uploaded_file($_FILES['file']['tmp_name'][$i],'/home/ami/ep/EP-seminarska-naloga/e-shop/static/images/products/'.$fileNameNew);
                             #var_dump($_FILES['file']['tmp_name'][$i]);
                             #exit();
                         } else {
@@ -435,7 +435,7 @@ class prodajalecController {
 
                             if($uploadOk == 1){
                                 
-                                move_uploaded_file($_FILES['file']['tmp_name'][$i],'/home/miha/programming/h/EP-seminarska-naloga/e-shop/static/images/products/'.$fileNameNew);
+                                move_uploaded_file($_FILES['file']['tmp_name'][$i],'/home/ami/ep/EP-seminarska-naloga/e-shop/static/images/products/'.$fileNameNew);
                                 
                             } else {
                                

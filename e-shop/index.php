@@ -8,9 +8,9 @@
 use PHPMailer\PHPMailer\PHPMailer;
 use PHPMailer\PHPMailer\Exception;
 
-require '/home/miha/programming/h/EP-seminarska-naloga/e-shop/PHPMailer-master/src/Exception.php';
-require '/home/miha/programming/h/EP-seminarska-naloga/e-shop/PHPMailer-master/src/PHPMailer.php';
-require '/home/miha/programming/h/EP-seminarska-naloga/e-shop/PHPMailer-master/src/SMTP.php';
+require '/home/ami/Documents/ep/EP-seminarska-naloga/e-shop/PHPMailer-master/src/Exception.php';
+require '/home/ami/Documents/ep/EP-seminarska-naloga/e-shop/PHPMailer-master/src/PHPMailer.php';
+require '/home/ami/Documents/ep/EP-seminarska-naloga/e-shop/PHPMailer-master/src/SMTP.php';
 
 
 
