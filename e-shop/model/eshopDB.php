@@ -321,7 +321,8 @@ class eshopDB extends AbstractDB {
 
     public static function preveriOceno(array $params) {
         return parent::query("SELECT idArtStrOcena"
-                        . "WHERE idStranke = :idStranke AND idArtikla = ", $params);
+                        . " FROM ArtikelStrankaOcena"
+                        . "WHERE idArtikla = :idArtikla AND idStranke = :idStranke", $params);
     }
 
 

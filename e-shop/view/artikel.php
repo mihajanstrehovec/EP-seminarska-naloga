@@ -4,6 +4,7 @@
 
 #var_dump($Artikel["Images"]);
 #var_dump($_SESSION);
+
 #exit();
 ?>
 
@@ -82,23 +83,24 @@
                         </form>
                     </div>
 
-
+                
                 <!-- OCENJEVANJE ARTIKLA -->
                 <?php for($i = 0; $i < 5;$i++){ 
                     
                     if($i <= $Artikel["ocena"]){    ?>
                     
-                      <button style="background-color:rgba(0,0,0,0);border:0px " id=<?="rating$i"?> onclick="seosSiTU()"><img id=<?="zvezdica$i"?> style="width:2em" src="<?= IMAGES_URL . "star.png"?>"></button> 
+                      <button type="submit" style="background-color:rgba(0,0,0,0);border:0px " id=<?="rating$i"?> onclick="dodajOceno(this.id)"><img id=<?="zvezdica$i"?> style="width:2em" src="<?= IMAGES_URL . "star.png"?>"></button> 
+                        
                 <?php
                     }
                     else if($i > $Artikel["ocena"]){ ?>
 
-                      <button style="background-color:rgba(0,0,0,0);border:0px " id=<?="rating$i"?> onclick="seosSiTU()"><img id=<?="zvezdica$i"?> style="width:2em" src="<?= IMAGES_URL . "gray-star.png"?>"></button> 
+                      <button style="background-color:rgba(0,0,0,0);border:0px " id=<?="rating$i"?> onclick="dodajOceno(this.id)"><img id=<?="zvezdica$i"?> style="width:2em" src="<?= IMAGES_URL . "gray-star.png"?>"></button> 
                 <?php    } 
                       } ?>
                 
-
-
+                
+                
 
 
                 <?php endif; ?>
@@ -119,4 +121,13 @@
 
 
 <script src = "<?= JS_URL . "galerijaArtikel.js" ?>"></script>
+<script src="jquery-3.5.1.min.js"></script>
+<script>
+    function dodajOceno(id){
+        $.post("/e-shop/scripts/storeOcena.php", {ocenaArtikla: id})
+    }
+    
+</script>
+
+
 
