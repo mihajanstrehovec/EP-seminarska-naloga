@@ -7,7 +7,7 @@ class dbINIT {
     private static $host = "localhost";
     private static $user = "root";
     private static $password = "ep";
-    private static $schema = "precum";
+    private static $schema = "final1";
     private static $instance = null;
 
     private function __construct() {

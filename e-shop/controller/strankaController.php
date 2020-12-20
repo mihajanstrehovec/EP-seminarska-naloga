@@ -626,17 +626,23 @@ public static function dodajVkosarico() {
         $params ["idArtikla"] = intval($_POST["idArtikla"]);
         $params ["idStranke"] = intval($idStranke[0]["idStranke"]);
         
-        $paramsOceni ["ocena"] = $_POST["ocena"] + $_POST["submitOcena"];
-        $paramsOceni["steviloOcen"] = $_POST["steviloOcen"] + 1;
+        $paramsOceni ["ocena"] = intval($_POST["ocena"] + $_POST["submitOcena"]);
+        $paramsOceni["steviloOcen"] = intval($_POST["steviloOcen"] + 1);
         $paramsOceni["idArtikla"] = $_POST["idArtikla"];
         
         
         //preverimo ali artikel ze ima oceno uporabnika
         if(eshopDB::preveriOceno($params) == null){
-            
+            #var_dump($idStranke);
+                #exit();
             eshopDB::zabeležiOceno($params);
             eShopDB::oceniArtikel($paramsOceni);
+            
 
+        } else {
+            
+            
+            
         }
         echo ViewHelper::redirect(BASE_URL . "/artikel?idArtikla=" . $_POST["idArtikla"]);
         

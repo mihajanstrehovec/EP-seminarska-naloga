@@ -326,7 +326,7 @@ class eshopDB extends AbstractDB {
     }
 
     public static function oceniArtikel(array $params){
-        return parent::modify("UPDATE Artikel SET ocena = :ocena AND steviloOcen = :steviloOcen"
+        return parent::modify("UPDATE Artikel SET ocena = :ocena, steviloOcen = :steviloOcen"
                         . " WHERE idArtikla = :idArtikla", $params); 
 
     }
