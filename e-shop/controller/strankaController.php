@@ -84,7 +84,7 @@ public static function dodajVkosarico() {
 
         $Narocilo = [];
         
-            for($i = 0; $i < 100; $i++){
+            for($i = 0; $i < 200; $i++){
                 if($_SESSION["cart"][$i] != NULL){
                     #echo($_SESSION["cart"][$i]);
                     
@@ -116,7 +116,7 @@ public static function dodajVkosarico() {
 
         $id = eshopDB::insertNarocilo($narociloInput);
 
-        for($i = 0; $i < 100; $i++){
+        for($i = 0; $i < 200; $i++){
             if($_SESSION["cart"][$i] != NULL){
                 #echo($_SESSION["cart"][$i]);
                 
@@ -145,34 +145,16 @@ public static function dodajVkosarico() {
         $id["idStranke"] = 1;
        
         $narocila = eshopDB::getNarocila($idStranke[0]);
-        #var_dump($narocila[0]);
-        #exit();
+
         $Artikli = [];
         for($i = 0; $i < count($narocila); $i++){
             $idTrNarocila["idNarocila"] = $narocila[$i]["idNaročila"];
-            #var_dump($idTrNarocila);
-            #exit();
             
             array_push($Artikli, eshopDB::getNarociloArtikli($idTrNarocila));
         }
-        #var_dump($narocila[7]);
-        #var_dump("ARTIKLI");
-        #var_dump($Artikli[7]);
-        #exit();
 
         $ArtikliInfo = [[]];
 
-        
-        #var_dump($narocila[1]);
-        #var_dump($narocila[0]);
-        #echo("HALLLLLLLLLLLLLLLLLLLLl");
-        #var_dump($ArtikliInfo[0]);
-       #exit();
-
-        #$oddanaNarocila = eshopDB::oddanaNarocila($idStranke);
-        #$potrjenaNarocila = eshopDB::potrjenaNarocila($idStranke);
-        #$preklicanaNarocila = eshopDB::preklicanaNarocila($idStranke);
-        #$storniranaNarocila = eshopDB::storniranaNarocila($idStranke);
         
         echo ViewHelper::renderNarocila("view/layout.php", "view/stranka/mojaNarocila.php", ["narocila" => $narocila], ["imenaNarocil" => $ArtikliInfo]);
         
@@ -259,6 +241,7 @@ public static function dodajVkosarico() {
            
             $err = "Email naslov in geslo se ne ujemata";
             echo ViewHelper::renderRegError("view/layout.php", "view/stranka/vpis.php", $values, $err);
+            exit();
             
         }
         
@@ -315,7 +298,8 @@ public static function dodajVkosarico() {
     }
 
     public static function profil() {
-        echo ViewHelper::render("view/layout.php", "view/stranka/profil.php");
+        $Stranka = eshopDB::getStrankaNaslov($_SESSION);
+        echo ViewHelper::render("view/layout.php", "view/stranka/profil.php", ['Stranka' => $Stranka]);
     }
 
     public static function editProfil() {

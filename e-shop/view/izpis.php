@@ -1,5 +1,5 @@
 <?php 
-
-session_destroy();
+    // Session destroy i to je to
+    session_destroy();
 
 ?>

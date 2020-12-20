@@ -37,21 +37,21 @@
 
 /* Modal izbris slike content */
 
-/* HIDE RADIO */
-[type=checkbox] { 
+/* Skrij checkbox */
+.izbrisiSlikoC { 
     position: absolute;
     opacity: 0;
     width: 0;
     height: 0;
 }
   
-  /* IMAGE STYLES */
-[type=checkbox] + img {
+  /* Stil slike */
+.izbrisiSlikoC + img {
     cursor: pointer;
 }
   
-  /* CHECKED STYLES */
-[type=checkbox]:checked + img {
+  /* Izbrani checkboxi */
+.izbrisiSlikoC:checked + img {
     outline: 2px solid #f00;
 }
 
