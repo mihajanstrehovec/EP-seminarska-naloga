@@ -2,7 +2,6 @@
 <?php
     
    if($vars!=NULL){
-        #header('Location: https://localhost/server/h/EP-seminarska-naloga/e-shop/index.php/admin/prodajalec/uredi?idProdajalca=' . $vars["idProdajalca"] . "?err=" . $vars["error"]);
         $error = $vars["err"];
         $idProdajalca = $vars["idProdajalca"];
     } else{

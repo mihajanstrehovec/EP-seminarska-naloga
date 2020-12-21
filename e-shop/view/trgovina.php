@@ -15,20 +15,20 @@ require_once "model/eshopDB.php";
             
             
             <div class = "link" id ="kat1">
-                <a id = "k1l" href ="https://localhost/server/h/EP-seminarska-naloga/e-shop/index.php/trgovina?kategorija=Kornet"> Kornet</a>
+                <a id = "k1l" href ="<?= BASE_URL . "trgovina" ?>?kategorija=Kornet"> Kornet</a>
             </div>
             
 
             <div class = "link" id ="kat2">
-                <a id = "k2l" href ="https://localhost/server/h/EP-seminarska-naloga/e-shop/index.php/trgovina?kategorija=Na%20žlico"> Na žlico </a>
+                <a id = "k2l" href ="<?= BASE_URL . "trgovina" ?>?kategorija=Na%20žlico"> Na žlico </a>
             </div>
 
             <div class = "link" id ="kat3">
-                <a id = "k3l" href ="https://localhost/server/h/EP-seminarska-naloga/e-shop/index.php/trgovina?kategorija=Kepca"> Kepca</a>
+                <a id = "k3l" href ="<?= BASE_URL . "trgovina" ?>?kategorija=Kepca"> Kepca</a>
             </div>
             
             <div class = "link" id ="kat4">
-                <a id = "k4l"  href ="https://localhost/server/h/EP-seminarska-naloga/e-shop/index.php/trgovina?kategorija=Piškotek"> Piškotek</a>
+                <a id = "k4l"  href ="<?= BASE_URL . "trgovina" ?>?kategorija=Piškotek"> Piškotek</a>
             </div>
         </div>
         
