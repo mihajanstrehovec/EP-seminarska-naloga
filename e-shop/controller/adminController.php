@@ -82,7 +82,7 @@ class adminController {
                 $vars["idProdajalca"] = $input["idProdajalca"];
                 $vars["error"] = "Vnešeno geslo je napačno";
                 
-                echo ViewHelper::render("view/layout.php", "view/admin/urediProdajalca.php", [vars => $vars]);
+                echo ViewHelper::render("view/layout.php", "view/admin/urediProdajalca.php", [$vars => $vars]);
                 #var_dump("sadasdas");
             }
 
@@ -133,45 +133,41 @@ class adminController {
     public static function adminPrijavaSubmit() {
         $data = filter_input_array(INPUT_POST, self::getRulesRegistracija());
 
-
+        if(adminController::preveriAdminCert($data["mail"])){
         # Preverimo, če je email naslov ustrezen
-        if(!filter_var($data['eMail'], FILTER_VALIDATE_EMAIL)){
+            if(!filter_var($data['eMail'], FILTER_VALIDATE_EMAIL)){
            
-            $err = "Email naslov in geslo se ne ujemata";
-            echo ViewHelper::renderRegError("view/layout.php", "view/admin/vpisAdmin.php", $values, $err);
-            exit();
-        }
+                $err = "Email naslov in geslo se ne ujemata";
+                echo ViewHelper::renderRegError("view/layout.php", "view/admin/vpisAdmin.php", $values, $err);
+                exit();
+            }
         
        
      
-        #$mail = [$data["mailStranke"]];
-        $Admin = eshopDB::getAdmin($data);
-        #var_dump($Admin);
-        #exit();
+            #$mail = [$data["mailStranke"]];
+            $Admin = eshopDB::getAdmin($data);
+            #var_dump($Admin);
+            #exit();
         
        
-
-        if(password_verify($data["geslo"],$Admin[0]["geslo"])){
+        
+            if(password_verify($data["geslo"],$Admin[0]["geslo"])){
            
                 session_destroy();
                 session_regenerate_id();
                 session_start();
+                $_SESSION["adminCert"] = 1;
                 
                 $_SESSION["tipUporabnika"] = "admin";
                 echo ViewHelper::redirect(BASE_URL. "trgovina");
            
 
-        exit();
-        }else{
-            $err = "Email naslov in geslo se ne ujemata";
-            echo ViewHelper::renderRegError("view/layout.php", "view/admin/vpisAdmin.php", $values, $err);
-        }
-
-        
-        
-
-        
-      
+                exit();
+            }else{
+                $err = "Email naslov in geslo se ne ujemata";
+                echo ViewHelper::renderRegError("view/layout.php", "view/admin/vpisAdmin.php", $values, $err);
+            }
+        }        
     }
 
     public static function spremeniGeslo() {
@@ -434,17 +430,17 @@ class adminController {
     }
 
 
-    public static function preveriAdminCert() {
+    public static function preveriAdminCert($data) {
 
         $adminCert = filter_input(INPUT_SERVER,"SSL_CLIENT_CERT");
         $adminCertData = openssl_x509_parse($adminCert);
-        $common_name = $adminCertData['subject']['CN'];
-        if($common_name == 'admin'){
-            adminController::adminPrijavaForm();
+        $common_name = $adminCertData['subject']['emailAddress'];
+        if($common_name == 'admin@frajer.sem'){
+            return true;
         }
         else{
             
-            echo '<div>Niste admin, prosim popravite to. Če se želite ponovno prijaviti zbrišite site preferences</div>';
+            return false;
             
         }
         

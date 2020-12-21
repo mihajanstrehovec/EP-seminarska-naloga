@@ -111,6 +111,7 @@ $urls = [
         eshopController::izpisi();
     },
     "profil" => function () {
+
         if ($_SERVER["REQUEST_METHOD"] == "POST") {
             strankaController::editProfil();
         } else {
@@ -146,17 +147,29 @@ $urls = [
         }
     },
     "prodajalec/narocila" => function () {
-        if ($_SERVER["REQUEST_METHOD"] == "POST") {
-            prodajalecController::prodajalecNarocilaEdit();
-        } else {
-            prodajalecController::prodajalecNarocila();
+        
+        if($_SESSION["certProd"] == 1){
+            if ($_SERVER["REQUEST_METHOD"] == "POST") {
+                prodajalecController::prodajalecNarocilaEdit();
+            } 
+            else {
+                prodajalecController::prodajalecNarocila();
+            }
+        }
+        else{
+            echo "Za dostop se prosim prijavite";
         }
     },
     "prodajalec/stranke" => function () {
-        if ($_SERVER["REQUEST_METHOD"] == "POST") {
-            prodajalecController::prodajalecStrankeEdit();
-        } else {
-            prodajalecController::prodajalecStranke();
+        if($_SESSION["certProd"] == 1){
+            if ($_SERVER["REQUEST_METHOD"] == "POST") {
+                prodajalecController::prodajalecStrankeEdit();
+            } else {
+                prodajalecController::prodajalecStranke();
+            }
+        }
+        else{
+            echo "Za dostop se prosim prijavite";
         }
     },
     "prodajalec/vpis" => function () {
@@ -167,53 +180,83 @@ $urls = [
         }
     },
     "prodajalec/profil" => function () {
-        if ($_SERVER["REQUEST_METHOD"] == "POST") {
-            prodajalecController::prodajalecProfilSubmit();
-        } else {
-            prodajalecController::prodajalecProfil();
+        if($_SESSION["certProd"] == 1){
+            if ($_SERVER["REQUEST_METHOD"] == "POST") {
+                prodajalecController::prodajalecProfilSubmit();
+            } else {
+                prodajalecController::prodajalecProfil();
+            }
+        }
+        else{
+            echo "Za dostop se prosim prijavite";
         }
     },
     "prodajalec/urediStranko" => function () {
-        if ($_SERVER["REQUEST_METHOD"] == "POST") {
-            prodajalecController::urediStrankoSubmit();
-        } else {
-            prodajalecController::urediStranko();
+        if($_SESSION["certProd"] == 1){
+            if ($_SERVER["REQUEST_METHOD"] == "POST") {
+                prodajalecController::urediStrankoSubmit();
+            } else {
+                prodajalecController::urediStranko();
+            }
+        }
+        else{
+            echo "Za dostop se prosim prijavite";
         }
     },
     "admin/prijava" => function () {
         if ($_SERVER["REQUEST_METHOD"] == "POST") {
             adminController::adminPrijavaSubmit();
         } else {
-            adminController::preveriAdminCert();
-            //adminController::adminPrijavaForm();
+            
+            adminController::adminPrijavaForm();
         }
     },
     "admin/prodajalec/uredi" => function () {
-        if ($_SERVER["REQUEST_METHOD"] == "POST") {
-            adminController::urediProdajalcaSubmit();
-        } else {
-            adminController::urediProdajalcaForm();
+        if($_SESSION["certProd"] == 1){
+            if ($_SERVER["REQUEST_METHOD"] == "POST") {
+                adminController::urediProdajalcaSubmit();
+            } else {
+                adminController::urediProdajalcaForm();
+            }
+        }
+        else{
+            echo "Za dostop se prosim prijavite";
         }
     },
     "admin/prodajalec/ustvari" => function () {
-        if ($_SERVER["REQUEST_METHOD"] == "POST") {
-            adminController::ustvariProdajalcaSubmit();
-        } else {
-            adminController::ustvariProdajalcaForm();
+        if($_SESSION["certProd"] == 1){
+            if ($_SERVER["REQUEST_METHOD"] == "POST") {
+                adminController::ustvariProdajalcaSubmit();
+            } else {
+                adminController::ustvariProdajalcaForm();
+            }
+        }
+        else{
+            echo "Za dostop se prosim prijavite";
         }
     },
     "admin/prodajalci" => function () {
-        if ($_SERVER["REQUEST_METHOD"] == "POST") {
-            adminController::seznamProdajalcevEdit();
-        } else {
-            adminController::seznamProdajalcev();
+        if($_SESSION["certProd"] == 1){
+            if ($_SERVER["REQUEST_METHOD"] == "POST") {
+                adminController::seznamProdajalcevEdit();
+            } else {
+                adminController::seznamProdajalcev();
+            }
+        }
+        else{
+            echo "Za dostop se prosim prijavite";
         }
     },
     "admin/spremeni-geslo" => function () {
-        if ($_SERVER["REQUEST_METHOD"] == "POST") {
-            adminController::spremeniGesloSubmit();
-        } else {
-            adminController::spremeniGeslo();
+        if($_SESSION["certProd"] == 1){
+            if ($_SERVER["REQUEST_METHOD"] == "POST") {
+                adminController::spremeniGesloSubmit();
+            } else {
+                adminController::spremeniGeslo();
+            }
+        }
+        else{
+            echo "Za dostop se prosim prijavite";
         }
     },
     
