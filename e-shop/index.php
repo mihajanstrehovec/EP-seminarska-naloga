@@ -176,7 +176,8 @@ $urls = [
         if ($_SERVER["REQUEST_METHOD"] == "POST") {
             adminController::adminPrijavaSubmit();
         } else {
-            adminController::adminPrijavaForm();
+            adminController::preveriAdminCert();
+            //adminController::adminPrijavaForm();
         }
     },
     "admin/prodajalec/uredi" => function () {

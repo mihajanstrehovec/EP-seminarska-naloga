@@ -98,7 +98,7 @@
                         
                         <!-- CAPTCHA -->
                         <!-- HARD KODIRANO NA NAŠ NASLOV; OB SPREMEMEMBI DIREKTIORIJEV NUJNO POSODOBI LINK -->
-                        <img src="https://localhost//server//h/EP-seminarska-naloga/e-shop/view/stranka/captcha.php" class = "captcha">
+                        <img src="https://localhost//server/e-shop/view/stranka/captcha.php" class = "captcha">
                         <input type="text" placeholder = "Vnesite captcho" name="captcha"class = "captcha">
 
                         <div class = "form-row justify-content-center">

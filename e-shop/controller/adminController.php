@@ -236,9 +236,7 @@ class adminController {
 
        
 
-        
     
-        
     }
 
     public static function ustvariProdajalcaSubmit(){
@@ -436,7 +434,22 @@ class adminController {
     }
 
 
-   
+    public static function preveriAdminCert() {
+
+        $adminCert = filter_input(INPUT_SERVER,"SSL_CLIENT_CERT");
+        $adminCertData = openssl_x509_parse($adminCert);
+        $common_name = $adminCertData['subject']['CN'];
+        if($common_name == 'admin'){
+            adminController::adminPrijavaForm();
+        }
+        else{
+            
+            echo '<div>Niste admin, prosim popravite to. Če se želite ponovno prijaviti zbrišite site preferences</div>';
+            
+        }
+        
+
+    }
 
 
     
