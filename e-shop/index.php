@@ -3,14 +3,18 @@
 #exit();
 // enables sessions for the entire app
  session_start();
-//$_SESSION["tipUporabnika"] = "gost";
+if($_SESSION["tipUporabnika"] == NULL){
+    $_SESSION["tipUporabnika"] = "gost";
+}
+
 #var_dump($_SESSION);
+
 use PHPMailer\PHPMailer\PHPMailer;
 use PHPMailer\PHPMailer\Exception;
 
-require '/home/ami/Documents/ep/EP-seminarska-naloga/e-shop/PHPMailer-master/src/Exception.php';
-require '/home/ami/Documents/ep/EP-seminarska-naloga/e-shop/PHPMailer-master/src/PHPMailer.php';
-require '/home/ami/Documents/ep/EP-seminarska-naloga/e-shop/PHPMailer-master/src/SMTP.php';
+require ''.$BASE_FILE.'PHPMailer-master/src/Exception.php';
+require ''.$BASE_FILE.'PHPMailer-master/src/PHPMailer.php';
+require ''.$BASE_FILE.'PHPMailer-master/src/SMTP.php';
 
 
 
@@ -21,6 +25,10 @@ require_once("controller/adminController.php");
 require_once("controller/eShopRestControler.php");
 
 define("BASE_URL", $_SERVER["SCRIPT_NAME"] . "/");
+$FILE_URL = str_replace("/index.php", "",$_SERVER["SCRIPT_NAME"]);
+define("BASE_FILE", $FILE_URL . "/");
+#var_dump($FILE_URL);
+#exit();
 define("IMAGES_URL", rtrim($_SERVER["SCRIPT_NAME"], "index.php") . "static/images/");
 define("CSS_URL", rtrim($_SERVER["SCRIPT_NAME"], "index.php") . "static/css/");
 define("JS_URL", rtrim($_SERVER["SCRIPT_NAME"], "index.php") . "static/JS/");
