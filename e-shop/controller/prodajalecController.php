@@ -6,6 +6,7 @@ require_once("model/eshopDB.php");
 require_once("ViewHelper.php");
 
 class prodajalecController {
+    
     public static function prodajalecNarocila() {
         #$idStranke = eshopDB::getStrankaID($_SESSION);
         
@@ -176,6 +177,20 @@ class prodajalecController {
         $err = "";
         echo ViewHelper::renderRegError("view/layout.php", "view/prodajalec/vpisProdajalec.php", $values, $err);
     }
+    public static function preveriCertProd($data) {
+        
+        $userCert = filter_input(INPUT_SERVER,"SSL_CLIENT_CERT");
+        $userCertData = openssl_x509_parse($userCert);
+        $common_name = $userCertData['subject']['CN'];
+        
+        if($common_name == $data["uporabniskoIme"]){
+
+            return true;
+        }
+        else{
+            return false;
+        }
+    }
 
     public static function prodajalecVpisSubmit() {
         $data = filter_input_array(INPUT_POST, self::getRulesRegistracija());
@@ -184,15 +199,9 @@ class prodajalecController {
         #exit();
         
         
-        
-
-        $userCert = filter_input(INPUT_SERVER,"SSL_CLIENT_CERT");
-        $userCertData = openssl_x509_parse($userCert);
-        $common_name = $userCertData['subject']['CN'];
-        
-        if($common_name == $data["uporabniskoIme"]){
             
-    
+        if(prodajalecController::preveriCertProd($data)){
+            
             #$mail = [$data["mailStranke"]];
             $Prodajalec = eshopDB::getProdajalec($data);
             #var_dump($Prodajalec[0]["geslo"]);
@@ -207,6 +216,7 @@ class prodajalecController {
                     session_start();
                     $_SESSION["prodajalec"] = $data["uporabniskoIme"];
                     $_SESSION["tipUporabnika"] = "prodajalec";
+                    $_SESSION["certProd"] = 1;
                     echo ViewHelper::redirect(BASE_URL. "trgovina"/*. "books?id=" . $id*/);
                 } else{
                     $err = "Vaš račun je bil deaktiviran!";
@@ -787,9 +797,7 @@ class prodajalecController {
             ]*/
         ];
    
-    }
-
-    
+    }    
 
     
 }

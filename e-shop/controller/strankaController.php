@@ -10,7 +10,7 @@ require_once("ViewHelper.php");
 class strankaController {
 
 
-public static function dodajVkosarico() {
+    public static function dodajVkosarico() {
         $validationRules = [
             'do' => [
                 'filter' => FILTER_VALIDATE_REGEXP,
