@@ -185,16 +185,22 @@ class prodajalecController {
         
         
         
-       
-     
-        #$mail = [$data["mailStranke"]];
-        $Prodajalec = eshopDB::getProdajalec($data);
-        #var_dump($Prodajalec[0]["geslo"]);
-        #exit();
+
+        $userCert = filter_input(INPUT_SERVER,"SSL_CLIENT_CERT");
+        $userCertData = openssl_x509_parse($userCert);
+        $common_name = $userCertData['subject']['CN'];
+        
+        if($common_name == $data["uporabniskoIme"]){
+            
+    
+            #$mail = [$data["mailStranke"]];
+            $Prodajalec = eshopDB::getProdajalec($data);
+            #var_dump($Prodajalec[0]["geslo"]);
+            #exit();
         
        
 
-        if(password_verify($data["geslo"], $Prodajalec[0]["geslo"])){
+            if(password_verify($data["geslo"], $Prodajalec[0]["geslo"])){
                 if($Prodajalec[0]["aktiviran"] == 1){
                     session_destroy();
                     session_regenerate_id();
@@ -209,12 +215,15 @@ class prodajalecController {
            
 
         
-        }else{
-            $err = "Uporabniško ime in geslo se ne ujemata";
-            echo ViewHelper::renderRegError("view/layout.php", "view/prodajalec/vpisProdajalec.php", $values, $err);
-        }
+            }else{
+                $err = "Uporabniško ime in geslo se ne ujemata";
+                echo ViewHelper::renderRegError("view/layout.php", "view/prodajalec/vpisProdajalec.php", $values, $err);
+            }
 
-        
+        }
+        else{
+            echo "Nimate dostopa do tega računa. Zbrišite site preferences in poskusite ponovno.";
+        }
         
 
         
