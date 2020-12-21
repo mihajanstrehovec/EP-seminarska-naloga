@@ -70,15 +70,31 @@ Z implementacijo razširjenih storitev lahko zvišate oceno. Pri vsaki storitvi 
 
 
 ## VARNOSTNE STORITVE
-- [ - ] <b>V1</b> (5%) Registracija strank z uporabo filtriranja CAPTCHA.  https://www.a2zwebhelp.com/registration-form-with-captcha
+- [ - ] <b>V1</b> (5%) Registracija strank z uporabo filtriranja CAPTCHA.
+
+-mamo s pomočjo gd library in simpl php skripte (captcha za risanje).
+
 - [ ] <b>V2 (5%)</b> Registracija strank z uporabo potrditvenega e-maila.
+
+- ima ima ovo z phpmailer prek gmailouga smtp-ja.
 
 
 ## UPORABNIŠKI VMESNIK
 - [ ] <b>V1 (do 6%)</b> Smiselna organizacija in izvedba uporabniškega vmesnika s pomočjo tehnologij kot so sta CSS in JavaScript. Za polno oceno je nujna tudi uporaba tehnologij, ki omogočajo asinhrono komunikacijo s strežnikom v ozadju in dinamično posodabljanje DOM; denimo tehnologije AJAX, Vue.js in podobno.
+
+- smo  velik vložil v izgled strani in tudi zamenjal celotno grafično podobo. Z javascriptom spreminjamo izgled (sence pod itzbrano kategorijo, sence pod izbranim  zavihkom, hover shopping cart, pri artiklih imamo galerije za fotke).
+
 - [ ] <b>V2 (7%)</b> Predstavitev artiklov s slikami. Slike lahko shranite v SUPB ali na datotečni sistem. Za polno oceno mora implementacija podpirati dodajanje in spreminjanje slik na enak način kot se spreminjajo ostali atributi artiklov ter možnost, da za vsak artikel dodamo več slik.
+
+-imamo funkcionalno predstavljanje z večimi fotografijami, preverja se correct input (size, type). Slike lahko z interaktivno formo tudi brišemo.
+
 - [ ] <b>V3 (3%)</b> Implementacija iskanja po artiklih. Iskalnik naj podpira binarno iskanje, tj. poizvedbe pri katerih lahko s posebnimi operatorji določene iskalne pojme izključimo.
+
+- imamo iskanje po kategorijah. neki je ajgess.
+
 - [ ] <b>V4 (4%)</b> Implementacija ocenjevanja artiklov prijavljenega uporabnika ter predstavitev njihove povprečne ocene pri njihovem ogledu.
+
+-ima se ovo ima
 
 
 ## NAPREDNE FUNKCIJE MOBILNE APLIKACIJE
