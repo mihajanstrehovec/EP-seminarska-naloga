@@ -1,8 +1,14 @@
 
 <?php
 // TESTING //
-    #var_dump($_SESSION);
-    #exit();
+#var_dump($data);
+#exit();
+if($_GET["idStranke"] == null){
+    $strankaID = $data["idStranke"];
+    
+} else {
+    $strankaID = $_GET["idStranke"];
+}
 ?>
 
 <div class ="container">
@@ -12,16 +18,17 @@
        
         
             <div class ="titleProfil" align ="center" style ="padding-top: 0.4vh;">
-                <h4 style ="font-weight: 600;">UREDI STRANKO - ID:  <?= $_GET["idStranke"] ?></h4>
+                <h4 style ="font-weight: 600;">UREDI STRANKO - ID:  <?= $strankaID?> </h4>
             </div>
     
             <div class ="profilVsebnik overflow-auto" style="padding: 7%; height: 70vh">
             
                 <!-- FORM za posodobitev poštnega naslova -->
                 Posodobitev Poštnega naslova
+                <p style = "color: red;"> <?= $data["err"]?> </p>
                 <form action = "<?= BASE_URL . "prodajalec/urediStranko" ?>" method = "POST">
                     
-                <input type = "hidden" name = "idStranke" value ="<?=$_GET["idStranke"]?>" class = "form-control">
+                <input type = "hidden" name = "idStranke" value ="<?= $strankaID?>" class = "form-control">
                         <div class = "form-row">
                             
                             <div class ="col-lg-5">

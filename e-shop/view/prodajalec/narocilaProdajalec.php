@@ -97,7 +97,7 @@
                     <!-- NAROČILA POTRJENA -->
                     <?php  foreach ($narocila as $narocilo): ?>
                         <?php for($i = 0; $i < count($narocilo); $i++):?>
-                                <?php if($narocilo[$i]["potrjeno"] == 1):?>
+                                <?php if($narocilo[$i]["potrjeno"] == 1 && $narocilo[$i]["stornirano"] == 0):?>
                                 
                                     <h5><b>ID naročila:</b> <?= $narocilo[$i]["idNaročila"]?></h5>
                                     <h6><b>IZDELKI: </b>

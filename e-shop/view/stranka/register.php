@@ -14,7 +14,7 @@
                     <form action = "<?= BASE_URL . "uporabnik/registracija/potrditvenaKoda"?>" method = "POST">
                         
                         <!-- V primeru napačne captche -->
-                        <?php if($err !=  "Vnesite pravilno Captcho") :?>
+                        <?php if($err ==  "Vnesite pravilno Captcho") :?>
                                 <div class = "form-row">
                                     <h7 style ="color: red;"> <?= $err ?> </h7>
                                 </div>

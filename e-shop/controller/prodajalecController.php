@@ -257,7 +257,13 @@ class prodajalecController {
     public static function add() {
         $data = filter_input_array(INPUT_POST, self::getRules());
         
-        
+        if($data["imeArtikla"] == null || $data["cenaArtikla"] == null || $data["zalogaArtikla"] == null || $_FILES == null || $data["opisArtikla"] == null){
+            $uploadOk = 0;
+            echo ViewHelper::render("view/layout.php", "view/prodajalec/dodajArtikel.php", $values);
+            echo ViewHelper::error("view/error.php", "Na žalost je pri ustvarjanju izdelka prišlo do napake. Prosimo izpolnite vsa polja in poskusite ponovno.");
+            
+
+        }
         if (self::checkValues($data)) {
                 
                 $uploadOk = 1;
@@ -269,6 +275,7 @@ class prodajalecController {
                 $fileNames = [$countfiles];
 
                 // Checking if this is still equal to one later to determine if file meets requirments
+                
                 
 
                 // Looping all files
@@ -319,13 +326,15 @@ class prodajalecController {
                         } else {
                             #echo "File doesn't meet requierments.";
                             echo ViewHelper::render("view/layout.php", "view/prodajalec/dodajArtikel.php", $values);
-                            echo ViewHelper::error("view/error.php", "Na žalost je pri nalaganju slik prišlo do napake.");
+                            echo ViewHelper::error("view/error.php", "Na žalost je pri nalaganju slik prišlo do napake. ");
                             
                             $uploadOk = 0;
                         }
                     
                 
                 }
+
+            
                 
             // Vsavljanje artikla v podatkovno bazo
             if($uploadOk == 1){
@@ -337,8 +346,8 @@ class prodajalecController {
                 for($i = 0; $i < $countfiles; $i++){
                     
                     
-                    $dataIn["imeSlike"] = $fileNames[$i];
-                    $g = eshopDB::addImage($dataIn);
+                $dataIn["imeSlike"] = $fileNames[$i];
+                $g = eshopDB::addImage($dataIn);
                     
                     
                 }
@@ -347,8 +356,8 @@ class prodajalecController {
             }
             
         } else {
-            echo ViewHelper::render("view/layout.php", "view/prodajalec/dodajArtikel.php", $values);
-            echo ViewHelper::error("view/error.php", "Na žalost je pri ustvarjanju izdelka prišlo do napake. Prosim poskusite ponovno.");
+            #echo ViewHelper::render("view/layout.php", "view/prodajalec/dodajArtikel.php", $values);
+            #echo ViewHelper::error("view/error.php", "Na žalost je pri ustvarjanju izdelka prišlo do napake. Prosimo izpolnite vsa polja in poskusite ponovno.");
                             
             $uploadOk = 0;
         }
@@ -562,21 +571,25 @@ class prodajalecController {
         $rules = self::getRulesEditProfil();
         
         
-   
-        
-        
-        
-       
         $data = filter_input_array(INPUT_POST, $rules);
-        #var_dump($data["mailStranke"], $_SESSION);
+        #var_dump($data);
         #exit();
 
-        var_dump($data);
+        if($data["ulica"] == null || $data["hisnaSt"] == null || $data["postnaSt"] == null || $data["posta"] == null){
+            $uploadOk = 0;
+            $data["err"] = "Prosimo izpolnite vsa polja.";
+            echo ViewHelper::render("view/layout.php", "view/prodajalec/urediStranko.php", ["data" => $data]);
+            echo ViewHelper::error("view/error.php", "Na žalost je pri urejanju stranke prišlo do napake. Prosimo izpolnite vsa polja in poskusite ponovno.");
+            
+
+        } else {
+            eshopDB::spremeniNaslovStranke($data);
+
+            echo ViewHelper::redirect(BASE_URL. "prodajalec/stranke");
+        }
        
         
-        eshopDB::spremeniNaslovStranke($data);
-
-        echo ViewHelper::redirect(BASE_URL. "prodajalec/stranke");
+        
        
      
     }
