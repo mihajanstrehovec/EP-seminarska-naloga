@@ -66,7 +66,38 @@
                 <div class ="row no-gutters justify-content-center nakup">
                   <s style = "margin-right: 5px; color: rgb(240, 210, 157)!important;"><?= $Artikel["cenaArtikla"] + rand(0, 30)?></s><?= $Artikel["cenaArtikla"]?>
                 </div>
+                <?php 
+                
+                if($Artikel["steviloOcen"] == 0){
+                    
+                    $ocena = 0;
+                }
+                
+                else{
+                    
+                    $ocena = $Artikel["ocena"] / $Artikel["steviloOcen"];
 
+                }
+                
+                for($i = 1; $i < 6;$i++){ 
+                    
+                    if($i <= $ocena){    ?>
+                    
+                      <button style="background-color:rgba(0,0,0,0);border:0px " id=<?="$i"?>><img id=<?="zvezdica$i"?> style="width:2em" src="<?= IMAGES_URL . "star.png"?>"></button> 
+                        
+                <?php
+                    
+                    }
+                    
+                    else if($i > $ocena){ ?>
+
+                        <button style="background-color:rgba(0,0,0,0);border:0px " id=<?="$i"?>><img id=<?="zvezdica$i"?> style="width:2em" src="<?= IMAGES_URL . "gray-star.png"?>"></button> 
+                
+                <?php    
+                    
+                    } 
+                      
+                      } ?>
                 <!-- Se izpiše ko je prijavljena stranka -->
                 <?php if($_SESSION["tipUporabnika"] == "stranka"): ?> 
                     <div class ="row no-gutters justify-content-center dodVkos">
