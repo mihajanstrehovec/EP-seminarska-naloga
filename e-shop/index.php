@@ -212,7 +212,7 @@ $urls = [
         }
     },
     "admin/prodajalec/uredi" => function () {
-        if($_SESSION["certProd"] == 1){
+        if($_SESSION["tipUporabnika"] == "admin"){
             if ($_SERVER["REQUEST_METHOD"] == "POST") {
                 adminController::urediProdajalcaSubmit();
             } else {
@@ -224,7 +224,7 @@ $urls = [
         }
     },
     "admin/prodajalec/ustvari" => function () {
-        if($_SESSION["certProd"] == 1){
+        if($_SESSION["tipUporabnika"] == "admin"){
             if ($_SERVER["REQUEST_METHOD"] == "POST") {
                 adminController::ustvariProdajalcaSubmit();
             } else {
@@ -236,7 +236,7 @@ $urls = [
         }
     },
     "admin/prodajalci" => function () {
-        if($_SESSION["certProd"] == 1){
+        if($_SESSION["tipUporabnika"] == "admin"){
             if ($_SERVER["REQUEST_METHOD"] == "POST") {
                 adminController::seznamProdajalcevEdit();
             } else {
@@ -248,7 +248,7 @@ $urls = [
         }
     },
     "admin/spremeni-geslo" => function () {
-        if($_SESSION["certProd"] == 1){
+        if($_SESSION["tipUporabnika"] == "admin"){
             if ($_SERVER["REQUEST_METHOD"] == "POST") {
                 adminController::spremeniGesloSubmit();
             } else {
