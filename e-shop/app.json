@@ -1,0 +1,32 @@
+{
+  "name": "Sladket",
+  "description": "Php app",
+  "keywords": [
+    "productivity",
+    "HTML5",
+    "scalpel"
+  ],
+  "repository": "https://github.com/mihajanstrehovec/EP-seminarska-naloga",
+  "success_url": "/welcome",
+
+  "formation": {
+    "web": {
+      "quantity": 1,
+      "size": "standard-1x"
+    }
+  },
+  "image": "heroku/php",
+  
+  "buildpacks": [
+    {
+      "url": "heroku/php"
+    }
+  ],
+  "environments": {
+    "test": {
+      "scripts": {
+        "test": "bundle exec rake test"
+      }
+    }
+  }
+}
