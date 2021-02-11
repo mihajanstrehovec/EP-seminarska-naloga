@@ -1,7 +1,5 @@
 {
-    "require":{
-        "ext-gd": "*",
+    "require": {
         "phpmailer/phpmailer": "^6.2"
     }
 }
-
